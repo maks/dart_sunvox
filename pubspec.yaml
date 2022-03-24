@@ -1,0 +1,33 @@
+name: dart_sunvox
+description: A starting point for Dart libraries or applications.
+version: 0.0.1
+# homepage: https://www.example.com
+
+environment:
+  sdk: '>=2.16.1 <3.0.0'
+
+dependencies:
+  path: ^1.8.0
+  ffi: ^1.1.2
+
+dev_dependencies:
+  lints: ^1.0.0
+  test: ^1.16.0
+  ffigen: ^4.1.3
+
+
+
+ffigen:
+  name: "libsunvox"
+  output: "lib/src/libsunvox_generated_bindings.dart"
+  headers:
+    entry-points:
+      - "../sunvox_lib/headers/sunvox.h"
+  llvm-path:
+    - "/usr/lib/llvm-13"
+  structs:
+    rename:
+      "_(.*)": "$1_"
+    member-rename:
+      ".*":
+        "_(.*)": "$1_"
