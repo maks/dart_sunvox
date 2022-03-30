@@ -22,7 +22,7 @@ ffigen:
   output: "lib/src/libsunvox_generated_bindings.dart"
   headers:
     entry-points:
-      - "sunvox_lib/sunvox.h"
+      - "sunvox_static.h"
   llvm-path:
     - "/usr/lib/llvm-13"
   structs:
