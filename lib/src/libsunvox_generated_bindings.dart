@@ -1393,585 +1393,1219 @@ class libsunvox {
   late final ___overflow =
       ___overflowPtr.asFunction<int Function(ffi.Pointer<FILE>, int)>();
 
-  late final ffi.Pointer<tsv_audio_callback> _sv_audio_callback =
-      _lookup<tsv_audio_callback>('sv_audio_callback');
-
-  tsv_audio_callback get sv_audio_callback => _sv_audio_callback.value;
-
-  set sv_audio_callback(tsv_audio_callback value) =>
-      _sv_audio_callback.value = value;
-
-  late final ffi.Pointer<tsv_audio_callback2> _sv_audio_callback2 =
-      _lookup<tsv_audio_callback2>('sv_audio_callback2');
-
-  tsv_audio_callback2 get sv_audio_callback2 => _sv_audio_callback2.value;
-
-  set sv_audio_callback2(tsv_audio_callback2 value) =>
-      _sv_audio_callback2.value = value;
-
-  late final ffi.Pointer<tsv_open_slot> _sv_open_slot =
-      _lookup<tsv_open_slot>('sv_open_slot');
-
-  tsv_open_slot get sv_open_slot => _sv_open_slot.value;
-
-  set sv_open_slot(tsv_open_slot value) => _sv_open_slot.value = value;
-
-  late final ffi.Pointer<tsv_close_slot> _sv_close_slot =
-      _lookup<tsv_close_slot>('sv_close_slot');
-
-  tsv_close_slot get sv_close_slot => _sv_close_slot.value;
-
-  set sv_close_slot(tsv_close_slot value) => _sv_close_slot.value = value;
-
-  late final ffi.Pointer<tsv_lock_slot> _sv_lock_slot =
-      _lookup<tsv_lock_slot>('sv_lock_slot');
-
-  tsv_lock_slot get sv_lock_slot => _sv_lock_slot.value;
-
-  set sv_lock_slot(tsv_lock_slot value) => _sv_lock_slot.value = value;
-
-  late final ffi.Pointer<tsv_unlock_slot> _sv_unlock_slot =
-      _lookup<tsv_unlock_slot>('sv_unlock_slot');
-
-  tsv_unlock_slot get sv_unlock_slot => _sv_unlock_slot.value;
-
-  set sv_unlock_slot(tsv_unlock_slot value) => _sv_unlock_slot.value = value;
-
-  late final ffi.Pointer<tsv_init> _sv_init = _lookup<tsv_init>('sv_init');
-
-  tsv_init get sv_init => _sv_init.value;
-
-  set sv_init(tsv_init value) => _sv_init.value = value;
-
-  late final ffi.Pointer<tsv_deinit> _sv_deinit =
-      _lookup<tsv_deinit>('sv_deinit');
-
-  tsv_deinit get sv_deinit => _sv_deinit.value;
-
-  set sv_deinit(tsv_deinit value) => _sv_deinit.value = value;
-
-  late final ffi.Pointer<tsv_get_sample_rate> _sv_get_sample_rate =
-      _lookup<tsv_get_sample_rate>('sv_get_sample_rate');
-
-  tsv_get_sample_rate get sv_get_sample_rate => _sv_get_sample_rate.value;
-
-  set sv_get_sample_rate(tsv_get_sample_rate value) =>
-      _sv_get_sample_rate.value = value;
-
-  late final ffi.Pointer<tsv_update_input> _sv_update_input =
-      _lookup<tsv_update_input>('sv_update_input');
-
-  tsv_update_input get sv_update_input => _sv_update_input.value;
-
-  set sv_update_input(tsv_update_input value) => _sv_update_input.value = value;
-
-  late final ffi.Pointer<tsv_load> _sv_load = _lookup<tsv_load>('sv_load');
-
-  tsv_load get sv_load => _sv_load.value;
-
-  set sv_load(tsv_load value) => _sv_load.value = value;
-
-  late final ffi.Pointer<tsv_load_from_memory> _sv_load_from_memory =
-      _lookup<tsv_load_from_memory>('sv_load_from_memory');
-
-  tsv_load_from_memory get sv_load_from_memory => _sv_load_from_memory.value;
-
-  set sv_load_from_memory(tsv_load_from_memory value) =>
-      _sv_load_from_memory.value = value;
-
-  late final ffi.Pointer<tsv_save> _sv_save = _lookup<tsv_save>('sv_save');
-
-  tsv_save get sv_save => _sv_save.value;
-
-  set sv_save(tsv_save value) => _sv_save.value = value;
-
-  late final ffi.Pointer<tsv_play> _sv_play = _lookup<tsv_play>('sv_play');
-
-  tsv_play get sv_play => _sv_play.value;
-
-  set sv_play(tsv_play value) => _sv_play.value = value;
-
-  late final ffi.Pointer<tsv_play_from_beginning> _sv_play_from_beginning =
-      _lookup<tsv_play_from_beginning>('sv_play_from_beginning');
-
-  tsv_play_from_beginning get sv_play_from_beginning =>
-      _sv_play_from_beginning.value;
-
-  set sv_play_from_beginning(tsv_play_from_beginning value) =>
-      _sv_play_from_beginning.value = value;
-
-  late final ffi.Pointer<tsv_stop> _sv_stop = _lookup<tsv_stop>('sv_stop');
-
-  tsv_stop get sv_stop => _sv_stop.value;
-
-  set sv_stop(tsv_stop value) => _sv_stop.value = value;
-
-  late final ffi.Pointer<tsv_pause> _sv_pause = _lookup<tsv_pause>('sv_pause');
-
-  tsv_pause get sv_pause => _sv_pause.value;
-
-  set sv_pause(tsv_pause value) => _sv_pause.value = value;
-
-  late final ffi.Pointer<tsv_resume> _sv_resume =
-      _lookup<tsv_resume>('sv_resume');
-
-  tsv_resume get sv_resume => _sv_resume.value;
-
-  set sv_resume(tsv_resume value) => _sv_resume.value = value;
-
-  late final ffi.Pointer<tsv_sync_resume> _sv_sync_resume =
-      _lookup<tsv_sync_resume>('sv_sync_resume');
-
-  tsv_sync_resume get sv_sync_resume => _sv_sync_resume.value;
-
-  set sv_sync_resume(tsv_sync_resume value) => _sv_sync_resume.value = value;
-
-  late final ffi.Pointer<tsv_set_autostop> _sv_set_autostop =
-      _lookup<tsv_set_autostop>('sv_set_autostop');
-
-  tsv_set_autostop get sv_set_autostop => _sv_set_autostop.value;
-
-  set sv_set_autostop(tsv_set_autostop value) => _sv_set_autostop.value = value;
-
-  late final ffi.Pointer<tsv_get_autostop> _sv_get_autostop =
-      _lookup<tsv_get_autostop>('sv_get_autostop');
-
-  tsv_get_autostop get sv_get_autostop => _sv_get_autostop.value;
-
-  set sv_get_autostop(tsv_get_autostop value) => _sv_get_autostop.value = value;
-
-  late final ffi.Pointer<tsv_end_of_song> _sv_end_of_song =
-      _lookup<tsv_end_of_song>('sv_end_of_song');
-
-  tsv_end_of_song get sv_end_of_song => _sv_end_of_song.value;
-
-  set sv_end_of_song(tsv_end_of_song value) => _sv_end_of_song.value = value;
-
-  late final ffi.Pointer<tsv_rewind> _sv_rewind =
-      _lookup<tsv_rewind>('sv_rewind');
-
-  tsv_rewind get sv_rewind => _sv_rewind.value;
-
-  set sv_rewind(tsv_rewind value) => _sv_rewind.value = value;
-
-  late final ffi.Pointer<tsv_volume> _sv_volume =
-      _lookup<tsv_volume>('sv_volume');
-
-  tsv_volume get sv_volume => _sv_volume.value;
-
-  set sv_volume(tsv_volume value) => _sv_volume.value = value;
-
-  late final ffi.Pointer<tsv_set_event_t> _sv_set_event_t =
-      _lookup<tsv_set_event_t>('sv_set_event_t');
-
-  tsv_set_event_t get sv_set_event_t => _sv_set_event_t.value;
-
-  set sv_set_event_t(tsv_set_event_t value) => _sv_set_event_t.value = value;
-
-  late final ffi.Pointer<tsv_send_event> _sv_send_event =
-      _lookup<tsv_send_event>('sv_send_event');
-
-  tsv_send_event get sv_send_event => _sv_send_event.value;
-
-  set sv_send_event(tsv_send_event value) => _sv_send_event.value = value;
-
-  late final ffi.Pointer<tsv_get_current_line> _sv_get_current_line =
-      _lookup<tsv_get_current_line>('sv_get_current_line');
-
-  tsv_get_current_line get sv_get_current_line => _sv_get_current_line.value;
-
-  set sv_get_current_line(tsv_get_current_line value) =>
-      _sv_get_current_line.value = value;
-
-  late final ffi.Pointer<tsv_get_current_line2> _sv_get_current_line2 =
-      _lookup<tsv_get_current_line2>('sv_get_current_line2');
-
-  tsv_get_current_line2 get sv_get_current_line2 => _sv_get_current_line2.value;
-
-  set sv_get_current_line2(tsv_get_current_line2 value) =>
-      _sv_get_current_line2.value = value;
-
-  late final ffi.Pointer<tsv_get_current_signal_level>
-      _sv_get_current_signal_level =
-      _lookup<tsv_get_current_signal_level>('sv_get_current_signal_level');
-
-  tsv_get_current_signal_level get sv_get_current_signal_level =>
-      _sv_get_current_signal_level.value;
-
-  set sv_get_current_signal_level(tsv_get_current_signal_level value) =>
-      _sv_get_current_signal_level.value = value;
-
-  late final ffi.Pointer<tsv_get_song_name> _sv_get_song_name =
-      _lookup<tsv_get_song_name>('sv_get_song_name');
-
-  tsv_get_song_name get sv_get_song_name => _sv_get_song_name.value;
-
-  set sv_get_song_name(tsv_get_song_name value) =>
-      _sv_get_song_name.value = value;
-
-  late final ffi.Pointer<tsv_get_song_bpm> _sv_get_song_bpm =
-      _lookup<tsv_get_song_bpm>('sv_get_song_bpm');
-
-  tsv_get_song_bpm get sv_get_song_bpm => _sv_get_song_bpm.value;
-
-  set sv_get_song_bpm(tsv_get_song_bpm value) => _sv_get_song_bpm.value = value;
-
-  late final ffi.Pointer<tsv_get_song_tpl> _sv_get_song_tpl =
-      _lookup<tsv_get_song_tpl>('sv_get_song_tpl');
-
-  tsv_get_song_tpl get sv_get_song_tpl => _sv_get_song_tpl.value;
-
-  set sv_get_song_tpl(tsv_get_song_tpl value) => _sv_get_song_tpl.value = value;
-
-  late final ffi.Pointer<tsv_get_song_length_frames>
-      _sv_get_song_length_frames =
-      _lookup<tsv_get_song_length_frames>('sv_get_song_length_frames');
-
-  tsv_get_song_length_frames get sv_get_song_length_frames =>
-      _sv_get_song_length_frames.value;
-
-  set sv_get_song_length_frames(tsv_get_song_length_frames value) =>
-      _sv_get_song_length_frames.value = value;
-
-  late final ffi.Pointer<tsv_get_song_length_lines> _sv_get_song_length_lines =
-      _lookup<tsv_get_song_length_lines>('sv_get_song_length_lines');
-
-  tsv_get_song_length_lines get sv_get_song_length_lines =>
-      _sv_get_song_length_lines.value;
-
-  set sv_get_song_length_lines(tsv_get_song_length_lines value) =>
-      _sv_get_song_length_lines.value = value;
-
-  late final ffi.Pointer<tsv_get_time_map> _sv_get_time_map =
-      _lookup<tsv_get_time_map>('sv_get_time_map');
-
-  tsv_get_time_map get sv_get_time_map => _sv_get_time_map.value;
-
-  set sv_get_time_map(tsv_get_time_map value) => _sv_get_time_map.value = value;
-
-  late final ffi.Pointer<tsv_new_module> _sv_new_module =
-      _lookup<tsv_new_module>('sv_new_module');
-
-  tsv_new_module get sv_new_module => _sv_new_module.value;
-
-  set sv_new_module(tsv_new_module value) => _sv_new_module.value = value;
-
-  late final ffi.Pointer<tsv_remove_module> _sv_remove_module =
-      _lookup<tsv_remove_module>('sv_remove_module');
-
-  tsv_remove_module get sv_remove_module => _sv_remove_module.value;
-
-  set sv_remove_module(tsv_remove_module value) =>
-      _sv_remove_module.value = value;
-
-  late final ffi.Pointer<tsv_connect_module> _sv_connect_module =
-      _lookup<tsv_connect_module>('sv_connect_module');
-
-  tsv_connect_module get sv_connect_module => _sv_connect_module.value;
-
-  set sv_connect_module(tsv_connect_module value) =>
-      _sv_connect_module.value = value;
-
-  late final ffi.Pointer<tsv_disconnect_module> _sv_disconnect_module =
-      _lookup<tsv_disconnect_module>('sv_disconnect_module');
-
-  tsv_disconnect_module get sv_disconnect_module => _sv_disconnect_module.value;
-
-  set sv_disconnect_module(tsv_disconnect_module value) =>
-      _sv_disconnect_module.value = value;
-
-  late final ffi.Pointer<tsv_load_module> _sv_load_module =
-      _lookup<tsv_load_module>('sv_load_module');
-
-  tsv_load_module get sv_load_module => _sv_load_module.value;
-
-  set sv_load_module(tsv_load_module value) => _sv_load_module.value = value;
-
-  late final ffi.Pointer<tsv_load_module_from_memory>
-      _sv_load_module_from_memory =
-      _lookup<tsv_load_module_from_memory>('sv_load_module_from_memory');
-
-  tsv_load_module_from_memory get sv_load_module_from_memory =>
-      _sv_load_module_from_memory.value;
-
-  set sv_load_module_from_memory(tsv_load_module_from_memory value) =>
-      _sv_load_module_from_memory.value = value;
-
-  late final ffi.Pointer<tsv_sampler_load> _sv_sampler_load =
-      _lookup<tsv_sampler_load>('sv_sampler_load');
-
-  tsv_sampler_load get sv_sampler_load => _sv_sampler_load.value;
-
-  set sv_sampler_load(tsv_sampler_load value) => _sv_sampler_load.value = value;
-
-  late final ffi.Pointer<tsv_sampler_load_from_memory>
-      _sv_sampler_load_from_memory =
-      _lookup<tsv_sampler_load_from_memory>('sv_sampler_load_from_memory');
-
-  tsv_sampler_load_from_memory get sv_sampler_load_from_memory =>
-      _sv_sampler_load_from_memory.value;
-
-  set sv_sampler_load_from_memory(tsv_sampler_load_from_memory value) =>
-      _sv_sampler_load_from_memory.value = value;
-
-  late final ffi.Pointer<tsv_get_number_of_modules> _sv_get_number_of_modules =
-      _lookup<tsv_get_number_of_modules>('sv_get_number_of_modules');
-
-  tsv_get_number_of_modules get sv_get_number_of_modules =>
-      _sv_get_number_of_modules.value;
-
-  set sv_get_number_of_modules(tsv_get_number_of_modules value) =>
-      _sv_get_number_of_modules.value = value;
-
-  late final ffi.Pointer<tsv_find_module> _sv_find_module =
-      _lookup<tsv_find_module>('sv_find_module');
-
-  tsv_find_module get sv_find_module => _sv_find_module.value;
-
-  set sv_find_module(tsv_find_module value) => _sv_find_module.value = value;
-
-  late final ffi.Pointer<tsv_get_module_flags> _sv_get_module_flags =
-      _lookup<tsv_get_module_flags>('sv_get_module_flags');
-
-  tsv_get_module_flags get sv_get_module_flags => _sv_get_module_flags.value;
-
-  set sv_get_module_flags(tsv_get_module_flags value) =>
-      _sv_get_module_flags.value = value;
-
-  late final ffi.Pointer<tsv_get_module_inputs> _sv_get_module_inputs =
-      _lookup<tsv_get_module_inputs>('sv_get_module_inputs');
-
-  tsv_get_module_inputs get sv_get_module_inputs => _sv_get_module_inputs.value;
-
-  set sv_get_module_inputs(tsv_get_module_inputs value) =>
-      _sv_get_module_inputs.value = value;
-
-  late final ffi.Pointer<tsv_get_module_outputs> _sv_get_module_outputs =
-      _lookup<tsv_get_module_outputs>('sv_get_module_outputs');
-
-  tsv_get_module_outputs get sv_get_module_outputs =>
-      _sv_get_module_outputs.value;
-
-  set sv_get_module_outputs(tsv_get_module_outputs value) =>
-      _sv_get_module_outputs.value = value;
-
-  late final ffi.Pointer<tsv_get_module_name> _sv_get_module_name =
-      _lookup<tsv_get_module_name>('sv_get_module_name');
-
-  tsv_get_module_name get sv_get_module_name => _sv_get_module_name.value;
-
-  set sv_get_module_name(tsv_get_module_name value) =>
-      _sv_get_module_name.value = value;
-
-  late final ffi.Pointer<tsv_get_module_xy> _sv_get_module_xy =
-      _lookup<tsv_get_module_xy>('sv_get_module_xy');
-
-  tsv_get_module_xy get sv_get_module_xy => _sv_get_module_xy.value;
-
-  set sv_get_module_xy(tsv_get_module_xy value) =>
-      _sv_get_module_xy.value = value;
-
-  late final ffi.Pointer<tsv_get_module_color> _sv_get_module_color =
-      _lookup<tsv_get_module_color>('sv_get_module_color');
-
-  tsv_get_module_color get sv_get_module_color => _sv_get_module_color.value;
-
-  set sv_get_module_color(tsv_get_module_color value) =>
-      _sv_get_module_color.value = value;
-
-  late final ffi.Pointer<tsv_get_module_finetune> _sv_get_module_finetune =
-      _lookup<tsv_get_module_finetune>('sv_get_module_finetune');
-
-  tsv_get_module_finetune get sv_get_module_finetune =>
-      _sv_get_module_finetune.value;
-
-  set sv_get_module_finetune(tsv_get_module_finetune value) =>
-      _sv_get_module_finetune.value = value;
-
-  late final ffi.Pointer<tsv_get_module_scope2> _sv_get_module_scope2 =
-      _lookup<tsv_get_module_scope2>('sv_get_module_scope2');
-
-  tsv_get_module_scope2 get sv_get_module_scope2 => _sv_get_module_scope2.value;
-
-  set sv_get_module_scope2(tsv_get_module_scope2 value) =>
-      _sv_get_module_scope2.value = value;
-
-  late final ffi.Pointer<tsv_module_curve> _sv_module_curve =
-      _lookup<tsv_module_curve>('sv_module_curve');
-
-  tsv_module_curve get sv_module_curve => _sv_module_curve.value;
-
-  set sv_module_curve(tsv_module_curve value) => _sv_module_curve.value = value;
-
-  late final ffi.Pointer<tsv_get_number_of_module_ctls>
-      _sv_get_number_of_module_ctls =
-      _lookup<tsv_get_number_of_module_ctls>('sv_get_number_of_module_ctls');
-
-  tsv_get_number_of_module_ctls get sv_get_number_of_module_ctls =>
-      _sv_get_number_of_module_ctls.value;
-
-  set sv_get_number_of_module_ctls(tsv_get_number_of_module_ctls value) =>
-      _sv_get_number_of_module_ctls.value = value;
-
-  late final ffi.Pointer<tsv_get_module_ctl_name> _sv_get_module_ctl_name =
-      _lookup<tsv_get_module_ctl_name>('sv_get_module_ctl_name');
-
-  tsv_get_module_ctl_name get sv_get_module_ctl_name =>
-      _sv_get_module_ctl_name.value;
-
-  set sv_get_module_ctl_name(tsv_get_module_ctl_name value) =>
-      _sv_get_module_ctl_name.value = value;
-
-  late final ffi.Pointer<tsv_get_module_ctl_value> _sv_get_module_ctl_value =
-      _lookup<tsv_get_module_ctl_value>('sv_get_module_ctl_value');
-
-  tsv_get_module_ctl_value get sv_get_module_ctl_value =>
-      _sv_get_module_ctl_value.value;
-
-  set sv_get_module_ctl_value(tsv_get_module_ctl_value value) =>
-      _sv_get_module_ctl_value.value = value;
-
-  late final ffi.Pointer<tsv_get_number_of_patterns>
-      _sv_get_number_of_patterns =
-      _lookup<tsv_get_number_of_patterns>('sv_get_number_of_patterns');
-
-  tsv_get_number_of_patterns get sv_get_number_of_patterns =>
-      _sv_get_number_of_patterns.value;
-
-  set sv_get_number_of_patterns(tsv_get_number_of_patterns value) =>
-      _sv_get_number_of_patterns.value = value;
-
-  late final ffi.Pointer<tsv_find_pattern> _sv_find_pattern =
-      _lookup<tsv_find_pattern>('sv_find_pattern');
-
-  tsv_find_pattern get sv_find_pattern => _sv_find_pattern.value;
-
-  set sv_find_pattern(tsv_find_pattern value) => _sv_find_pattern.value = value;
-
-  late final ffi.Pointer<tsv_get_pattern_x> _sv_get_pattern_x =
-      _lookup<tsv_get_pattern_x>('sv_get_pattern_x');
-
-  tsv_get_pattern_x get sv_get_pattern_x => _sv_get_pattern_x.value;
-
-  set sv_get_pattern_x(tsv_get_pattern_x value) =>
-      _sv_get_pattern_x.value = value;
-
-  late final ffi.Pointer<tsv_get_pattern_y> _sv_get_pattern_y =
-      _lookup<tsv_get_pattern_y>('sv_get_pattern_y');
-
-  tsv_get_pattern_y get sv_get_pattern_y => _sv_get_pattern_y.value;
-
-  set sv_get_pattern_y(tsv_get_pattern_y value) =>
-      _sv_get_pattern_y.value = value;
-
-  late final ffi.Pointer<tsv_get_pattern_tracks> _sv_get_pattern_tracks =
-      _lookup<tsv_get_pattern_tracks>('sv_get_pattern_tracks');
-
-  tsv_get_pattern_tracks get sv_get_pattern_tracks =>
-      _sv_get_pattern_tracks.value;
-
-  set sv_get_pattern_tracks(tsv_get_pattern_tracks value) =>
-      _sv_get_pattern_tracks.value = value;
-
-  late final ffi.Pointer<tsv_get_pattern_lines> _sv_get_pattern_lines =
-      _lookup<tsv_get_pattern_lines>('sv_get_pattern_lines');
-
-  tsv_get_pattern_lines get sv_get_pattern_lines => _sv_get_pattern_lines.value;
-
-  set sv_get_pattern_lines(tsv_get_pattern_lines value) =>
-      _sv_get_pattern_lines.value = value;
-
-  late final ffi.Pointer<tsv_get_pattern_name> _sv_get_pattern_name =
-      _lookup<tsv_get_pattern_name>('sv_get_pattern_name');
-
-  tsv_get_pattern_name get sv_get_pattern_name => _sv_get_pattern_name.value;
-
-  set sv_get_pattern_name(tsv_get_pattern_name value) =>
-      _sv_get_pattern_name.value = value;
-
-  late final ffi.Pointer<tsv_get_pattern_data> _sv_get_pattern_data =
-      _lookup<tsv_get_pattern_data>('sv_get_pattern_data');
-
-  tsv_get_pattern_data get sv_get_pattern_data => _sv_get_pattern_data.value;
-
-  set sv_get_pattern_data(tsv_get_pattern_data value) =>
-      _sv_get_pattern_data.value = value;
-
-  late final ffi.Pointer<tsv_set_pattern_event> _sv_set_pattern_event =
-      _lookup<tsv_set_pattern_event>('sv_set_pattern_event');
-
-  tsv_set_pattern_event get sv_set_pattern_event => _sv_set_pattern_event.value;
-
-  set sv_set_pattern_event(tsv_set_pattern_event value) =>
-      _sv_set_pattern_event.value = value;
-
-  late final ffi.Pointer<tsv_get_pattern_event> _sv_get_pattern_event =
-      _lookup<tsv_get_pattern_event>('sv_get_pattern_event');
-
-  tsv_get_pattern_event get sv_get_pattern_event => _sv_get_pattern_event.value;
-
-  set sv_get_pattern_event(tsv_get_pattern_event value) =>
-      _sv_get_pattern_event.value = value;
-
-  late final ffi.Pointer<tsv_pattern_mute> _sv_pattern_mute =
-      _lookup<tsv_pattern_mute>('sv_pattern_mute');
-
-  tsv_pattern_mute get sv_pattern_mute => _sv_pattern_mute.value;
-
-  set sv_pattern_mute(tsv_pattern_mute value) => _sv_pattern_mute.value = value;
-
-  late final ffi.Pointer<tsv_get_ticks> _sv_get_ticks =
-      _lookup<tsv_get_ticks>('sv_get_ticks');
-
-  tsv_get_ticks get sv_get_ticks => _sv_get_ticks.value;
-
-  set sv_get_ticks(tsv_get_ticks value) => _sv_get_ticks.value = value;
-
-  late final ffi.Pointer<tsv_get_ticks_per_second> _sv_get_ticks_per_second =
-      _lookup<tsv_get_ticks_per_second>('sv_get_ticks_per_second');
-
-  tsv_get_ticks_per_second get sv_get_ticks_per_second =>
-      _sv_get_ticks_per_second.value;
-
-  set sv_get_ticks_per_second(tsv_get_ticks_per_second value) =>
-      _sv_get_ticks_per_second.value = value;
-
-  late final ffi.Pointer<tsv_get_log> _sv_get_log =
-      _lookup<tsv_get_log>('sv_get_log');
-
-  tsv_get_log get sv_get_log => _sv_get_log.value;
-
-  set sv_get_log(tsv_get_log value) => _sv_get_log.value = value;
-
-  int sv_load_dll2(
-    LIBNAME_STR_TYPE filename,
+  int sv_init(
+    ffi.Pointer<ffi.Int8> config,
+    int freq,
+    int channels,
+    int flags,
   ) {
-    return _sv_load_dll2(
-      filename,
+    return _sv_init(
+      config,
+      freq,
+      channels,
+      flags,
     );
   }
 
-  late final _sv_load_dll2Ptr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(LIBNAME_STR_TYPE)>>(
-          'sv_load_dll2');
-  late final _sv_load_dll2 =
-      _sv_load_dll2Ptr.asFunction<int Function(LIBNAME_STR_TYPE)>();
+  late final _sv_initPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<ffi.Int8>, ffi.Int32, ffi.Int32,
+              ffi.Uint32)>>('sv_init');
+  late final _sv_init = _sv_initPtr
+      .asFunction<int Function(ffi.Pointer<ffi.Int8>, int, int, int)>();
 
-  int sv_load_dll() {
-    return _sv_load_dll();
+  int sv_deinit() {
+    return _sv_deinit();
   }
 
-  late final _sv_load_dllPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>('sv_load_dll');
-  late final _sv_load_dll = _sv_load_dllPtr.asFunction<int Function()>();
+  late final _sv_deinitPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>('sv_deinit');
+  late final _sv_deinit = _sv_deinitPtr.asFunction<int Function()>();
 
-  int sv_unload_dll() {
-    return _sv_unload_dll();
+  int sv_get_sample_rate() {
+    return _sv_get_sample_rate();
   }
 
-  late final _sv_unload_dllPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>('sv_unload_dll');
-  late final _sv_unload_dll = _sv_unload_dllPtr.asFunction<int Function()>();
+  late final _sv_get_sample_ratePtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>('sv_get_sample_rate');
+  late final _sv_get_sample_rate =
+      _sv_get_sample_ratePtr.asFunction<int Function()>();
+
+  int sv_update_input() {
+    return _sv_update_input();
+  }
+
+  late final _sv_update_inputPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>('sv_update_input');
+  late final _sv_update_input =
+      _sv_update_inputPtr.asFunction<int Function()>();
+
+  int sv_audio_callback(
+    ffi.Pointer<ffi.Void> buf,
+    int frames,
+    int latency,
+    int out_time,
+  ) {
+    return _sv_audio_callback(
+      buf,
+      frames,
+      latency,
+      out_time,
+    );
+  }
+
+  late final _sv_audio_callbackPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Pointer<ffi.Void>, ffi.Int32, ffi.Int32,
+              ffi.Uint32)>>('sv_audio_callback');
+  late final _sv_audio_callback = _sv_audio_callbackPtr
+      .asFunction<int Function(ffi.Pointer<ffi.Void>, int, int, int)>();
+
+  int sv_audio_callback2(
+    ffi.Pointer<ffi.Void> buf,
+    int frames,
+    int latency,
+    int out_time,
+    int in_type,
+    int in_channels,
+    ffi.Pointer<ffi.Void> in_buf,
+  ) {
+    return _sv_audio_callback2(
+      buf,
+      frames,
+      latency,
+      out_time,
+      in_type,
+      in_channels,
+      in_buf,
+    );
+  }
+
+  late final _sv_audio_callback2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Pointer<ffi.Void>,
+              ffi.Int32,
+              ffi.Int32,
+              ffi.Uint32,
+              ffi.Int32,
+              ffi.Int32,
+              ffi.Pointer<ffi.Void>)>>('sv_audio_callback2');
+  late final _sv_audio_callback2 = _sv_audio_callback2Ptr.asFunction<
+      int Function(ffi.Pointer<ffi.Void>, int, int, int, int, int,
+          ffi.Pointer<ffi.Void>)>();
+
+  int sv_open_slot(
+    int slot,
+  ) {
+    return _sv_open_slot(
+      slot,
+    );
+  }
+
+  late final _sv_open_slotPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>(
+          'sv_open_slot');
+  late final _sv_open_slot = _sv_open_slotPtr.asFunction<int Function(int)>();
+
+  int sv_close_slot(
+    int slot,
+  ) {
+    return _sv_close_slot(
+      slot,
+    );
+  }
+
+  late final _sv_close_slotPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>(
+          'sv_close_slot');
+  late final _sv_close_slot = _sv_close_slotPtr.asFunction<int Function(int)>();
+
+  int sv_lock_slot(
+    int slot,
+  ) {
+    return _sv_lock_slot(
+      slot,
+    );
+  }
+
+  late final _sv_lock_slotPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>(
+          'sv_lock_slot');
+  late final _sv_lock_slot = _sv_lock_slotPtr.asFunction<int Function(int)>();
+
+  int sv_unlock_slot(
+    int slot,
+  ) {
+    return _sv_unlock_slot(
+      slot,
+    );
+  }
+
+  late final _sv_unlock_slotPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>(
+          'sv_unlock_slot');
+  late final _sv_unlock_slot =
+      _sv_unlock_slotPtr.asFunction<int Function(int)>();
+
+  int sv_load(
+    int slot,
+    ffi.Pointer<ffi.Int8> name,
+  ) {
+    return _sv_load(
+      slot,
+      name,
+    );
+  }
+
+  late final _sv_loadPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Int32, ffi.Pointer<ffi.Int8>)>>('sv_load');
+  late final _sv_load =
+      _sv_loadPtr.asFunction<int Function(int, ffi.Pointer<ffi.Int8>)>();
+
+  int sv_load_from_memory(
+    int slot,
+    ffi.Pointer<ffi.Void> data,
+    int data_size,
+  ) {
+    return _sv_load_from_memory(
+      slot,
+      data,
+      data_size,
+    );
+  }
+
+  late final _sv_load_from_memoryPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Int32, ffi.Pointer<ffi.Void>,
+              ffi.Uint32)>>('sv_load_from_memory');
+  late final _sv_load_from_memory = _sv_load_from_memoryPtr
+      .asFunction<int Function(int, ffi.Pointer<ffi.Void>, int)>();
+
+  int sv_save(
+    int slot,
+    ffi.Pointer<ffi.Int8> name,
+  ) {
+    return _sv_save(
+      slot,
+      name,
+    );
+  }
+
+  late final _sv_savePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Int32, ffi.Pointer<ffi.Int8>)>>('sv_save');
+  late final _sv_save =
+      _sv_savePtr.asFunction<int Function(int, ffi.Pointer<ffi.Int8>)>();
+
+  int sv_play(
+    int slot,
+  ) {
+    return _sv_play(
+      slot,
+    );
+  }
+
+  late final _sv_playPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>('sv_play');
+  late final _sv_play = _sv_playPtr.asFunction<int Function(int)>();
+
+  int sv_play_from_beginning(
+    int slot,
+  ) {
+    return _sv_play_from_beginning(
+      slot,
+    );
+  }
+
+  late final _sv_play_from_beginningPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>(
+          'sv_play_from_beginning');
+  late final _sv_play_from_beginning =
+      _sv_play_from_beginningPtr.asFunction<int Function(int)>();
+
+  int sv_stop(
+    int slot,
+  ) {
+    return _sv_stop(
+      slot,
+    );
+  }
+
+  late final _sv_stopPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>('sv_stop');
+  late final _sv_stop = _sv_stopPtr.asFunction<int Function(int)>();
+
+  int sv_pause(
+    int slot,
+  ) {
+    return _sv_pause(
+      slot,
+    );
+  }
+
+  late final _sv_pausePtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>('sv_pause');
+  late final _sv_pause = _sv_pausePtr.asFunction<int Function(int)>();
+
+  int sv_resume(
+    int slot,
+  ) {
+    return _sv_resume(
+      slot,
+    );
+  }
+
+  late final _sv_resumePtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>('sv_resume');
+  late final _sv_resume = _sv_resumePtr.asFunction<int Function(int)>();
+
+  int sv_sync_resume(
+    int slot,
+  ) {
+    return _sv_sync_resume(
+      slot,
+    );
+  }
+
+  late final _sv_sync_resumePtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>(
+          'sv_sync_resume');
+  late final _sv_sync_resume =
+      _sv_sync_resumePtr.asFunction<int Function(int)>();
+
+  int sv_set_autostop(
+    int slot,
+    int autostop,
+  ) {
+    return _sv_set_autostop(
+      slot,
+      autostop,
+    );
+  }
+
+  late final _sv_set_autostopPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32, ffi.Int32)>>(
+          'sv_set_autostop');
+  late final _sv_set_autostop =
+      _sv_set_autostopPtr.asFunction<int Function(int, int)>();
+
+  int sv_get_autostop(
+    int slot,
+  ) {
+    return _sv_get_autostop(
+      slot,
+    );
+  }
+
+  late final _sv_get_autostopPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>(
+          'sv_get_autostop');
+  late final _sv_get_autostop =
+      _sv_get_autostopPtr.asFunction<int Function(int)>();
+
+  int sv_end_of_song(
+    int slot,
+  ) {
+    return _sv_end_of_song(
+      slot,
+    );
+  }
+
+  late final _sv_end_of_songPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>(
+          'sv_end_of_song');
+  late final _sv_end_of_song =
+      _sv_end_of_songPtr.asFunction<int Function(int)>();
+
+  int sv_rewind(
+    int slot,
+    int line_num,
+  ) {
+    return _sv_rewind(
+      slot,
+      line_num,
+    );
+  }
+
+  late final _sv_rewindPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32, ffi.Int32)>>(
+          'sv_rewind');
+  late final _sv_rewind = _sv_rewindPtr.asFunction<int Function(int, int)>();
+
+  int sv_volume(
+    int slot,
+    int vol,
+  ) {
+    return _sv_volume(
+      slot,
+      vol,
+    );
+  }
+
+  late final _sv_volumePtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32, ffi.Int32)>>(
+          'sv_volume');
+  late final _sv_volume = _sv_volumePtr.asFunction<int Function(int, int)>();
+
+  int sv_set_event_t(
+    int slot,
+    int set1,
+    int t,
+  ) {
+    return _sv_set_event_t(
+      slot,
+      set1,
+      t,
+    );
+  }
+
+  late final _sv_set_event_tPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Int32, ffi.Int32, ffi.Int32)>>('sv_set_event_t');
+  late final _sv_set_event_t =
+      _sv_set_event_tPtr.asFunction<int Function(int, int, int)>();
+
+  int sv_send_event(
+    int slot,
+    int track_num,
+    int note,
+    int vel,
+    int module,
+    int ctl,
+    int ctl_val,
+  ) {
+    return _sv_send_event(
+      slot,
+      track_num,
+      note,
+      vel,
+      module,
+      ctl,
+      ctl_val,
+    );
+  }
+
+  late final _sv_send_eventPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Int32, ffi.Int32, ffi.Int32, ffi.Int32,
+              ffi.Int32, ffi.Int32, ffi.Int32)>>('sv_send_event');
+  late final _sv_send_event = _sv_send_eventPtr
+      .asFunction<int Function(int, int, int, int, int, int, int)>();
+
+  int sv_get_current_line(
+    int slot,
+  ) {
+    return _sv_get_current_line(
+      slot,
+    );
+  }
+
+  late final _sv_get_current_linePtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>(
+          'sv_get_current_line');
+  late final _sv_get_current_line =
+      _sv_get_current_linePtr.asFunction<int Function(int)>();
+
+  int sv_get_current_line2(
+    int slot,
+  ) {
+    return _sv_get_current_line2(
+      slot,
+    );
+  }
+
+  late final _sv_get_current_line2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>(
+          'sv_get_current_line2');
+  late final _sv_get_current_line2 =
+      _sv_get_current_line2Ptr.asFunction<int Function(int)>();
+
+  int sv_get_current_signal_level(
+    int slot,
+    int channel,
+  ) {
+    return _sv_get_current_signal_level(
+      slot,
+      channel,
+    );
+  }
+
+  late final _sv_get_current_signal_levelPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32, ffi.Int32)>>(
+          'sv_get_current_signal_level');
+  late final _sv_get_current_signal_level =
+      _sv_get_current_signal_levelPtr.asFunction<int Function(int, int)>();
+
+  ffi.Pointer<ffi.Int8> sv_get_song_name(
+    int slot,
+  ) {
+    return _sv_get_song_name(
+      slot,
+    );
+  }
+
+  late final _sv_get_song_namePtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int8> Function(ffi.Int32)>>(
+          'sv_get_song_name');
+  late final _sv_get_song_name =
+      _sv_get_song_namePtr.asFunction<ffi.Pointer<ffi.Int8> Function(int)>();
+
+  int sv_get_song_bpm(
+    int slot,
+  ) {
+    return _sv_get_song_bpm(
+      slot,
+    );
+  }
+
+  late final _sv_get_song_bpmPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>(
+          'sv_get_song_bpm');
+  late final _sv_get_song_bpm =
+      _sv_get_song_bpmPtr.asFunction<int Function(int)>();
+
+  int sv_get_song_tpl(
+    int slot,
+  ) {
+    return _sv_get_song_tpl(
+      slot,
+    );
+  }
+
+  late final _sv_get_song_tplPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>(
+          'sv_get_song_tpl');
+  late final _sv_get_song_tpl =
+      _sv_get_song_tplPtr.asFunction<int Function(int)>();
+
+  int sv_get_song_length_frames(
+    int slot,
+  ) {
+    return _sv_get_song_length_frames(
+      slot,
+    );
+  }
+
+  late final _sv_get_song_length_framesPtr =
+      _lookup<ffi.NativeFunction<ffi.Uint32 Function(ffi.Int32)>>(
+          'sv_get_song_length_frames');
+  late final _sv_get_song_length_frames =
+      _sv_get_song_length_framesPtr.asFunction<int Function(int)>();
+
+  int sv_get_song_length_lines(
+    int slot,
+  ) {
+    return _sv_get_song_length_lines(
+      slot,
+    );
+  }
+
+  late final _sv_get_song_length_linesPtr =
+      _lookup<ffi.NativeFunction<ffi.Uint32 Function(ffi.Int32)>>(
+          'sv_get_song_length_lines');
+  late final _sv_get_song_length_lines =
+      _sv_get_song_length_linesPtr.asFunction<int Function(int)>();
+
+  int sv_get_time_map(
+    int slot,
+    int start_line,
+    int len,
+    ffi.Pointer<ffi.Uint32> dest,
+    int flags,
+  ) {
+    return _sv_get_time_map(
+      slot,
+      start_line,
+      len,
+      dest,
+      flags,
+    );
+  }
+
+  late final _sv_get_time_mapPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Int32, ffi.Int32, ffi.Int32,
+              ffi.Pointer<ffi.Uint32>, ffi.Int32)>>('sv_get_time_map');
+  late final _sv_get_time_map = _sv_get_time_mapPtr
+      .asFunction<int Function(int, int, int, ffi.Pointer<ffi.Uint32>, int)>();
+
+  int sv_new_module(
+    int slot,
+    ffi.Pointer<ffi.Int8> type,
+    ffi.Pointer<ffi.Int8> name,
+    int x,
+    int y,
+    int z,
+  ) {
+    return _sv_new_module(
+      slot,
+      type,
+      name,
+      x,
+      y,
+      z,
+    );
+  }
+
+  late final _sv_new_modulePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Int32,
+              ffi.Pointer<ffi.Int8>,
+              ffi.Pointer<ffi.Int8>,
+              ffi.Int32,
+              ffi.Int32,
+              ffi.Int32)>>('sv_new_module');
+  late final _sv_new_module = _sv_new_modulePtr.asFunction<
+      int Function(
+          int, ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>, int, int, int)>();
+
+  int sv_remove_module(
+    int slot,
+    int mod_num,
+  ) {
+    return _sv_remove_module(
+      slot,
+      mod_num,
+    );
+  }
+
+  late final _sv_remove_modulePtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32, ffi.Int32)>>(
+          'sv_remove_module');
+  late final _sv_remove_module =
+      _sv_remove_modulePtr.asFunction<int Function(int, int)>();
+
+  int sv_connect_module(
+    int slot,
+    int source,
+    int destination,
+  ) {
+    return _sv_connect_module(
+      slot,
+      source,
+      destination,
+    );
+  }
+
+  late final _sv_connect_modulePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Int32, ffi.Int32, ffi.Int32)>>('sv_connect_module');
+  late final _sv_connect_module =
+      _sv_connect_modulePtr.asFunction<int Function(int, int, int)>();
+
+  int sv_disconnect_module(
+    int slot,
+    int source,
+    int destination,
+  ) {
+    return _sv_disconnect_module(
+      slot,
+      source,
+      destination,
+    );
+  }
+
+  late final _sv_disconnect_modulePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Int32, ffi.Int32, ffi.Int32)>>('sv_disconnect_module');
+  late final _sv_disconnect_module =
+      _sv_disconnect_modulePtr.asFunction<int Function(int, int, int)>();
+
+  int sv_load_module(
+    int slot,
+    ffi.Pointer<ffi.Int8> file_name,
+    int x,
+    int y,
+    int z,
+  ) {
+    return _sv_load_module(
+      slot,
+      file_name,
+      x,
+      y,
+      z,
+    );
+  }
+
+  late final _sv_load_modulePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Int32, ffi.Pointer<ffi.Int8>, ffi.Int32,
+              ffi.Int32, ffi.Int32)>>('sv_load_module');
+  late final _sv_load_module = _sv_load_modulePtr
+      .asFunction<int Function(int, ffi.Pointer<ffi.Int8>, int, int, int)>();
+
+  int sv_load_module_from_memory(
+    int slot,
+    ffi.Pointer<ffi.Void> data,
+    int data_size,
+    int x,
+    int y,
+    int z,
+  ) {
+    return _sv_load_module_from_memory(
+      slot,
+      data,
+      data_size,
+      x,
+      y,
+      z,
+    );
+  }
+
+  late final _sv_load_module_from_memoryPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Int32, ffi.Pointer<ffi.Void>, ffi.Uint32,
+              ffi.Int32, ffi.Int32, ffi.Int32)>>('sv_load_module_from_memory');
+  late final _sv_load_module_from_memory =
+      _sv_load_module_from_memoryPtr.asFunction<
+          int Function(int, ffi.Pointer<ffi.Void>, int, int, int, int)>();
+
+  int sv_sampler_load(
+    int slot,
+    int sampler_module,
+    ffi.Pointer<ffi.Int8> file_name,
+    int sample_slot,
+  ) {
+    return _sv_sampler_load(
+      slot,
+      sampler_module,
+      file_name,
+      sample_slot,
+    );
+  }
+
+  late final _sv_sampler_loadPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Int32, ffi.Int32, ffi.Pointer<ffi.Int8>,
+              ffi.Int32)>>('sv_sampler_load');
+  late final _sv_sampler_load = _sv_sampler_loadPtr
+      .asFunction<int Function(int, int, ffi.Pointer<ffi.Int8>, int)>();
+
+  int sv_sampler_load_from_memory(
+    int slot,
+    int sampler_module,
+    ffi.Pointer<ffi.Void> data,
+    int data_size,
+    int sample_slot,
+  ) {
+    return _sv_sampler_load_from_memory(
+      slot,
+      sampler_module,
+      data,
+      data_size,
+      sample_slot,
+    );
+  }
+
+  late final _sv_sampler_load_from_memoryPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Int32, ffi.Int32, ffi.Pointer<ffi.Void>,
+              ffi.Uint32, ffi.Int32)>>('sv_sampler_load_from_memory');
+  late final _sv_sampler_load_from_memory = _sv_sampler_load_from_memoryPtr
+      .asFunction<int Function(int, int, ffi.Pointer<ffi.Void>, int, int)>();
+
+  int sv_get_number_of_modules(
+    int slot,
+  ) {
+    return _sv_get_number_of_modules(
+      slot,
+    );
+  }
+
+  late final _sv_get_number_of_modulesPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>(
+          'sv_get_number_of_modules');
+  late final _sv_get_number_of_modules =
+      _sv_get_number_of_modulesPtr.asFunction<int Function(int)>();
+
+  int sv_find_module(
+    int slot,
+    ffi.Pointer<ffi.Int8> name,
+  ) {
+    return _sv_find_module(
+      slot,
+      name,
+    );
+  }
+
+  late final _sv_find_modulePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Int32, ffi.Pointer<ffi.Int8>)>>('sv_find_module');
+  late final _sv_find_module =
+      _sv_find_modulePtr.asFunction<int Function(int, ffi.Pointer<ffi.Int8>)>();
+
+  int sv_get_module_flags(
+    int slot,
+    int mod_num,
+  ) {
+    return _sv_get_module_flags(
+      slot,
+      mod_num,
+    );
+  }
+
+  late final _sv_get_module_flagsPtr =
+      _lookup<ffi.NativeFunction<ffi.Uint32 Function(ffi.Int32, ffi.Int32)>>(
+          'sv_get_module_flags');
+  late final _sv_get_module_flags =
+      _sv_get_module_flagsPtr.asFunction<int Function(int, int)>();
+
+  ffi.Pointer<ffi.Int32> sv_get_module_inputs(
+    int slot,
+    int mod_num,
+  ) {
+    return _sv_get_module_inputs(
+      slot,
+      mod_num,
+    );
+  }
+
+  late final _sv_get_module_inputsPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Int32> Function(
+              ffi.Int32, ffi.Int32)>>('sv_get_module_inputs');
+  late final _sv_get_module_inputs = _sv_get_module_inputsPtr
+      .asFunction<ffi.Pointer<ffi.Int32> Function(int, int)>();
+
+  ffi.Pointer<ffi.Int32> sv_get_module_outputs(
+    int slot,
+    int mod_num,
+  ) {
+    return _sv_get_module_outputs(
+      slot,
+      mod_num,
+    );
+  }
+
+  late final _sv_get_module_outputsPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Int32> Function(
+              ffi.Int32, ffi.Int32)>>('sv_get_module_outputs');
+  late final _sv_get_module_outputs = _sv_get_module_outputsPtr
+      .asFunction<ffi.Pointer<ffi.Int32> Function(int, int)>();
+
+  ffi.Pointer<ffi.Int8> sv_get_module_name(
+    int slot,
+    int mod_num,
+  ) {
+    return _sv_get_module_name(
+      slot,
+      mod_num,
+    );
+  }
+
+  late final _sv_get_module_namePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Int8> Function(
+              ffi.Int32, ffi.Int32)>>('sv_get_module_name');
+  late final _sv_get_module_name = _sv_get_module_namePtr
+      .asFunction<ffi.Pointer<ffi.Int8> Function(int, int)>();
+
+  int sv_get_module_xy(
+    int slot,
+    int mod_num,
+  ) {
+    return _sv_get_module_xy(
+      slot,
+      mod_num,
+    );
+  }
+
+  late final _sv_get_module_xyPtr =
+      _lookup<ffi.NativeFunction<ffi.Uint32 Function(ffi.Int32, ffi.Int32)>>(
+          'sv_get_module_xy');
+  late final _sv_get_module_xy =
+      _sv_get_module_xyPtr.asFunction<int Function(int, int)>();
+
+  int sv_get_module_color(
+    int slot,
+    int mod_num,
+  ) {
+    return _sv_get_module_color(
+      slot,
+      mod_num,
+    );
+  }
+
+  late final _sv_get_module_colorPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32, ffi.Int32)>>(
+          'sv_get_module_color');
+  late final _sv_get_module_color =
+      _sv_get_module_colorPtr.asFunction<int Function(int, int)>();
+
+  int sv_get_module_finetune(
+    int slot,
+    int mod_num,
+  ) {
+    return _sv_get_module_finetune(
+      slot,
+      mod_num,
+    );
+  }
+
+  late final _sv_get_module_finetunePtr =
+      _lookup<ffi.NativeFunction<ffi.Uint32 Function(ffi.Int32, ffi.Int32)>>(
+          'sv_get_module_finetune');
+  late final _sv_get_module_finetune =
+      _sv_get_module_finetunePtr.asFunction<int Function(int, int)>();
+
+  int sv_get_module_scope2(
+    int slot,
+    int mod_num,
+    int channel,
+    ffi.Pointer<ffi.Int16> dest_buf,
+    int samples_to_read,
+  ) {
+    return _sv_get_module_scope2(
+      slot,
+      mod_num,
+      channel,
+      dest_buf,
+      samples_to_read,
+    );
+  }
+
+  late final _sv_get_module_scope2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Uint32 Function(ffi.Int32, ffi.Int32, ffi.Int32,
+              ffi.Pointer<ffi.Int16>, ffi.Uint32)>>('sv_get_module_scope2');
+  late final _sv_get_module_scope2 = _sv_get_module_scope2Ptr
+      .asFunction<int Function(int, int, int, ffi.Pointer<ffi.Int16>, int)>();
+
+  int sv_module_curve(
+    int slot,
+    int mod_num,
+    int curve_num,
+    ffi.Pointer<ffi.Float> data,
+    int len,
+    int w,
+  ) {
+    return _sv_module_curve(
+      slot,
+      mod_num,
+      curve_num,
+      data,
+      len,
+      w,
+    );
+  }
+
+  late final _sv_module_curvePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Int32,
+              ffi.Int32,
+              ffi.Int32,
+              ffi.Pointer<ffi.Float>,
+              ffi.Int32,
+              ffi.Int32)>>('sv_module_curve');
+  late final _sv_module_curve = _sv_module_curvePtr.asFunction<
+      int Function(int, int, int, ffi.Pointer<ffi.Float>, int, int)>();
+
+  int sv_get_number_of_module_ctls(
+    int slot,
+    int mod_num,
+  ) {
+    return _sv_get_number_of_module_ctls(
+      slot,
+      mod_num,
+    );
+  }
+
+  late final _sv_get_number_of_module_ctlsPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32, ffi.Int32)>>(
+          'sv_get_number_of_module_ctls');
+  late final _sv_get_number_of_module_ctls =
+      _sv_get_number_of_module_ctlsPtr.asFunction<int Function(int, int)>();
+
+  ffi.Pointer<ffi.Int8> sv_get_module_ctl_name(
+    int slot,
+    int mod_num,
+    int ctl_num,
+  ) {
+    return _sv_get_module_ctl_name(
+      slot,
+      mod_num,
+      ctl_num,
+    );
+  }
+
+  late final _sv_get_module_ctl_namePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Int8> Function(
+              ffi.Int32, ffi.Int32, ffi.Int32)>>('sv_get_module_ctl_name');
+  late final _sv_get_module_ctl_name = _sv_get_module_ctl_namePtr
+      .asFunction<ffi.Pointer<ffi.Int8> Function(int, int, int)>();
+
+  int sv_get_module_ctl_value(
+    int slot,
+    int mod_num,
+    int ctl_num,
+    int scaled,
+  ) {
+    return _sv_get_module_ctl_value(
+      slot,
+      mod_num,
+      ctl_num,
+      scaled,
+    );
+  }
+
+  late final _sv_get_module_ctl_valuePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Int32, ffi.Int32, ffi.Int32,
+              ffi.Int32)>>('sv_get_module_ctl_value');
+  late final _sv_get_module_ctl_value = _sv_get_module_ctl_valuePtr
+      .asFunction<int Function(int, int, int, int)>();
+
+  int sv_get_number_of_patterns(
+    int slot,
+  ) {
+    return _sv_get_number_of_patterns(
+      slot,
+    );
+  }
+
+  late final _sv_get_number_of_patternsPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>(
+          'sv_get_number_of_patterns');
+  late final _sv_get_number_of_patterns =
+      _sv_get_number_of_patternsPtr.asFunction<int Function(int)>();
+
+  int sv_find_pattern(
+    int slot,
+    ffi.Pointer<ffi.Int8> name,
+  ) {
+    return _sv_find_pattern(
+      slot,
+      name,
+    );
+  }
+
+  late final _sv_find_patternPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Int32, ffi.Pointer<ffi.Int8>)>>('sv_find_pattern');
+  late final _sv_find_pattern = _sv_find_patternPtr
+      .asFunction<int Function(int, ffi.Pointer<ffi.Int8>)>();
+
+  int sv_get_pattern_x(
+    int slot,
+    int pat_num,
+  ) {
+    return _sv_get_pattern_x(
+      slot,
+      pat_num,
+    );
+  }
+
+  late final _sv_get_pattern_xPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32, ffi.Int32)>>(
+          'sv_get_pattern_x');
+  late final _sv_get_pattern_x =
+      _sv_get_pattern_xPtr.asFunction<int Function(int, int)>();
+
+  int sv_get_pattern_y(
+    int slot,
+    int pat_num,
+  ) {
+    return _sv_get_pattern_y(
+      slot,
+      pat_num,
+    );
+  }
+
+  late final _sv_get_pattern_yPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32, ffi.Int32)>>(
+          'sv_get_pattern_y');
+  late final _sv_get_pattern_y =
+      _sv_get_pattern_yPtr.asFunction<int Function(int, int)>();
+
+  int sv_get_pattern_tracks(
+    int slot,
+    int pat_num,
+  ) {
+    return _sv_get_pattern_tracks(
+      slot,
+      pat_num,
+    );
+  }
+
+  late final _sv_get_pattern_tracksPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32, ffi.Int32)>>(
+          'sv_get_pattern_tracks');
+  late final _sv_get_pattern_tracks =
+      _sv_get_pattern_tracksPtr.asFunction<int Function(int, int)>();
+
+  int sv_get_pattern_lines(
+    int slot,
+    int pat_num,
+  ) {
+    return _sv_get_pattern_lines(
+      slot,
+      pat_num,
+    );
+  }
+
+  late final _sv_get_pattern_linesPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32, ffi.Int32)>>(
+          'sv_get_pattern_lines');
+  late final _sv_get_pattern_lines =
+      _sv_get_pattern_linesPtr.asFunction<int Function(int, int)>();
+
+  ffi.Pointer<ffi.Int8> sv_get_pattern_name(
+    int slot,
+    int pat_num,
+  ) {
+    return _sv_get_pattern_name(
+      slot,
+      pat_num,
+    );
+  }
+
+  late final _sv_get_pattern_namePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Int8> Function(
+              ffi.Int32, ffi.Int32)>>('sv_get_pattern_name');
+  late final _sv_get_pattern_name = _sv_get_pattern_namePtr
+      .asFunction<ffi.Pointer<ffi.Int8> Function(int, int)>();
+
+  ffi.Pointer<sunvox_note> sv_get_pattern_data(
+    int slot,
+    int pat_num,
+  ) {
+    return _sv_get_pattern_data(
+      slot,
+      pat_num,
+    );
+  }
+
+  late final _sv_get_pattern_dataPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<sunvox_note> Function(
+              ffi.Int32, ffi.Int32)>>('sv_get_pattern_data');
+  late final _sv_get_pattern_data = _sv_get_pattern_dataPtr
+      .asFunction<ffi.Pointer<sunvox_note> Function(int, int)>();
+
+  int sv_set_pattern_event(
+    int slot,
+    int pat_num,
+    int track,
+    int line,
+    int nn,
+    int vv,
+    int mm,
+    int ccee,
+    int xxyy,
+  ) {
+    return _sv_set_pattern_event(
+      slot,
+      pat_num,
+      track,
+      line,
+      nn,
+      vv,
+      mm,
+      ccee,
+      xxyy,
+    );
+  }
+
+  late final _sv_set_pattern_eventPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Int32,
+              ffi.Int32,
+              ffi.Int32,
+              ffi.Int32,
+              ffi.Int32,
+              ffi.Int32,
+              ffi.Int32,
+              ffi.Int32,
+              ffi.Int32)>>('sv_set_pattern_event');
+  late final _sv_set_pattern_event = _sv_set_pattern_eventPtr
+      .asFunction<int Function(int, int, int, int, int, int, int, int, int)>();
+
+  int sv_get_pattern_event(
+    int slot,
+    int pat_num,
+    int track,
+    int line,
+    int column,
+  ) {
+    return _sv_get_pattern_event(
+      slot,
+      pat_num,
+      track,
+      line,
+      column,
+    );
+  }
+
+  late final _sv_get_pattern_eventPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(ffi.Int32, ffi.Int32, ffi.Int32, ffi.Int32,
+              ffi.Int32)>>('sv_get_pattern_event');
+  late final _sv_get_pattern_event = _sv_get_pattern_eventPtr
+      .asFunction<int Function(int, int, int, int, int)>();
+
+  int sv_pattern_mute(
+    int slot,
+    int pat_num,
+    int mute,
+  ) {
+    return _sv_pattern_mute(
+      slot,
+      pat_num,
+      mute,
+    );
+  }
+
+  late final _sv_pattern_mutePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int32 Function(
+              ffi.Int32, ffi.Int32, ffi.Int32)>>('sv_pattern_mute');
+  late final _sv_pattern_mute =
+      _sv_pattern_mutePtr.asFunction<int Function(int, int, int)>();
+
+  int sv_get_ticks() {
+    return _sv_get_ticks();
+  }
+
+  late final _sv_get_ticksPtr =
+      _lookup<ffi.NativeFunction<ffi.Uint32 Function()>>('sv_get_ticks');
+  late final _sv_get_ticks = _sv_get_ticksPtr.asFunction<int Function()>();
+
+  int sv_get_ticks_per_second() {
+    return _sv_get_ticks_per_second();
+  }
+
+  late final _sv_get_ticks_per_secondPtr =
+      _lookup<ffi.NativeFunction<ffi.Uint32 Function()>>(
+          'sv_get_ticks_per_second');
+  late final _sv_get_ticks_per_second =
+      _sv_get_ticks_per_secondPtr.asFunction<int Function()>();
+
+  ffi.Pointer<ffi.Int8> sv_get_log(
+    int size,
+  ) {
+    return _sv_get_log(
+      size,
+    );
+  }
+
+  late final _sv_get_logPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int8> Function(ffi.Int32)>>(
+          'sv_get_log');
+  late final _sv_get_log =
+      _sv_get_logPtr.asFunction<ffi.Pointer<ffi.Int8> Function(int)>();
 }
 
 class _fsid_t_ extends ffi.Struct {
@@ -2126,180 +2760,6 @@ class sunvox_note extends ffi.Struct {
   @ffi.Uint16()
   external int ctl_val;
 }
-
-typedef tsv_audio_callback = ffi.Pointer<
-    ffi.NativeFunction<
-        ffi.Int32 Function(
-            ffi.Pointer<ffi.Void>, ffi.Int32, ffi.Int32, ffi.Uint32)>>;
-typedef tsv_audio_callback2 = ffi.Pointer<
-    ffi.NativeFunction<
-        ffi.Int32 Function(ffi.Pointer<ffi.Void>, ffi.Int32, ffi.Int32,
-            ffi.Uint32, ffi.Int32, ffi.Int32, ffi.Pointer<ffi.Void>)>>;
-typedef tsv_open_slot
-    = ffi.Pointer<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>;
-typedef tsv_close_slot
-    = ffi.Pointer<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>;
-typedef tsv_lock_slot
-    = ffi.Pointer<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>;
-typedef tsv_unlock_slot
-    = ffi.Pointer<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>;
-typedef tsv_init = ffi.Pointer<
-    ffi.NativeFunction<
-        ffi.Int32 Function(
-            ffi.Pointer<ffi.Int8>, ffi.Int32, ffi.Int32, ffi.Uint32)>>;
-typedef tsv_deinit = ffi.Pointer<ffi.NativeFunction<ffi.Int32 Function()>>;
-typedef tsv_get_sample_rate
-    = ffi.Pointer<ffi.NativeFunction<ffi.Int32 Function()>>;
-typedef tsv_update_input
-    = ffi.Pointer<ffi.NativeFunction<ffi.Int32 Function()>>;
-typedef tsv_load = ffi.Pointer<
-    ffi.NativeFunction<ffi.Int32 Function(ffi.Int32, ffi.Pointer<ffi.Int8>)>>;
-typedef tsv_load_from_memory = ffi.Pointer<
-    ffi.NativeFunction<
-        ffi.Int32 Function(ffi.Int32, ffi.Pointer<ffi.Void>, ffi.Uint32)>>;
-typedef tsv_save = ffi.Pointer<
-    ffi.NativeFunction<ffi.Int32 Function(ffi.Int32, ffi.Pointer<ffi.Int8>)>>;
-typedef tsv_play
-    = ffi.Pointer<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>;
-typedef tsv_play_from_beginning
-    = ffi.Pointer<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>;
-typedef tsv_stop
-    = ffi.Pointer<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>;
-typedef tsv_pause
-    = ffi.Pointer<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>;
-typedef tsv_resume
-    = ffi.Pointer<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>;
-typedef tsv_sync_resume
-    = ffi.Pointer<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>;
-typedef tsv_set_autostop
-    = ffi.Pointer<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32, ffi.Int32)>>;
-typedef tsv_get_autostop
-    = ffi.Pointer<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>;
-typedef tsv_end_of_song
-    = ffi.Pointer<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>;
-typedef tsv_rewind
-    = ffi.Pointer<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32, ffi.Int32)>>;
-typedef tsv_volume
-    = ffi.Pointer<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32, ffi.Int32)>>;
-typedef tsv_set_event_t = ffi.Pointer<
-    ffi.NativeFunction<ffi.Int32 Function(ffi.Int32, ffi.Int32, ffi.Int32)>>;
-typedef tsv_send_event = ffi.Pointer<
-    ffi.NativeFunction<
-        ffi.Int32 Function(ffi.Int32, ffi.Int32, ffi.Int32, ffi.Int32,
-            ffi.Int32, ffi.Int32, ffi.Int32)>>;
-typedef tsv_get_current_line
-    = ffi.Pointer<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>;
-typedef tsv_get_current_line2
-    = ffi.Pointer<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>;
-typedef tsv_get_current_signal_level
-    = ffi.Pointer<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32, ffi.Int32)>>;
-typedef tsv_get_song_name = ffi
-    .Pointer<ffi.NativeFunction<ffi.Pointer<ffi.Int8> Function(ffi.Int32)>>;
-typedef tsv_get_song_bpm
-    = ffi.Pointer<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>;
-typedef tsv_get_song_tpl
-    = ffi.Pointer<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>;
-typedef tsv_get_song_length_frames
-    = ffi.Pointer<ffi.NativeFunction<ffi.Uint32 Function(ffi.Int32)>>;
-typedef tsv_get_song_length_lines
-    = ffi.Pointer<ffi.NativeFunction<ffi.Uint32 Function(ffi.Int32)>>;
-typedef tsv_get_time_map = ffi.Pointer<
-    ffi.NativeFunction<
-        ffi.Int32 Function(ffi.Int32, ffi.Int32, ffi.Int32,
-            ffi.Pointer<ffi.Uint32>, ffi.Int32)>>;
-typedef tsv_new_module = ffi.Pointer<
-    ffi.NativeFunction<
-        ffi.Int32 Function(ffi.Int32, ffi.Pointer<ffi.Int8>,
-            ffi.Pointer<ffi.Int8>, ffi.Int32, ffi.Int32, ffi.Int32)>>;
-typedef tsv_remove_module
-    = ffi.Pointer<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32, ffi.Int32)>>;
-typedef tsv_connect_module = ffi.Pointer<
-    ffi.NativeFunction<ffi.Int32 Function(ffi.Int32, ffi.Int32, ffi.Int32)>>;
-typedef tsv_disconnect_module = ffi.Pointer<
-    ffi.NativeFunction<ffi.Int32 Function(ffi.Int32, ffi.Int32, ffi.Int32)>>;
-typedef tsv_load_module = ffi.Pointer<
-    ffi.NativeFunction<
-        ffi.Int32 Function(ffi.Int32, ffi.Pointer<ffi.Int8>, ffi.Int32,
-            ffi.Int32, ffi.Int32)>>;
-typedef tsv_load_module_from_memory = ffi.Pointer<
-    ffi.NativeFunction<
-        ffi.Int32 Function(ffi.Int32, ffi.Pointer<ffi.Void>, ffi.Uint32,
-            ffi.Int32, ffi.Int32, ffi.Int32)>>;
-typedef tsv_sampler_load = ffi.Pointer<
-    ffi.NativeFunction<
-        ffi.Int32 Function(
-            ffi.Int32, ffi.Int32, ffi.Pointer<ffi.Int8>, ffi.Int32)>>;
-typedef tsv_sampler_load_from_memory = ffi.Pointer<
-    ffi.NativeFunction<
-        ffi.Int32 Function(ffi.Int32, ffi.Int32, ffi.Pointer<ffi.Void>,
-            ffi.Uint32, ffi.Int32)>>;
-typedef tsv_get_number_of_modules
-    = ffi.Pointer<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>;
-typedef tsv_find_module = ffi.Pointer<
-    ffi.NativeFunction<ffi.Int32 Function(ffi.Int32, ffi.Pointer<ffi.Int8>)>>;
-typedef tsv_get_module_flags = ffi
-    .Pointer<ffi.NativeFunction<ffi.Uint32 Function(ffi.Int32, ffi.Int32)>>;
-typedef tsv_get_module_inputs = ffi.Pointer<
-    ffi.NativeFunction<ffi.Pointer<ffi.Int32> Function(ffi.Int32, ffi.Int32)>>;
-typedef tsv_get_module_outputs = ffi.Pointer<
-    ffi.NativeFunction<ffi.Pointer<ffi.Int32> Function(ffi.Int32, ffi.Int32)>>;
-typedef tsv_get_module_name = ffi.Pointer<
-    ffi.NativeFunction<ffi.Pointer<ffi.Int8> Function(ffi.Int32, ffi.Int32)>>;
-typedef tsv_get_module_xy = ffi
-    .Pointer<ffi.NativeFunction<ffi.Uint32 Function(ffi.Int32, ffi.Int32)>>;
-typedef tsv_get_module_color
-    = ffi.Pointer<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32, ffi.Int32)>>;
-typedef tsv_get_module_finetune = ffi
-    .Pointer<ffi.NativeFunction<ffi.Uint32 Function(ffi.Int32, ffi.Int32)>>;
-typedef tsv_get_module_scope2 = ffi.Pointer<
-    ffi.NativeFunction<
-        ffi.Uint32 Function(ffi.Int32, ffi.Int32, ffi.Int32,
-            ffi.Pointer<ffi.Int16>, ffi.Uint32)>>;
-typedef tsv_module_curve = ffi.Pointer<
-    ffi.NativeFunction<
-        ffi.Int32 Function(ffi.Int32, ffi.Int32, ffi.Int32,
-            ffi.Pointer<ffi.Float>, ffi.Int32, ffi.Int32)>>;
-typedef tsv_get_number_of_module_ctls
-    = ffi.Pointer<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32, ffi.Int32)>>;
-typedef tsv_get_module_ctl_name = ffi.Pointer<
-    ffi.NativeFunction<
-        ffi.Pointer<ffi.Int8> Function(ffi.Int32, ffi.Int32, ffi.Int32)>>;
-typedef tsv_get_module_ctl_value = ffi.Pointer<
-    ffi.NativeFunction<
-        ffi.Int32 Function(ffi.Int32, ffi.Int32, ffi.Int32, ffi.Int32)>>;
-typedef tsv_get_number_of_patterns
-    = ffi.Pointer<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>;
-typedef tsv_find_pattern = ffi.Pointer<
-    ffi.NativeFunction<ffi.Int32 Function(ffi.Int32, ffi.Pointer<ffi.Int8>)>>;
-typedef tsv_get_pattern_x
-    = ffi.Pointer<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32, ffi.Int32)>>;
-typedef tsv_get_pattern_y
-    = ffi.Pointer<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32, ffi.Int32)>>;
-typedef tsv_get_pattern_tracks
-    = ffi.Pointer<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32, ffi.Int32)>>;
-typedef tsv_get_pattern_lines
-    = ffi.Pointer<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32, ffi.Int32)>>;
-typedef tsv_get_pattern_name = ffi.Pointer<
-    ffi.NativeFunction<ffi.Pointer<ffi.Int8> Function(ffi.Int32, ffi.Int32)>>;
-typedef tsv_get_pattern_data = ffi.Pointer<
-    ffi.NativeFunction<
-        ffi.Pointer<sunvox_note> Function(ffi.Int32, ffi.Int32)>>;
-typedef tsv_set_pattern_event = ffi.Pointer<
-    ffi.NativeFunction<
-        ffi.Int32 Function(ffi.Int32, ffi.Int32, ffi.Int32, ffi.Int32,
-            ffi.Int32, ffi.Int32, ffi.Int32, ffi.Int32, ffi.Int32)>>;
-typedef tsv_get_pattern_event = ffi.Pointer<
-    ffi.NativeFunction<
-        ffi.Int32 Function(
-            ffi.Int32, ffi.Int32, ffi.Int32, ffi.Int32, ffi.Int32)>>;
-typedef tsv_pattern_mute = ffi.Pointer<
-    ffi.NativeFunction<ffi.Int32 Function(ffi.Int32, ffi.Int32, ffi.Int32)>>;
-typedef tsv_get_ticks = ffi.Pointer<ffi.NativeFunction<ffi.Uint32 Function()>>;
-typedef tsv_get_ticks_per_second
-    = ffi.Pointer<ffi.NativeFunction<ffi.Uint32 Function()>>;
-typedef tsv_get_log = ffi
-    .Pointer<ffi.NativeFunction<ffi.Pointer<ffi.Int8> Function(ffi.Int32)>>;
-typedef LIBNAME_STR_TYPE = ffi.Pointer<ffi.Int8>;
 
 const int _STDIO_H = 1;
 

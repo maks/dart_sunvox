@@ -6,22 +6,19 @@ import 'package:ffi/ffi.dart';
 class LibSunvox {
   String libPath;
 
-  LibSunvox([this.libPath = '/usr/lib/x86_64-linux-gnu/libgit2.so']);
+  LibSunvox([this.libPath = 'sunvox_lib/linux/lib_x86_64/sunvox.so']);
 
   String version() {
     final sunvox = libsunvox(DynamicLibrary.open(libPath));
 
-    final majorPtr = calloc<Int32>();
-    final minorPtr = calloc<Int32>();
-    final revPtr = calloc<Int32>();
+    final config = calloc<Int8>();
 
-    final initFnPtr = sunvox.sv_init;
-    initFnPtr.asFunction<tsv_init>();
+    final version = sunvox.sv_init(config, 44100, 2, 0);
 
-    if (result != 0) {
-      throw Exception('failed gettin libgit2 version');
-    } else {
-      return '${majorPtr.value}.${minorPtr.value}.${revPtr.value}.';
-    }
+    int major = (version >> 16) & 255;
+    int minor1 = (version >> 8) & 255;
+    int minor2 = (version) & 255;
+
+    return '$major.$minor1.$minor2';
   }
 }
