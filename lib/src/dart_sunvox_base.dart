@@ -15,9 +15,9 @@ class LibSunvox {
 
     final version = sunvox.sv_init(config, 44100, 2, 0);
 
-    int major = (version >> 16) & 255;
-    int minor1 = (version >> 8) & 255;
-    int minor2 = (version) & 255;
+    final major = (version >> 16) & 255;
+    final minor1 = (version >> 8) & 255;
+    final minor2 = (version) & 255;
 
     return '$major.$minor1.$minor2';
   }
