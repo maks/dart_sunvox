@@ -10,7 +10,7 @@ void main() {
     });
 
     test('First Test', () {
-      expect(sunvox.version(), isNotNull);
+      expect(sunvox.versionString(), isNotNull);
     });
   });
 }
