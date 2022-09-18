@@ -11,15 +11,20 @@ start using the package.
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
+See  examples in the `/example` folder. 
 
 ```dart
-const like = 'sample';
+  final sunvox = LibSunvox();
+  const filename = "sunvox_lib/resources/song01.sunvox";
+  await sunvox.load(filename);
+  sunvox.volume = 256;
+  sunvox.play();
+  print("playing:$filename ...");
+  await Future<void>.delayed(Duration(seconds: 5));
+  sunvox.stop();
+  sunvox.shutDown();
 ```
 
-## Additional information
+## Licenses
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+The Dart binding is under the `LICENSE` file in this repo. Please see `sunvox_lib/docs/license` for information on licensing of the code contained within the subvox lib.

@@ -1,10 +1,10 @@
 name: dart_sunvox
-description: A starting point for Dart libraries or applications.
+description: Dart FFI binding for libsunvox
 version: 0.0.1
-# homepage: https://www.example.com
+homepage: https://github.com/maks/dart_sunvox
 
 environment:
-  sdk: '>=2.16.1 <3.0.0'
+  sdk: '>=2.18.0 <3.0.0'
 
 dependencies:
   path: ^1.8.0

@@ -1,5 +1,4 @@
 import 'dart:ffi';
-import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:dart_sunvox/src/libsunvox_generated_bindings.dart';
