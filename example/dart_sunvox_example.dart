@@ -1,7 +1,7 @@
 import 'package:dart_sunvox/dart_sunvox.dart';
 
 void main(List<String> args) async {
-  final sunvox = LibSunvox();
+  final sunvox = LibSunvox(0);
   final v = sunvox.versionString();
   print('sunvox lib version: $v');
 
