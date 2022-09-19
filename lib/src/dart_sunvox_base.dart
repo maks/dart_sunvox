@@ -11,7 +11,8 @@ class LibSunvox {
   libsunvox get _sunvox => libsunvox(DynamicLibrary.open(libPath));
 
   LibSunvox([this.libPath = 'sunvox_lib/linux/lib_x86_64/sunvox.so']) {
-    version = _init();
+    final configPtr = calloc<Int8>();
+    version = _init(configPtr);
     if (version >= 0) {
       _sunvox.sv_open_slot(0);
       // The SunVox is initialized.
@@ -20,6 +21,7 @@ class LibSunvox {
     } else {
       throw Exception("failed to initialise libsunvox");
     }
+    calloc.free(configPtr);
   }
 
   String versionString() {
@@ -30,8 +32,7 @@ class LibSunvox {
     return '$major.$minor1.$minor2';
   }
 
-  int _init() {
-    final config = calloc<Int8>();
+  int _init(Pointer<Int8> config) {
     return _sunvox.sv_init(config, 44100, 2, 0);
   }
 
@@ -66,6 +67,8 @@ class LibSunvox {
 
   // volume 0 to 256
   set volume(int v) => _sunvox.sv_volume(0, v);
+
+  int get moduleCount => _sunvox.sv_get_number_of_modules(0);
 
   void shutDown() {
     _sunvox.sv_close_slot(0);
