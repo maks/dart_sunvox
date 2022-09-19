@@ -73,6 +73,18 @@ class LibSunvox {
 
   String get projectName => _sunvox.sv_get_song_name(slotNumber).cast<Utf8>().toDartString();
 
+  // eg. "Kicker"
+  int findModuleByName(String name) => _sunvox.sv_find_module(slotNumber, name.toNativeUtf8().cast());
+
+  /// track_num - track number (within the virtual pattern)
+  /// module: 0 (empty) or module number + 1 (1..65535);
+  /// note: 0 - nothing; 1..127 - note number; 128 - note off; 129, 130...
+  /// velocity 129 (max)
+  void sendEvent(int trackNumber, int moduleId, int note, int velocity) {
+    _sunvox.sv_set_event_t(slotNumber, 1, 0);
+    _sunvox.sv_send_event(slotNumber, trackNumber, note, velocity, moduleId + 1, 0, 0);
+  }
+
   void shutDown() {
     _sunvox.sv_close_slot(slotNumber);
     _sunvox.sv_deinit();
