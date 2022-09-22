@@ -62,19 +62,36 @@ class LibSunvox {
     }
   }
 
-  int play() => _sunvox.sv_play_from_beginning(slotNumber);
+  int play() => _sunvox.sv_play(slotNumber);
+
+  int playFromStart() => _sunvox.sv_play_from_beginning(slotNumber);
+
+  int pause() => _sunvox.sv_pause(slotNumber);
+
+  int resume() => _sunvox.sv_resume(slotNumber);
+
+  int syncResume() => _sunvox.sv_sync_resume(slotNumber);
 
   void stop() => _sunvox.sv_stop(slotNumber);
 
   // volume 0 to 256
   set volume(int v) => _sunvox.sv_volume(slotNumber, v);
 
-  int get moduleCount => _sunvox.sv_get_number_of_modules(slotNumber);
+  int get moduleSlotsCount => _sunvox.sv_get_number_of_modules(slotNumber);
 
   String get projectName => _sunvox.sv_get_song_name(slotNumber).cast<Utf8>().toDartString();
 
   // eg. "Kicker"
   int findModuleByName(String name) => _sunvox.sv_find_module(slotNumber, name.toNativeUtf8().cast());
+
+  SVModule? getModule(int moduleId) {
+    final flags = _sunvox.sv_get_module_flags(0, moduleId);
+    if ((flags & SV_MODULE_FLAG_EXISTS) == 0) {
+      return null;
+    } else {
+      return SVModule(_sunvox, moduleId, slotNumber);
+    }
+  }
 
   /// track_num - track number (within the virtual pattern)
   /// module: 0 (empty) or module number + 1 (1..65535);
@@ -88,5 +105,51 @@ class LibSunvox {
   void shutDown() {
     _sunvox.sv_close_slot(slotNumber);
     _sunvox.sv_deinit();
+  }
+}
+
+class SVModule {
+  final libsunvox _sunvox;
+  final int id;
+  final int slot;
+
+  int get flags => _sunvox.sv_get_module_flags(slot, id);
+
+  String get name => _sunvox.sv_get_module_name(slot, id).cast<Utf8>().toDartString();
+
+  SVColor get color {
+    final int rgb = _sunvox.sv_get_module_color(slot, id);
+    final r = rgb & 0xFF; //r = 0...255
+    final g = (rgb >> 8) & 0xFF; //g = 0...255
+    final b = (rgb >> 16) & 0xFF; //b = 0...255
+    return SVColor(r, g, b);
+  }
+
+  SVModule(this._sunvox, this.id, this.slot);
+  List<int> get inputs {
+    final int inputSlots = (flags & SV_MODULE_INPUTS_MASK) >> SV_MODULE_INPUTS_OFF;
+    final inputsArrayPtr = _sunvox.sv_get_module_inputs(slot, id);
+    final inputsList = inputsArrayPtr.asTypedList(inputSlots);
+    return inputsList.where((e) => e >= 0).toList();
+  }
+
+  List<int> get outputs {
+    final int outputSlots = (flags & SV_MODULE_OUTPUTS_MASK) >> SV_MODULE_OUTPUTS_OFF;
+    final outputsArrayPtr = _sunvox.sv_get_module_outputs(slot, id);
+    final outputsList = outputsArrayPtr.asTypedList(outputSlots);
+    return outputsList.where((e) => e >= 0).toList();
+  }
+}
+
+class SVColor {
+  final int r;
+  final int g;
+  final int b;
+
+  SVColor(this.r, this.g, this.b);
+
+  @override
+  String toString() {
+    return "rgb $r:$g:$b";
   }
 }
