@@ -4,7 +4,11 @@ import 'dart:typed_data';
 import 'package:dart_sunvox/src/libsunvox_generated_bindings.dart';
 import 'package:ffi/ffi.dart';
 
+
+const sunvoxNoteOffCommand = 128;
+
 class LibSunvox {
+
   final String libPath;
   final int slotNumber;
   late final int version;
@@ -94,9 +98,9 @@ class LibSunvox {
   }
 
   /// track_num - track number (within the virtual pattern)
-  /// module: 0 (empty) or module number + 1 (1..65535);
-  /// note: 0 - nothing; 1..127 - note number; 128 - note off; 129, 130...
-  /// velocity 129 (max)
+  /// module: 0 (empty) or module number + 1 (1..65535)
+  /// note: 0 - nothing; 1..127 - note number
+  /// velocity 129 (max) 128 - note off;
   void sendEvent(int trackNumber, int moduleId, int note, int velocity) {
     _sunvox.sv_set_event_t(slotNumber, 1, 0);
     _sunvox.sv_send_event(slotNumber, trackNumber, note, velocity, moduleId + 1, 0, 0);
