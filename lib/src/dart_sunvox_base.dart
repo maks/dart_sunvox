@@ -4,8 +4,15 @@ import 'dart:typed_data';
 import 'package:dart_sunvox/src/libsunvox_generated_bindings.dart';
 import 'package:ffi/ffi.dart';
 
-
 const sunvoxNoteOffCommand = 128;
+
+const sunvoxModuleFlagExists = SV_MODULE_FLAG_EXISTS;
+const sunvoxModuleFlagEffect = SV_MODULE_FLAG_EFFECT;
+const sunvoxModuleFlagMute = SV_MODULE_FLAG_MUTE;
+const sunvoxModuleFlagSolo = SV_MODULE_FLAG_SOLO;
+const sunvoxModuleFlagByPass = SV_MODULE_FLAG_BYPASS;
+const sunvoxModuleFlagOff = SV_MODULE_INPUTS_OFF;
+
 
 class LibSunvox {
 
