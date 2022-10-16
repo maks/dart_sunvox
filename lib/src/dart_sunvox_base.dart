@@ -137,6 +137,7 @@ class SVModule {
   }
 
   SVModule(this._sunvox, this.id, this.slot);
+
   List<int> get inputs {
     final int inputSlots = (flags & SV_MODULE_INPUTS_MASK) >> SV_MODULE_INPUTS_OFF;
     final inputsArrayPtr = _sunvox.sv_get_module_inputs(slot, id);
@@ -149,6 +150,15 @@ class SVModule {
     final outputsArrayPtr = _sunvox.sv_get_module_outputs(slot, id);
     final outputsList = outputsArrayPtr.asTypedList(outputSlots);
     return outputsList.where((e) => e >= 0).toList();
+  }
+
+  List<SVModuleController> get controllers {
+    final controllerCount = _sunvox.sv_get_number_of_module_ctls(slot, id);
+    return List.generate(controllerCount, (index) {
+      final nameCStr = _sunvox.sv_get_module_ctl_name(slot, id, index);
+      final value = _sunvox.sv_get_module_ctl_value(slot, id, index, 0);
+      return SVModuleController(nameCStr.cast<Utf8>().toDartString(), value);
+    });
   }
 }
 
@@ -163,4 +173,11 @@ class SVColor {
   String toString() {
     return "rgb $r:$g:$b";
   }
+}
+
+class SVModuleController {
+  final String name;
+  final int value;
+
+  SVModuleController(this.name, this.value);
 }
