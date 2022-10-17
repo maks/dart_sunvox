@@ -1,4 +1,5 @@
 import 'dart:ffi';
+import 'dart:math';
 import 'dart:typed_data';
 
 import 'package:dart_sunvox/src/libsunvox_generated_bindings.dart';
@@ -13,9 +14,7 @@ const sunvoxModuleFlagSolo = SV_MODULE_FLAG_SOLO;
 const sunvoxModuleFlagByPass = SV_MODULE_FLAG_BYPASS;
 const sunvoxModuleFlagOff = SV_MODULE_INPUTS_OFF;
 
-
 class LibSunvox {
-
   final String libPath;
   final int slotNumber;
   late final int version;
@@ -61,7 +60,7 @@ class LibSunvox {
   }
 
   /// Load project file as binary data
-  Future<void> loadData(Uint8List data) async {   
+  Future<void> loadData(Uint8List data) async {
     final Pointer<Uint8> sData = calloc<Uint8>(data.length); // Allocate a pointer large enough.
     for (int i = 0; i < data.length; i++) {
       sData[i] = data[i];
@@ -108,9 +107,14 @@ class LibSunvox {
   /// module: 0 (empty) or module number + 1 (1..65535)
   /// note: 0 - nothing; 1..127 - note number
   /// velocity 129 (max) 128 - note off;
-  void sendEvent(int trackNumber, int moduleId, int note, int velocity) {
+  void sendNote(int trackNumber, int moduleId, int note, int velocity) {
     _sunvox.sv_set_event_t(slotNumber, 1, 0);
     _sunvox.sv_send_event(slotNumber, trackNumber, note, velocity, moduleId + 1, 0, 0);
+  }
+
+  void sendControllerValue(int moduleId, int controllerId, int value) {
+    _sunvox.sv_set_event_t(slotNumber, 1, 0);
+    _sunvox.sv_send_event(slotNumber, 0, 0, 0, moduleId + 1, controllerId << 8, value);
   }
 
   void shutDown() {
@@ -123,6 +127,8 @@ class SVModule {
   final libsunvox _sunvox;
   final int id;
   final int slot;
+
+  List<SVModuleController>? _controllers;
 
   int get flags => _sunvox.sv_get_module_flags(slot, id);
 
@@ -153,12 +159,17 @@ class SVModule {
   }
 
   List<SVModuleController> get controllers {
-    final controllerCount = _sunvox.sv_get_number_of_module_ctls(slot, id);
-    return List.generate(controllerCount, (index) {
-      final nameCStr = _sunvox.sv_get_module_ctl_name(slot, id, index);
-      final value = _sunvox.sv_get_module_ctl_value(slot, id, index, 0);
-      return SVModuleController(nameCStr.cast<Utf8>().toDartString(), value);
-    });
+    if (_controllers == null) {
+      final controllerCount = _sunvox.sv_get_number_of_module_ctls(slot, id);
+
+      _controllers = List.generate(controllerCount, (index) {
+        final nameCStr = _sunvox.sv_get_module_ctl_name(slot, id, index);       
+        final c = SVModuleController(_sunvox, slot, id, index, nameCStr.cast<Utf8>().toDartString());
+        print(c);
+        return c;
+      });
+    }
+    return _controllers!;
   }
 }
 
@@ -176,8 +187,102 @@ class SVColor {
 }
 
 class SVModuleController {
+  final int id;
+  final int slot;
+  final int moduleId;
   final String name;
-  final int value;
+  final libsunvox _sunvox;
 
-  SVModuleController(this.name, this.value);
+  bool get useScaling => _controllerMap[name.toLowerCase()]?.scaled ?? false;
+
+  int get value => _sunvox.sv_get_module_ctl_value(slot, moduleId, id, useScaling ? 1 : 0);
+
+  SVModuleController(this._sunvox, this.slot, this.moduleId, this.id, this.name);
+
+  void inc(int amount) async {
+    final update = useScaling ? min(value + (amount * 128), 32768) : min(value + amount, 128);
+    _sunvox.sv_set_event_t(slot, 1, 0);
+    final ctl = (id + 1) << 8;
+    _sunvox.sv_send_event(slot, 0, 0, 0, moduleId + 1, ctl, update);
+
+    final v = _sunvox.sv_get_module_ctl_value(0, moduleId, id, 0);
+    print("($slot) $id NEW mod:$moduleId ctl ${ctl.toRadixString(16)} v:$v val: $update");
+  }
+
+  void dec(int amount) {
+    final update = max(value - amount, 0);
+    _sunvox.sv_set_event_t(slot, 1, 0);
+    final ctl = (id + 1) << 8;
+    _sunvox.sv_send_event(slot, 0, 0, 0, moduleId + 1, ctl, update);
+    final v = _sunvox.sv_get_module_ctl_value(0, moduleId, id, 0);
+    print("($slot) amnt:$amount  mod:$moduleId ctl ${ctl.toRadixString(16)}  v:$v val: $update");
+  }
+
+  @override
+  String toString() {
+    return "[$id] $name scale:$useScaling";
+  }
 }
+
+class SVCtlData {
+  final bool scaled;
+  final List<String>? values;
+
+  const SVCtlData(this.scaled, [this.values]);
+}
+
+const Map<String, SVCtlData> _controllerMap = {
+  "volume": SVCtlData(true),
+  "waveform": SVCtlData(
+    false,
+    [
+      "triangle",
+      "saw",
+      "square",
+      "noise",
+      "drawn",
+      "sine",
+      "half sine",
+      "abs sine",
+      "drawn spline",
+      "noise spline",
+      "white noise",
+      "pink noise",
+      "red noise",
+      "blue noise",
+      "violet noise",
+      "grey noise",
+      "hand drawn",
+    ],
+  ),
+  "panning": SVCtlData(true),
+  "attack": SVCtlData(true),
+  "release": SVCtlData(true),
+  "sustain": SVCtlData(false, ["off", "on"]),
+  "exponential envelope": SVCtlData(false, ["off", "on"]),
+  "duty cycle": SVCtlData(true),
+  "osc2": SVCtlData(true),
+  "filter": SVCtlData(false, [
+    "off",
+    "lp 12db",
+    "hp 12db",
+    "bp 12db",
+    "br 12db",
+    "lp 24db",
+    "hp 24db",
+    "bp 24db",
+    "br 24db",
+  ]),
+  "f.freq": SVCtlData(true),
+  "f.resonance": SVCtlData(true),
+  "f.exponential": SVCtlData(false, ["off", "on"]),
+  "f.attack": SVCtlData(true),
+  "f.release": SVCtlData(true),
+  "f.envelope": SVCtlData(false, ["off", "susOff", "susOn"]),
+  "polyphony": SVCtlData(false),
+  "mode": SVCtlData(false, ["hq", "hqMono", "lq", "lqMono"]),
+  "noise": SVCtlData(true),
+  "osc2 volume": SVCtlData(true),
+  "osc2 mode": SVCtlData(false, ["add", "sub", "mul", "min", "max", "and", "xor"]),
+  "osc2 phase": SVCtlData(true),
+};
