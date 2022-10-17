@@ -197,8 +197,17 @@ class SVModuleController {
 
   int get value => _sunvox.sv_get_module_ctl_value(slot, moduleId, id, useScaling ? 1 : 0);
 
+  String? get displayValue {
+    final displayValues = _controllerMap[name.toLowerCase()]?.values;
+    if (displayValues != null && !useScaling) {
+      return displayValues[value];
+    } else {
+      return null;
+    }
+  }
+  
   SVModuleController(this._sunvox, this.slot, this.moduleId, this.id, this.name);
-
+  
   void inc(int amount) async {
     final update = useScaling ? min(value + (amount * 128), 32768) : min(value + amount, 128);
     _sunvox.sv_set_event_t(slot, 1, 0);
