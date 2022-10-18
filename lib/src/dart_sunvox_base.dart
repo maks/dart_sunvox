@@ -5,6 +5,8 @@ import 'dart:typed_data';
 import 'package:dart_sunvox/src/libsunvox_generated_bindings.dart';
 import 'package:ffi/ffi.dart';
 
+import 'controller_data.dart';
+
 const sunvoxNoteOffCommand = 128;
 
 const sunvoxModuleFlagExists = SV_MODULE_FLAG_EXISTS;
@@ -26,9 +28,7 @@ class LibSunvox {
     version = _init(configPtr);
     if (version >= 0) {
       _sunvox.sv_open_slot(slotNumber);
-      // The SunVox is initialized.
-      // Slot 0 is open and ready for use.
-      // Then you can load and play some files in this slot.
+      // SunVox is initialized. Slot is open and ready for use.
     } else {
       throw Exception("failed to initialise libsunvox");
     }
@@ -101,6 +101,20 @@ class LibSunvox {
     } else {
       return SVModule(_sunvox, moduleId, slotNumber);
     }
+  }
+
+  SVModule? createModule(String type, String name) {
+    final namePtr = name.toNativeUtf8().cast<Int8>();
+    final typePtr = type.toNativeUtf8().cast<Int8>();
+
+    _sunvox.sv_lock_slot(slotNumber);
+
+    final nuModuleId = _sunvox.sv_new_module(slotNumber, typePtr, namePtr, 512, 512, 0);
+    if (nuModuleId < 0) {
+      print("create module error: $nuModuleId");
+    }
+    _sunvox.sv_unlock_slot(slotNumber);
+    return SVModule(_sunvox, nuModuleId, slotNumber);
   }
 
   /// track_num - track number (within the virtual pattern)
@@ -193,12 +207,12 @@ class SVModuleController {
   final String name;
   final libsunvox _sunvox;
 
-  bool get useScaling => _controllerMap[name.toLowerCase()]?.scaled ?? false;
+  bool get useScaling => controllerMap[name.toLowerCase()]?.scaled ?? false;
 
   int get value => _sunvox.sv_get_module_ctl_value(slot, moduleId, id, useScaling ? 1 : 0);
 
   String? get displayValue {
-    final displayValues = _controllerMap[name.toLowerCase()]?.values;
+    final displayValues = controllerMap[name.toLowerCase()]?.values;
     if (displayValues != null && !useScaling) {
       return displayValues[value];
     } else {
@@ -232,66 +246,3 @@ class SVModuleController {
     return "[$id] $name scale:$useScaling";
   }
 }
-
-class SVCtlData {
-  final bool scaled;
-  final List<String>? values;
-
-  const SVCtlData(this.scaled, [this.values]);
-}
-
-const Map<String, SVCtlData> _controllerMap = {
-  "volume": SVCtlData(true),
-  "waveform": SVCtlData(
-    false,
-    [
-      "triangle",
-      "saw",
-      "square",
-      "noise",
-      "drawn",
-      "sine",
-      "half sine",
-      "abs sine",
-      "drawn spline",
-      "noise spline",
-      "white noise",
-      "pink noise",
-      "red noise",
-      "blue noise",
-      "violet noise",
-      "grey noise",
-      "hand drawn",
-    ],
-  ),
-  "panning": SVCtlData(true),
-  "attack": SVCtlData(true),
-  "release": SVCtlData(true),
-  "sustain": SVCtlData(false, ["off", "on"]),
-  "exponential envelope": SVCtlData(false, ["off", "on"]),
-  "duty cycle": SVCtlData(true),
-  "osc2": SVCtlData(true),
-  "filter": SVCtlData(false, [
-    "off",
-    "lp 12db",
-    "hp 12db",
-    "bp 12db",
-    "br 12db",
-    "lp 24db",
-    "hp 24db",
-    "bp 24db",
-    "br 24db",
-  ]),
-  "f.freq": SVCtlData(true),
-  "f.resonance": SVCtlData(true),
-  "f.exponential": SVCtlData(false, ["off", "on"]),
-  "f.attack": SVCtlData(true),
-  "f.release": SVCtlData(true),
-  "f.envelope": SVCtlData(false, ["off", "susOff", "susOn"]),
-  "polyphony": SVCtlData(false),
-  "mode": SVCtlData(false, ["hq", "hqMono", "lq", "lqMono"]),
-  "noise": SVCtlData(true),
-  "osc2 volume": SVCtlData(true),
-  "osc2 mode": SVCtlData(false, ["add", "sub", "mul", "min", "max", "and", "xor"]),
-  "osc2 phase": SVCtlData(true),
-};
