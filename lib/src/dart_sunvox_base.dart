@@ -187,6 +187,18 @@ class SVModule {
     }
     return _controllers!;
   }
+
+  bool get isInstrument => !((flags & sunvoxModuleFlagEffect) == 2);
+
+  // connect this module to the module for the given moduleId
+  void connectToModule(int toModuleId) {
+    _sunvox.sv_lock_slot(slot);
+    final result = _sunvox.sv_connect_module(slot, id, toModuleId);
+    _sunvox.sv_unlock_slot(slot);
+    if (result < 0) {
+      throw Exception("error connecting module $id->$toModuleId [$result]");
+    }
+  }
 }
 
 class SVColor {
