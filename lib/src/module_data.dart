@@ -1,5 +1,5 @@
 // obtained from https://github.com/metrasynth/radiant-voices/search?q=readonly+typeName+%3D
-Set<String> moduleTypes = {
+const Set<String> allModuleTypes = {
   "ADSR",
   "Amplifier",
   "Analog generator",

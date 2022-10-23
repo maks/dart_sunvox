@@ -7,6 +7,8 @@ import 'package:ffi/ffi.dart';
 
 import 'controller_data.dart';
 
+export 'module_data.dart';
+
 const sunvoxNoteOffCommand = 128;
 
 const sunvoxModuleFlagExists = SV_MODULE_FLAG_EXISTS;
