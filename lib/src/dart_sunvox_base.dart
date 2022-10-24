@@ -199,6 +199,15 @@ class SVModule {
       throw Exception("error connecting module $id->$toModuleId [$result]");
     }
   }
+
+  void remove() {
+    _sunvox.sv_lock_slot(slot);
+    final result = _sunvox.sv_remove_module(slot, id);
+    _sunvox.sv_unlock_slot(slot);
+    if (result < 0) {
+      throw Exception("error removing module $id [$result]");
+    }
+  }
 }
 
 class SVColor {
