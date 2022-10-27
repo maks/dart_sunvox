@@ -200,6 +200,16 @@ class SVModule {
     }
   }
 
+  // connect this module to the module for the given moduleId
+  void disconnectFromModule(int toModuleId) {
+    _sunvox.sv_lock_slot(slot);
+    final result = _sunvox.sv_disconnect_module(slot, id, toModuleId);
+    _sunvox.sv_unlock_slot(slot);
+    if (result < 0) {
+      throw Exception("error DISconnecting module $id->$toModuleId [$result]");
+    }
+  }
+
   void remove() {
     _sunvox.sv_lock_slot(slot);
     final result = _sunvox.sv_remove_module(slot, id);
