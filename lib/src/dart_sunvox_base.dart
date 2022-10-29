@@ -260,9 +260,6 @@ class SVModuleController {
     _sunvox.sv_set_event_t(slot, 1, 0);
     final ctl = (id + 1) << 8;
     _sunvox.sv_send_event(slot, 0, 0, 0, moduleId + 1, ctl, update);
-
-    final v = _sunvox.sv_get_module_ctl_value(0, moduleId, id, 0);
-    print("($slot) $id NEW mod:$moduleId ctl ${ctl.toRadixString(16)} v:$v val: $update");
   }
 
   void dec(int amount) {
@@ -270,8 +267,6 @@ class SVModuleController {
     _sunvox.sv_set_event_t(slot, 1, 0);
     final ctl = (id + 1) << 8;
     _sunvox.sv_send_event(slot, 0, 0, 0, moduleId + 1, ctl, update);
-    final v = _sunvox.sv_get_module_ctl_value(0, moduleId, id, 0);
-    print("($slot) amnt:$amount  mod:$moduleId ctl ${ctl.toRadixString(16)}  v:$v val: $update");
   }
 
   @override
