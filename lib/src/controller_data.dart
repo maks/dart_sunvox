@@ -54,7 +54,7 @@ const Map<String, SVCtlData> controllerMap = {
   "f.release": SVCtlData(true),
   "f.envelope": SVCtlData(false, ["off", "susOff", "susOn"]),
   "polyphony": SVCtlData(false),
-  "mode": SVCtlData(false, ["hq", "hqMono", "lq", "lqMono"]),
+  "mode": SVCtlData(false, ["hq", "hqMono", "lq", "lqMono", "hqSpline"]),
   "noise": SVCtlData(true),
   "osc2 volume": SVCtlData(true),
   "osc2 mode": SVCtlData(false, ["add", "sub", "mul", "min", "max", "and", "xor"]),

@@ -247,9 +247,12 @@ class SVModuleController {
   String? get displayValue {
     final displayValues = controllerMap[name.toLowerCase()]?.values;
     if (displayValues != null && !useScaling) {
+      if (displayValues.length <= value) {
+        throw Exception("Invalid display value for:$name val:$value");
+      }
       return displayValues[value];
     } else {
-      return null;
+      return "$value";
     }
   }
   
