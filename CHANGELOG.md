@@ -1,3 +1,11 @@
+## 0.0.3
+ - reading controller name, value
+ - return controller display value
+ - expose list of all module types
+ - add, remove modules
+ - module connect, disconnect
+   
+
 ## 0.0.2
 
  - expose module flag constants

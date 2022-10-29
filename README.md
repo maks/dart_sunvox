@@ -6,15 +6,14 @@ See the [SunVox lib website](https://warmplace.ru/soft/sunvox/sunvox_lib.php).
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+You will need to obtain the LibSunvox shared library for your OS from [it's webpage](https://warmplace.ru/soft/sunvox/sunvox_lib.php) and pass to the LibSunvox constructor the path to the shared library file as the second parameter.
 
 ## Usage
 
 See  examples in the `/example` folder. 
 
 ```dart
-  final sunvox = LibSunvox();
+  final sunvox = LibSunvox(0, "./sunvox.so");
   const filename = "sunvox_lib/resources/song01.sunvox";
   await sunvox.load(filename);
   sunvox.volume = 256;
