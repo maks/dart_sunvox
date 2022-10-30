@@ -1,3 +1,6 @@
+## 0.0.4
+ - add missing controller value
+
 ## 0.0.3
  - reading controller name, value
  - return controller display value
