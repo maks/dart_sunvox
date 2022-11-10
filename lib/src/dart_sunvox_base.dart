@@ -1,11 +1,12 @@
 import 'dart:ffi';
-import 'dart:math';
+import 'dart:math' as math;
 import 'dart:typed_data';
 
 import 'package:dart_sunvox/src/libsunvox_generated_bindings.dart';
 import 'package:ffi/ffi.dart';
 
 import 'controller_data.dart';
+import 'pattern_data.dart';
 
 export 'module_data.dart';
 
@@ -133,9 +134,99 @@ class LibSunvox {
     _sunvox.sv_send_event(slotNumber, 0, 0, 0, moduleId + 1, controllerId << 8, value);
   }
 
+  int get patternCount {
+    final patternSlots = _sunvox.sv_get_number_of_patterns(slotNumber);
+    int patternCount = 0;
+    for (int i = 0; i < patternSlots; i++) {
+      if (_sunvox.sv_get_pattern_lines(slotNumber, i) > 0) {
+        patternCount++;
+      }
+    }
+    return patternCount;
+  }
+
+  SVPattern? getPattern(int patternId) {
+    return SVPattern(_sunvox, patternId, slotNumber);
+  }
+
   void shutDown() {
     _sunvox.sv_close_slot(slotNumber);
     _sunvox.sv_deinit();
+  }
+}
+
+class SVPattern {
+  final libsunvox _sunvox;
+  final int id;
+  final int slot;
+
+  int get patternTrackCount => _sunvox.sv_get_pattern_tracks(slot, id);
+
+  int get patternLineCount => _sunvox.sv_get_pattern_lines(slot, id);
+
+  String? get name {
+    final ptr = _sunvox.sv_get_pattern_name(slot, id);
+    return ptr.address != 0 ? ptr.cast<Utf8>().toDartString() : null;
+  }
+
+  List<SVPatternLine> get data {
+    final cData = _sunvox.sv_get_pattern_data(slot, id);
+
+    final trackCnt = patternTrackCount;
+    final lineCnt = patternLineCount;
+
+    final List<SVPatternLine> lines = [];
+
+    for (int j = 0; j < lineCnt; j++) {
+      final List<SVPatternEvent> events = [];
+      for (int i = j * trackCnt; i < ((j + 1) * trackCnt); i++) {
+        final lineData = cData.elementAt(i);
+        events.add(SVPatternEvent(
+          note: lineData.ref.note - 1,
+          controller: lineData.ref.ctl,
+          controllerValue: lineData.ref.ctl_val,
+          module: math.max(0, lineData.ref.module - 1),
+          velocity: math.max(0, lineData.ref.vel - 1),
+        ));
+      }
+      lines.add(SVPatternLine(j, events));
+    }
+    return lines;
+  }
+
+  SVPattern(this._sunvox, this.id, this.slot);
+}
+
+class SVPatternLine {
+  final int number;
+  List<SVPatternEvent> events = [];
+
+  SVPatternLine(this.number, this.events);
+
+  @override
+  String toString() {
+    return "[$number] ${events.join(' ')}";
+  }
+}
+
+class SVPatternEvent {
+  final int note;
+  final int velocity;
+  final int module;
+  final int controller;
+  final int controllerValue;
+
+  SVPatternEvent({
+    required this.note,
+    required this.velocity,
+    required this.module,
+    required this.controller,
+    required this.controllerValue,
+  });
+
+  @override
+  String toString() {
+    return "n:${svNumberToNoteString(note)} v:${velocity.hex} m:${module.hex} c:${controller.hex} cv:${controllerValue.hex}|";
   }
 }
 
@@ -148,7 +239,10 @@ class SVModule {
 
   int get flags => _sunvox.sv_get_module_flags(slot, id);
 
-  String get name => _sunvox.sv_get_module_name(slot, id).cast<Utf8>().toDartString();
+  String? get name {
+    final ptr = _sunvox.sv_get_module_name(slot, id);
+    return ptr.address != 0 ? ptr.cast<Utf8>().toDartString() : null;
+  }
 
   SVColor get color {
     final int rgb = _sunvox.sv_get_module_color(slot, id);
@@ -259,14 +353,14 @@ class SVModuleController {
   SVModuleController(this._sunvox, this.slot, this.moduleId, this.id, this.name);
   
   void inc(int amount) async {
-    final update = useScaling ? min(value + (amount * 128), 32768) : min(value + amount, 128);
+    final update = useScaling ? math.min(value + (amount * 128), 32768) : math.min(value + amount, 128);
     _sunvox.sv_set_event_t(slot, 1, 0);
     final ctl = (id + 1) << 8;
     _sunvox.sv_send_event(slot, 0, 0, 0, moduleId + 1, ctl, update);
   }
 
   void dec(int amount) {
-    final update = max(value - amount, 0);
+    final update = math.max(value - amount, 0);
     _sunvox.sv_set_event_t(slot, 1, 0);
     final ctl = (id + 1) << 8;
     _sunvox.sv_send_event(slot, 0, 0, 0, moduleId + 1, ctl, update);
@@ -276,4 +370,9 @@ class SVModuleController {
   String toString() {
     return "[$id] $name scale:$useScaling";
   }
+}
+
+
+extension IntExt on int {
+  String get hex => toRadixString(16);
 }
