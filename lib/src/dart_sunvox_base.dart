@@ -275,7 +275,6 @@ class SVModule {
       _controllers = List.generate(controllerCount, (index) {
         final nameCStr = _sunvox.sv_get_module_ctl_name(slot, id, index);       
         final c = SVModuleController(_sunvox, slot, id, index, nameCStr.cast<Utf8>().toDartString());
-        print(c);
         return c;
       });
     }
