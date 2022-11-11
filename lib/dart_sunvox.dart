@@ -4,3 +4,4 @@
 library dart_sunvox;
 
 export 'src/dart_sunvox_base.dart';
+export 'src/pattern_data.dart';

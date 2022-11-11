@@ -7,5 +7,5 @@ String svNumberToNoteString(int noteNum) {
   return tone + "$octave";
 }
 
-int svNoteToMidi(int sunvoxNoteNumber) => sunvoxNoteNumber + 13;
-int svMidiNoteToSunvox(int midiNoteNumber) => midiNoteNumber - 13;
+int svNoteToMidi(int sunvoxNoteNumber) => sunvoxNoteNumber + 12;
+int svMidiNoteToSunvox(int midiNoteNumber) => midiNoteNumber - 12;
