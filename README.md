@@ -24,6 +24,13 @@ See  examples in the `/example` folder.
   sunvox.shutDown();
 ```
 
+## Development
+
+To rebuild the Dart FFI bindings file run:
+```
+dart run ffigen
+```
+
 ## Licenses
 
 The Dart binding is under the `LICENSE` file in this repo. Please see `sunvox_lib/docs/license` for information on licensing of the code contained within the subvox lib.
