@@ -1,3 +1,6 @@
+## 0.1.0
+ - update to Sunvox lib release v2.1b
+
 ## 0.0.4
  - add missing controller value
 
