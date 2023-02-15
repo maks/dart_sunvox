@@ -87,6 +87,8 @@ class LibSunvox {
 
   void stop() => _sunvox.sv_stop(slotNumber);
 
+  int get currentLine => _sunvox.sv_get_current_line(slotNumber);
+
   // volume 0 to 256
   set volume(int v) => _sunvox.sv_volume(slotNumber, v);
 
