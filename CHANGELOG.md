@@ -1,3 +1,6 @@
+## 0.1.1
+ - setters for pattern name, track & line count
+
 ## 0.1.0
  - update to Sunvox lib release v2.1b
 
