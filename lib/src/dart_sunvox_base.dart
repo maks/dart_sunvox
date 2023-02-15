@@ -27,7 +27,7 @@ class LibSunvox {
   libsunvox get _sunvox => libsunvox(DynamicLibrary.open(libPath));
 
   LibSunvox(this.slotNumber, [this.libPath = 'sunvox_lib/linux/lib_x86_64/sunvox.so']) {
-    final configPtr = calloc<Int8>();
+    final configPtr = calloc<Char>();
     version = _init(configPtr);
     if (version >= 0) {
       _sunvox.sv_open_slot(slotNumber);
@@ -46,13 +46,13 @@ class LibSunvox {
     return '$major.$minor1.$minor2';
   }
 
-  int _init(Pointer<Int8> config) {
+  int _init(Pointer<Char> config) {
     return _sunvox.sv_init(config, 44100, 2, 0);
   }
 
   /// Load sunvox file
   Future<void> load(String filename) async {
-    final namePtr = filename.toNativeUtf8().cast<Int8>();
+    final namePtr = filename.toNativeUtf8().cast<Char>();
     final result = _sunvox.sv_load(slotNumber, namePtr);
     if (result != 0) {
       throw Exception("cannot load file: $filename error code:$result");
@@ -64,7 +64,7 @@ class LibSunvox {
 
   /// Load project file as binary data
   Future<void> loadData(Uint8List data) async {
-    final Pointer<Uint8> sData = calloc<Uint8>(data.length); // Allocate a pointer large enough.
+    final Pointer<Char> sData = calloc<Char>(data.length); // Allocate a pointer large enough.
     for (int i = 0; i < data.length; i++) {
       sData[i] = data[i];
     }
@@ -107,8 +107,8 @@ class LibSunvox {
   }
 
   SVModule? createModule(String type, String name) {
-    final namePtr = name.toNativeUtf8().cast<Int8>();
-    final typePtr = type.toNativeUtf8().cast<Int8>();
+    final namePtr = name.toNativeUtf8().cast<Char>();
+    final typePtr = type.toNativeUtf8().cast<Char>();
 
     _sunvox.sv_lock_slot(slotNumber);
 
@@ -257,14 +257,16 @@ class SVModule {
   List<int> get inputs {
     final int inputSlots = (flags & SV_MODULE_INPUTS_MASK) >> SV_MODULE_INPUTS_OFF;
     final inputsArrayPtr = _sunvox.sv_get_module_inputs(slot, id);
-    final inputsList = inputsArrayPtr.asTypedList(inputSlots);
+    // cast to Uint8 as we know that this is array of unsigned ints from Sunvoxlib API docs
+    final inputsList = (inputsArrayPtr as Pointer<Uint8>).asTypedList(inputSlots);
     return inputsList.where((e) => e >= 0).toList();
   }
 
   List<int> get outputs {
     final int outputSlots = (flags & SV_MODULE_OUTPUTS_MASK) >> SV_MODULE_OUTPUTS_OFF;
     final outputsArrayPtr = _sunvox.sv_get_module_outputs(slot, id);
-    final outputsList = outputsArrayPtr.asTypedList(outputSlots);
+    // cast to Uint8 as we know that this is array of unsigned ints from Sunvoxlib API docs
+    final outputsList = (outputsArrayPtr as Pointer<Uint8>).asTypedList(outputSlots);
     return outputsList.where((e) => e >= 0).toList();
   }
 

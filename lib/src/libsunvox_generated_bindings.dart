@@ -40,7 +40,7 @@ class libsunvox {
   set stderr(ffi.Pointer<FILE> value) => _stderr.value = value;
 
   int remove(
-    ffi.Pointer<ffi.Int8> __filename,
+    ffi.Pointer<ffi.Char> __filename,
   ) {
     return _remove(
       __filename,
@@ -48,14 +48,14 @@ class libsunvox {
   }
 
   late final _removePtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<ffi.Int8>)>>(
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<ffi.Char>)>>(
           'remove');
   late final _remove =
-      _removePtr.asFunction<int Function(ffi.Pointer<ffi.Int8>)>();
+      _removePtr.asFunction<int Function(ffi.Pointer<ffi.Char>)>();
 
   int rename(
-    ffi.Pointer<ffi.Int8> __old,
-    ffi.Pointer<ffi.Int8> __new,
+    ffi.Pointer<ffi.Char> __old,
+    ffi.Pointer<ffi.Char> __new,
   ) {
     return _rename(
       __old,
@@ -65,16 +65,16 @@ class libsunvox {
 
   late final _renamePtr = _lookup<
       ffi.NativeFunction<
-          ffi.Int32 Function(
-              ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>>('rename');
+          ffi.Int Function(
+              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>>('rename');
   late final _rename = _renamePtr
-      .asFunction<int Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>();
+      .asFunction<int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
 
   int renameat(
     int __oldfd,
-    ffi.Pointer<ffi.Int8> __old,
+    ffi.Pointer<ffi.Char> __old,
     int __newfd,
-    ffi.Pointer<ffi.Int8> __new,
+    ffi.Pointer<ffi.Char> __new,
   ) {
     return _renameat(
       __oldfd,
@@ -86,10 +86,10 @@ class libsunvox {
 
   late final _renameatPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Int32 Function(ffi.Int32, ffi.Pointer<ffi.Int8>, ffi.Int32,
-              ffi.Pointer<ffi.Int8>)>>('renameat');
+          ffi.Int Function(ffi.Int, ffi.Pointer<ffi.Char>, ffi.Int,
+              ffi.Pointer<ffi.Char>)>>('renameat');
   late final _renameat = _renameatPtr.asFunction<
-      int Function(int, ffi.Pointer<ffi.Int8>, int, ffi.Pointer<ffi.Int8>)>();
+      int Function(int, ffi.Pointer<ffi.Char>, int, ffi.Pointer<ffi.Char>)>();
 
   int fclose(
     ffi.Pointer<FILE> __stream,
@@ -100,7 +100,7 @@ class libsunvox {
   }
 
   late final _fclosePtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<FILE>)>>(
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<FILE>)>>(
           'fclose');
   late final _fclose = _fclosePtr.asFunction<int Function(ffi.Pointer<FILE>)>();
 
@@ -112,8 +112,8 @@ class libsunvox {
       _lookup<ffi.NativeFunction<ffi.Pointer<FILE> Function()>>('tmpfile');
   late final _tmpfile = _tmpfilePtr.asFunction<ffi.Pointer<FILE> Function()>();
 
-  ffi.Pointer<ffi.Int8> tmpnam(
-    ffi.Pointer<ffi.Int8> arg0,
+  ffi.Pointer<ffi.Char> tmpnam(
+    ffi.Pointer<ffi.Char> arg0,
   ) {
     return _tmpnam(
       arg0,
@@ -122,12 +122,12 @@ class libsunvox {
 
   late final _tmpnamPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Pointer<ffi.Int8> Function(ffi.Pointer<ffi.Int8>)>>('tmpnam');
+          ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>>('tmpnam');
   late final _tmpnam = _tmpnamPtr
-      .asFunction<ffi.Pointer<ffi.Int8> Function(ffi.Pointer<ffi.Int8>)>();
+      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>();
 
-  ffi.Pointer<ffi.Int8> tmpnam_r(
-    ffi.Pointer<ffi.Int8> __s,
+  ffi.Pointer<ffi.Char> tmpnam_r(
+    ffi.Pointer<ffi.Char> __s,
   ) {
     return _tmpnam_r(
       __s,
@@ -136,13 +136,13 @@ class libsunvox {
 
   late final _tmpnam_rPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Pointer<ffi.Int8> Function(ffi.Pointer<ffi.Int8>)>>('tmpnam_r');
+          ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>>('tmpnam_r');
   late final _tmpnam_r = _tmpnam_rPtr
-      .asFunction<ffi.Pointer<ffi.Int8> Function(ffi.Pointer<ffi.Int8>)>();
+      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>();
 
-  ffi.Pointer<ffi.Int8> tempnam(
-    ffi.Pointer<ffi.Int8> __dir,
-    ffi.Pointer<ffi.Int8> __pfx,
+  ffi.Pointer<ffi.Char> tempnam(
+    ffi.Pointer<ffi.Char> __dir,
+    ffi.Pointer<ffi.Char> __pfx,
   ) {
     return _tempnam(
       __dir,
@@ -152,11 +152,11 @@ class libsunvox {
 
   late final _tempnamPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Pointer<ffi.Int8> Function(
-              ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>>('tempnam');
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>>('tempnam');
   late final _tempnam = _tempnamPtr.asFunction<
-      ffi.Pointer<ffi.Int8> Function(
-          ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>();
+      ffi.Pointer<ffi.Char> Function(
+          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
 
   int fflush(
     ffi.Pointer<FILE> __stream,
@@ -167,7 +167,7 @@ class libsunvox {
   }
 
   late final _fflushPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<FILE>)>>(
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<FILE>)>>(
           'fflush');
   late final _fflush = _fflushPtr.asFunction<int Function(ffi.Pointer<FILE>)>();
 
@@ -180,14 +180,14 @@ class libsunvox {
   }
 
   late final _fflush_unlockedPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<FILE>)>>(
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<FILE>)>>(
           'fflush_unlocked');
   late final _fflush_unlocked =
       _fflush_unlockedPtr.asFunction<int Function(ffi.Pointer<FILE>)>();
 
   ffi.Pointer<FILE> fopen(
-    ffi.Pointer<ffi.Int8> __filename,
-    ffi.Pointer<ffi.Int8> __modes,
+    ffi.Pointer<ffi.Char> __filename,
+    ffi.Pointer<ffi.Char> __modes,
   ) {
     return _fopen(
       __filename,
@@ -198,14 +198,14 @@ class libsunvox {
   late final _fopenPtr = _lookup<
       ffi.NativeFunction<
           ffi.Pointer<FILE> Function(
-              ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>>('fopen');
+              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>>('fopen');
   late final _fopen = _fopenPtr.asFunction<
       ffi.Pointer<FILE> Function(
-          ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>();
+          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
 
   ffi.Pointer<FILE> freopen(
-    ffi.Pointer<ffi.Int8> __filename,
-    ffi.Pointer<ffi.Int8> __modes,
+    ffi.Pointer<ffi.Char> __filename,
+    ffi.Pointer<ffi.Char> __modes,
     ffi.Pointer<FILE> __stream,
   ) {
     return _freopen(
@@ -217,15 +217,15 @@ class libsunvox {
 
   late final _freopenPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Pointer<FILE> Function(ffi.Pointer<ffi.Int8>,
-              ffi.Pointer<ffi.Int8>, ffi.Pointer<FILE>)>>('freopen');
+          ffi.Pointer<FILE> Function(ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>, ffi.Pointer<FILE>)>>('freopen');
   late final _freopen = _freopenPtr.asFunction<
       ffi.Pointer<FILE> Function(
-          ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>, ffi.Pointer<FILE>)>();
+          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>, ffi.Pointer<FILE>)>();
 
   ffi.Pointer<FILE> fdopen(
     int __fd,
-    ffi.Pointer<ffi.Int8> __modes,
+    ffi.Pointer<ffi.Char> __modes,
   ) {
     return _fdopen(
       __fd,
@@ -236,14 +236,14 @@ class libsunvox {
   late final _fdopenPtr = _lookup<
       ffi.NativeFunction<
           ffi.Pointer<FILE> Function(
-              ffi.Int32, ffi.Pointer<ffi.Int8>)>>('fdopen');
+              ffi.Int, ffi.Pointer<ffi.Char>)>>('fdopen');
   late final _fdopen = _fdopenPtr
-      .asFunction<ffi.Pointer<FILE> Function(int, ffi.Pointer<ffi.Int8>)>();
+      .asFunction<ffi.Pointer<FILE> Function(int, ffi.Pointer<ffi.Char>)>();
 
   ffi.Pointer<FILE> fmemopen(
     ffi.Pointer<ffi.Void> __s,
     int __len,
-    ffi.Pointer<ffi.Int8> __modes,
+    ffi.Pointer<ffi.Char> __modes,
   ) {
     return _fmemopen(
       __s,
@@ -254,15 +254,15 @@ class libsunvox {
 
   late final _fmemopenPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Pointer<FILE> Function(ffi.Pointer<ffi.Void>, size_t,
-              ffi.Pointer<ffi.Int8>)>>('fmemopen');
+          ffi.Pointer<FILE> Function(ffi.Pointer<ffi.Void>, ffi.Size,
+              ffi.Pointer<ffi.Char>)>>('fmemopen');
   late final _fmemopen = _fmemopenPtr.asFunction<
       ffi.Pointer<FILE> Function(
-          ffi.Pointer<ffi.Void>, int, ffi.Pointer<ffi.Int8>)>();
+          ffi.Pointer<ffi.Void>, int, ffi.Pointer<ffi.Char>)>();
 
   ffi.Pointer<FILE> open_memstream(
-    ffi.Pointer<ffi.Pointer<ffi.Int8>> __bufloc,
-    ffi.Pointer<size_t> __sizeloc,
+    ffi.Pointer<ffi.Pointer<ffi.Char>> __bufloc,
+    ffi.Pointer<ffi.Size> __sizeloc,
   ) {
     return _open_memstream(
       __bufloc,
@@ -272,15 +272,15 @@ class libsunvox {
 
   late final _open_memstreamPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Pointer<FILE> Function(ffi.Pointer<ffi.Pointer<ffi.Int8>>,
-              ffi.Pointer<size_t>)>>('open_memstream');
+          ffi.Pointer<FILE> Function(ffi.Pointer<ffi.Pointer<ffi.Char>>,
+              ffi.Pointer<ffi.Size>)>>('open_memstream');
   late final _open_memstream = _open_memstreamPtr.asFunction<
       ffi.Pointer<FILE> Function(
-          ffi.Pointer<ffi.Pointer<ffi.Int8>>, ffi.Pointer<size_t>)>();
+          ffi.Pointer<ffi.Pointer<ffi.Char>>, ffi.Pointer<ffi.Size>)>();
 
   void setbuf(
     ffi.Pointer<FILE> __stream,
-    ffi.Pointer<ffi.Int8> __buf,
+    ffi.Pointer<ffi.Char> __buf,
   ) {
     return _setbuf(
       __stream,
@@ -291,13 +291,13 @@ class libsunvox {
   late final _setbufPtr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(
-              ffi.Pointer<FILE>, ffi.Pointer<ffi.Int8>)>>('setbuf');
+              ffi.Pointer<FILE>, ffi.Pointer<ffi.Char>)>>('setbuf');
   late final _setbuf = _setbufPtr
-      .asFunction<void Function(ffi.Pointer<FILE>, ffi.Pointer<ffi.Int8>)>();
+      .asFunction<void Function(ffi.Pointer<FILE>, ffi.Pointer<ffi.Char>)>();
 
   int setvbuf(
     ffi.Pointer<FILE> __stream,
-    ffi.Pointer<ffi.Int8> __buf,
+    ffi.Pointer<ffi.Char> __buf,
     int __modes,
     int __n,
   ) {
@@ -311,14 +311,14 @@ class libsunvox {
 
   late final _setvbufPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Int32 Function(ffi.Pointer<FILE>, ffi.Pointer<ffi.Int8>,
-              ffi.Int32, size_t)>>('setvbuf');
+          ffi.Int Function(ffi.Pointer<FILE>, ffi.Pointer<ffi.Char>, ffi.Int,
+              ffi.Size)>>('setvbuf');
   late final _setvbuf = _setvbufPtr.asFunction<
-      int Function(ffi.Pointer<FILE>, ffi.Pointer<ffi.Int8>, int, int)>();
+      int Function(ffi.Pointer<FILE>, ffi.Pointer<ffi.Char>, int, int)>();
 
   void setbuffer(
     ffi.Pointer<FILE> __stream,
-    ffi.Pointer<ffi.Int8> __buf,
+    ffi.Pointer<ffi.Char> __buf,
     int __size,
   ) {
     return _setbuffer(
@@ -330,10 +330,10 @@ class libsunvox {
 
   late final _setbufferPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(
-              ffi.Pointer<FILE>, ffi.Pointer<ffi.Int8>, size_t)>>('setbuffer');
+          ffi.Void Function(ffi.Pointer<FILE>, ffi.Pointer<ffi.Char>,
+              ffi.Size)>>('setbuffer');
   late final _setbuffer = _setbufferPtr.asFunction<
-      void Function(ffi.Pointer<FILE>, ffi.Pointer<ffi.Int8>, int)>();
+      void Function(ffi.Pointer<FILE>, ffi.Pointer<ffi.Char>, int)>();
 
   void setlinebuf(
     ffi.Pointer<FILE> __stream,
@@ -351,7 +351,7 @@ class libsunvox {
 
   int fprintf(
     ffi.Pointer<FILE> __stream,
-    ffi.Pointer<ffi.Int8> __format,
+    ffi.Pointer<ffi.Char> __format,
   ) {
     return _fprintf(
       __stream,
@@ -361,13 +361,13 @@ class libsunvox {
 
   late final _fprintfPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Int32 Function(
-              ffi.Pointer<FILE>, ffi.Pointer<ffi.Int8>)>>('fprintf');
+          ffi.Int Function(
+              ffi.Pointer<FILE>, ffi.Pointer<ffi.Char>)>>('fprintf');
   late final _fprintf = _fprintfPtr
-      .asFunction<int Function(ffi.Pointer<FILE>, ffi.Pointer<ffi.Int8>)>();
+      .asFunction<int Function(ffi.Pointer<FILE>, ffi.Pointer<ffi.Char>)>();
 
   int printf(
-    ffi.Pointer<ffi.Int8> __format,
+    ffi.Pointer<ffi.Char> __format,
   ) {
     return _printf(
       __format,
@@ -375,14 +375,14 @@ class libsunvox {
   }
 
   late final _printfPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<ffi.Int8>)>>(
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<ffi.Char>)>>(
           'printf');
   late final _printf =
-      _printfPtr.asFunction<int Function(ffi.Pointer<ffi.Int8>)>();
+      _printfPtr.asFunction<int Function(ffi.Pointer<ffi.Char>)>();
 
   int sprintf(
-    ffi.Pointer<ffi.Int8> __s,
-    ffi.Pointer<ffi.Int8> __format,
+    ffi.Pointer<ffi.Char> __s,
+    ffi.Pointer<ffi.Char> __format,
   ) {
     return _sprintf(
       __s,
@@ -392,14 +392,14 @@ class libsunvox {
 
   late final _sprintfPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Int32 Function(
-              ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>>('sprintf');
+          ffi.Int Function(
+              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>>('sprintf');
   late final _sprintf = _sprintfPtr
-      .asFunction<int Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>();
+      .asFunction<int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
 
   int vfprintf(
     ffi.Pointer<FILE> __s,
-    ffi.Pointer<ffi.Int8> __format,
+    ffi.Pointer<ffi.Char> __format,
     ffi.Pointer<_va_list_tag_> __arg,
   ) {
     return _vfprintf(
@@ -411,14 +411,14 @@ class libsunvox {
 
   late final _vfprintfPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Int32 Function(ffi.Pointer<FILE>, ffi.Pointer<ffi.Int8>,
+          ffi.Int Function(ffi.Pointer<FILE>, ffi.Pointer<ffi.Char>,
               ffi.Pointer<_va_list_tag_>)>>('vfprintf');
   late final _vfprintf = _vfprintfPtr.asFunction<
-      int Function(ffi.Pointer<FILE>, ffi.Pointer<ffi.Int8>,
+      int Function(ffi.Pointer<FILE>, ffi.Pointer<ffi.Char>,
           ffi.Pointer<_va_list_tag_>)>();
 
   int vprintf(
-    ffi.Pointer<ffi.Int8> __format,
+    ffi.Pointer<ffi.Char> __format,
     ffi.Pointer<_va_list_tag_> __arg,
   ) {
     return _vprintf(
@@ -429,14 +429,14 @@ class libsunvox {
 
   late final _vprintfPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Int32 Function(
-              ffi.Pointer<ffi.Int8>, ffi.Pointer<_va_list_tag_>)>>('vprintf');
+          ffi.Int Function(
+              ffi.Pointer<ffi.Char>, ffi.Pointer<_va_list_tag_>)>>('vprintf');
   late final _vprintf = _vprintfPtr.asFunction<
-      int Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<_va_list_tag_>)>();
+      int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<_va_list_tag_>)>();
 
   int vsprintf(
-    ffi.Pointer<ffi.Int8> __s,
-    ffi.Pointer<ffi.Int8> __format,
+    ffi.Pointer<ffi.Char> __s,
+    ffi.Pointer<ffi.Char> __format,
     ffi.Pointer<_va_list_tag_> __arg,
   ) {
     return _vsprintf(
@@ -448,16 +448,16 @@ class libsunvox {
 
   late final _vsprintfPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Int32 Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>,
+          ffi.Int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>,
               ffi.Pointer<_va_list_tag_>)>>('vsprintf');
   late final _vsprintf = _vsprintfPtr.asFunction<
-      int Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>,
+      int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>,
           ffi.Pointer<_va_list_tag_>)>();
 
   int snprintf(
-    ffi.Pointer<ffi.Int8> __s,
+    ffi.Pointer<ffi.Char> __s,
     int __maxlen,
-    ffi.Pointer<ffi.Int8> __format,
+    ffi.Pointer<ffi.Char> __format,
   ) {
     return _snprintf(
       __s,
@@ -468,15 +468,15 @@ class libsunvox {
 
   late final _snprintfPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Int32 Function(ffi.Pointer<ffi.Int8>, size_t,
-              ffi.Pointer<ffi.Int8>)>>('snprintf');
+          ffi.Int Function(ffi.Pointer<ffi.Char>, ffi.Size,
+              ffi.Pointer<ffi.Char>)>>('snprintf');
   late final _snprintf = _snprintfPtr.asFunction<
-      int Function(ffi.Pointer<ffi.Int8>, int, ffi.Pointer<ffi.Int8>)>();
+      int Function(ffi.Pointer<ffi.Char>, int, ffi.Pointer<ffi.Char>)>();
 
   int vsnprintf(
-    ffi.Pointer<ffi.Int8> __s,
+    ffi.Pointer<ffi.Char> __s,
     int __maxlen,
-    ffi.Pointer<ffi.Int8> __format,
+    ffi.Pointer<ffi.Char> __format,
     ffi.Pointer<_va_list_tag_> __arg,
   ) {
     return _vsnprintf(
@@ -489,15 +489,15 @@ class libsunvox {
 
   late final _vsnprintfPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Int32 Function(ffi.Pointer<ffi.Int8>, size_t,
-              ffi.Pointer<ffi.Int8>, ffi.Pointer<_va_list_tag_>)>>('vsnprintf');
+          ffi.Int Function(ffi.Pointer<ffi.Char>, ffi.Size,
+              ffi.Pointer<ffi.Char>, ffi.Pointer<_va_list_tag_>)>>('vsnprintf');
   late final _vsnprintf = _vsnprintfPtr.asFunction<
-      int Function(ffi.Pointer<ffi.Int8>, int, ffi.Pointer<ffi.Int8>,
+      int Function(ffi.Pointer<ffi.Char>, int, ffi.Pointer<ffi.Char>,
           ffi.Pointer<_va_list_tag_>)>();
 
   int vdprintf(
     int __fd,
-    ffi.Pointer<ffi.Int8> __fmt,
+    ffi.Pointer<ffi.Char> __fmt,
     ffi.Pointer<_va_list_tag_> __arg,
   ) {
     return _vdprintf(
@@ -509,14 +509,14 @@ class libsunvox {
 
   late final _vdprintfPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Int32 Function(ffi.Int32, ffi.Pointer<ffi.Int8>,
+          ffi.Int Function(ffi.Int, ffi.Pointer<ffi.Char>,
               ffi.Pointer<_va_list_tag_>)>>('vdprintf');
   late final _vdprintf = _vdprintfPtr.asFunction<
-      int Function(int, ffi.Pointer<ffi.Int8>, ffi.Pointer<_va_list_tag_>)>();
+      int Function(int, ffi.Pointer<ffi.Char>, ffi.Pointer<_va_list_tag_>)>();
 
   int dprintf(
     int __fd,
-    ffi.Pointer<ffi.Int8> __fmt,
+    ffi.Pointer<ffi.Char> __fmt,
   ) {
     return _dprintf(
       __fd,
@@ -525,14 +525,14 @@ class libsunvox {
   }
 
   late final _dprintfPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int32 Function(ffi.Int32, ffi.Pointer<ffi.Int8>)>>('dprintf');
+          ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Pointer<ffi.Char>)>>(
+      'dprintf');
   late final _dprintf =
-      _dprintfPtr.asFunction<int Function(int, ffi.Pointer<ffi.Int8>)>();
+      _dprintfPtr.asFunction<int Function(int, ffi.Pointer<ffi.Char>)>();
 
   int fscanf(
     ffi.Pointer<FILE> __stream,
-    ffi.Pointer<ffi.Int8> __format,
+    ffi.Pointer<ffi.Char> __format,
   ) {
     return _fscanf(
       __stream,
@@ -542,13 +542,13 @@ class libsunvox {
 
   late final _fscanfPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Int32 Function(
-              ffi.Pointer<FILE>, ffi.Pointer<ffi.Int8>)>>('fscanf');
+          ffi.Int Function(
+              ffi.Pointer<FILE>, ffi.Pointer<ffi.Char>)>>('fscanf');
   late final _fscanf = _fscanfPtr
-      .asFunction<int Function(ffi.Pointer<FILE>, ffi.Pointer<ffi.Int8>)>();
+      .asFunction<int Function(ffi.Pointer<FILE>, ffi.Pointer<ffi.Char>)>();
 
   int scanf(
-    ffi.Pointer<ffi.Int8> __format,
+    ffi.Pointer<ffi.Char> __format,
   ) {
     return _scanf(
       __format,
@@ -556,14 +556,14 @@ class libsunvox {
   }
 
   late final _scanfPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<ffi.Int8>)>>(
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<ffi.Char>)>>(
           'scanf');
   late final _scanf =
-      _scanfPtr.asFunction<int Function(ffi.Pointer<ffi.Int8>)>();
+      _scanfPtr.asFunction<int Function(ffi.Pointer<ffi.Char>)>();
 
   int sscanf(
-    ffi.Pointer<ffi.Int8> __s,
-    ffi.Pointer<ffi.Int8> __format,
+    ffi.Pointer<ffi.Char> __s,
+    ffi.Pointer<ffi.Char> __format,
   ) {
     return _sscanf(
       __s,
@@ -573,14 +573,14 @@ class libsunvox {
 
   late final _sscanfPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Int32 Function(
-              ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>>('sscanf');
+          ffi.Int Function(
+              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>>('sscanf');
   late final _sscanf = _sscanfPtr
-      .asFunction<int Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>();
+      .asFunction<int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
 
   int vfscanf(
     ffi.Pointer<FILE> __s,
-    ffi.Pointer<ffi.Int8> __format,
+    ffi.Pointer<ffi.Char> __format,
     ffi.Pointer<_va_list_tag_> __arg,
   ) {
     return _vfscanf(
@@ -592,14 +592,14 @@ class libsunvox {
 
   late final _vfscanfPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Int32 Function(ffi.Pointer<FILE>, ffi.Pointer<ffi.Int8>,
+          ffi.Int Function(ffi.Pointer<FILE>, ffi.Pointer<ffi.Char>,
               ffi.Pointer<_va_list_tag_>)>>('vfscanf');
   late final _vfscanf = _vfscanfPtr.asFunction<
-      int Function(ffi.Pointer<FILE>, ffi.Pointer<ffi.Int8>,
+      int Function(ffi.Pointer<FILE>, ffi.Pointer<ffi.Char>,
           ffi.Pointer<_va_list_tag_>)>();
 
   int vscanf(
-    ffi.Pointer<ffi.Int8> __format,
+    ffi.Pointer<ffi.Char> __format,
     ffi.Pointer<_va_list_tag_> __arg,
   ) {
     return _vscanf(
@@ -610,14 +610,14 @@ class libsunvox {
 
   late final _vscanfPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Int32 Function(
-              ffi.Pointer<ffi.Int8>, ffi.Pointer<_va_list_tag_>)>>('vscanf');
+          ffi.Int Function(
+              ffi.Pointer<ffi.Char>, ffi.Pointer<_va_list_tag_>)>>('vscanf');
   late final _vscanf = _vscanfPtr.asFunction<
-      int Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<_va_list_tag_>)>();
+      int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<_va_list_tag_>)>();
 
   int vsscanf(
-    ffi.Pointer<ffi.Int8> __s,
-    ffi.Pointer<ffi.Int8> __format,
+    ffi.Pointer<ffi.Char> __s,
+    ffi.Pointer<ffi.Char> __format,
     ffi.Pointer<_va_list_tag_> __arg,
   ) {
     return _vsscanf(
@@ -629,10 +629,10 @@ class libsunvox {
 
   late final _vsscanfPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Int32 Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>,
+          ffi.Int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>,
               ffi.Pointer<_va_list_tag_>)>>('vsscanf');
   late final _vsscanf = _vsscanfPtr.asFunction<
-      int Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>,
+      int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>,
           ffi.Pointer<_va_list_tag_>)>();
 
   int fgetc(
@@ -644,8 +644,7 @@ class libsunvox {
   }
 
   late final _fgetcPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<FILE>)>>(
-          'fgetc');
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<FILE>)>>('fgetc');
   late final _fgetc = _fgetcPtr.asFunction<int Function(ffi.Pointer<FILE>)>();
 
   int getc(
@@ -657,8 +656,7 @@ class libsunvox {
   }
 
   late final _getcPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<FILE>)>>(
-          'getc');
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<FILE>)>>('getc');
   late final _getc = _getcPtr.asFunction<int Function(ffi.Pointer<FILE>)>();
 
   int getchar() {
@@ -666,7 +664,7 @@ class libsunvox {
   }
 
   late final _getcharPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>('getchar');
+      _lookup<ffi.NativeFunction<ffi.Int Function()>>('getchar');
   late final _getchar = _getcharPtr.asFunction<int Function()>();
 
   int getc_unlocked(
@@ -678,7 +676,7 @@ class libsunvox {
   }
 
   late final _getc_unlockedPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<FILE>)>>(
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<FILE>)>>(
           'getc_unlocked');
   late final _getc_unlocked =
       _getc_unlockedPtr.asFunction<int Function(ffi.Pointer<FILE>)>();
@@ -688,7 +686,7 @@ class libsunvox {
   }
 
   late final _getchar_unlockedPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>('getchar_unlocked');
+      _lookup<ffi.NativeFunction<ffi.Int Function()>>('getchar_unlocked');
   late final _getchar_unlocked =
       _getchar_unlockedPtr.asFunction<int Function()>();
 
@@ -701,7 +699,7 @@ class libsunvox {
   }
 
   late final _fgetc_unlockedPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<FILE>)>>(
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<FILE>)>>(
           'fgetc_unlocked');
   late final _fgetc_unlocked =
       _fgetc_unlockedPtr.asFunction<int Function(ffi.Pointer<FILE>)>();
@@ -716,9 +714,9 @@ class libsunvox {
     );
   }
 
-  late final _fputcPtr = _lookup<
-          ffi.NativeFunction<ffi.Int32 Function(ffi.Int32, ffi.Pointer<FILE>)>>(
-      'fputc');
+  late final _fputcPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Pointer<FILE>)>>(
+          'fputc');
   late final _fputc =
       _fputcPtr.asFunction<int Function(int, ffi.Pointer<FILE>)>();
 
@@ -732,9 +730,9 @@ class libsunvox {
     );
   }
 
-  late final _putcPtr = _lookup<
-          ffi.NativeFunction<ffi.Int32 Function(ffi.Int32, ffi.Pointer<FILE>)>>(
-      'putc');
+  late final _putcPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Pointer<FILE>)>>(
+          'putc');
   late final _putc =
       _putcPtr.asFunction<int Function(int, ffi.Pointer<FILE>)>();
 
@@ -747,7 +745,7 @@ class libsunvox {
   }
 
   late final _putcharPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>('putchar');
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int)>>('putchar');
   late final _putchar = _putcharPtr.asFunction<int Function(int)>();
 
   int fputc_unlocked(
@@ -760,9 +758,9 @@ class libsunvox {
     );
   }
 
-  late final _fputc_unlockedPtr = _lookup<
-          ffi.NativeFunction<ffi.Int32 Function(ffi.Int32, ffi.Pointer<FILE>)>>(
-      'fputc_unlocked');
+  late final _fputc_unlockedPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Pointer<FILE>)>>(
+          'fputc_unlocked');
   late final _fputc_unlocked =
       _fputc_unlockedPtr.asFunction<int Function(int, ffi.Pointer<FILE>)>();
 
@@ -776,9 +774,9 @@ class libsunvox {
     );
   }
 
-  late final _putc_unlockedPtr = _lookup<
-          ffi.NativeFunction<ffi.Int32 Function(ffi.Int32, ffi.Pointer<FILE>)>>(
-      'putc_unlocked');
+  late final _putc_unlockedPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Pointer<FILE>)>>(
+          'putc_unlocked');
   late final _putc_unlocked =
       _putc_unlockedPtr.asFunction<int Function(int, ffi.Pointer<FILE>)>();
 
@@ -791,7 +789,7 @@ class libsunvox {
   }
 
   late final _putchar_unlockedPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int)>>(
           'putchar_unlocked');
   late final _putchar_unlocked =
       _putchar_unlockedPtr.asFunction<int Function(int)>();
@@ -805,8 +803,7 @@ class libsunvox {
   }
 
   late final _getwPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<FILE>)>>(
-          'getw');
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<FILE>)>>('getw');
   late final _getw = _getwPtr.asFunction<int Function(ffi.Pointer<FILE>)>();
 
   int putw(
@@ -819,14 +816,14 @@ class libsunvox {
     );
   }
 
-  late final _putwPtr = _lookup<
-          ffi.NativeFunction<ffi.Int32 Function(ffi.Int32, ffi.Pointer<FILE>)>>(
-      'putw');
+  late final _putwPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Pointer<FILE>)>>(
+          'putw');
   late final _putw =
       _putwPtr.asFunction<int Function(int, ffi.Pointer<FILE>)>();
 
-  ffi.Pointer<ffi.Int8> fgets(
-    ffi.Pointer<ffi.Int8> __s,
+  ffi.Pointer<ffi.Char> fgets(
+    ffi.Pointer<ffi.Char> __s,
     int __n,
     ffi.Pointer<FILE> __stream,
   ) {
@@ -839,15 +836,15 @@ class libsunvox {
 
   late final _fgetsPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Pointer<ffi.Int8> Function(
-              ffi.Pointer<ffi.Int8>, ffi.Int32, ffi.Pointer<FILE>)>>('fgets');
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<ffi.Char>, ffi.Int, ffi.Pointer<FILE>)>>('fgets');
   late final _fgets = _fgetsPtr.asFunction<
-      ffi.Pointer<ffi.Int8> Function(
-          ffi.Pointer<ffi.Int8>, int, ffi.Pointer<FILE>)>();
+      ffi.Pointer<ffi.Char> Function(
+          ffi.Pointer<ffi.Char>, int, ffi.Pointer<FILE>)>();
 
   int __getdelim(
-    ffi.Pointer<ffi.Pointer<ffi.Int8>> __lineptr,
-    ffi.Pointer<size_t> __n,
+    ffi.Pointer<ffi.Pointer<ffi.Char>> __lineptr,
+    ffi.Pointer<ffi.Size> __n,
     int __delimiter,
     ffi.Pointer<FILE> __stream,
   ) {
@@ -862,17 +859,17 @@ class libsunvox {
   late final ___getdelimPtr = _lookup<
       ffi.NativeFunction<
           __ssize_t Function(
-              ffi.Pointer<ffi.Pointer<ffi.Int8>>,
-              ffi.Pointer<size_t>,
-              ffi.Int32,
+              ffi.Pointer<ffi.Pointer<ffi.Char>>,
+              ffi.Pointer<ffi.Size>,
+              ffi.Int,
               ffi.Pointer<FILE>)>>('__getdelim');
   late final ___getdelim = ___getdelimPtr.asFunction<
-      int Function(ffi.Pointer<ffi.Pointer<ffi.Int8>>, ffi.Pointer<size_t>, int,
-          ffi.Pointer<FILE>)>();
+      int Function(ffi.Pointer<ffi.Pointer<ffi.Char>>, ffi.Pointer<ffi.Size>,
+          int, ffi.Pointer<FILE>)>();
 
   int getdelim(
-    ffi.Pointer<ffi.Pointer<ffi.Int8>> __lineptr,
-    ffi.Pointer<size_t> __n,
+    ffi.Pointer<ffi.Pointer<ffi.Char>> __lineptr,
+    ffi.Pointer<ffi.Size> __n,
     int __delimiter,
     ffi.Pointer<FILE> __stream,
   ) {
@@ -886,15 +883,15 @@ class libsunvox {
 
   late final _getdelimPtr = _lookup<
       ffi.NativeFunction<
-          __ssize_t Function(ffi.Pointer<ffi.Pointer<ffi.Int8>>,
-              ffi.Pointer<size_t>, ffi.Int32, ffi.Pointer<FILE>)>>('getdelim');
+          __ssize_t Function(ffi.Pointer<ffi.Pointer<ffi.Char>>,
+              ffi.Pointer<ffi.Size>, ffi.Int, ffi.Pointer<FILE>)>>('getdelim');
   late final _getdelim = _getdelimPtr.asFunction<
-      int Function(ffi.Pointer<ffi.Pointer<ffi.Int8>>, ffi.Pointer<size_t>, int,
-          ffi.Pointer<FILE>)>();
+      int Function(ffi.Pointer<ffi.Pointer<ffi.Char>>, ffi.Pointer<ffi.Size>,
+          int, ffi.Pointer<FILE>)>();
 
   int getline(
-    ffi.Pointer<ffi.Pointer<ffi.Int8>> __lineptr,
-    ffi.Pointer<size_t> __n,
+    ffi.Pointer<ffi.Pointer<ffi.Char>> __lineptr,
+    ffi.Pointer<ffi.Size> __n,
     ffi.Pointer<FILE> __stream,
   ) {
     return _getline(
@@ -906,14 +903,14 @@ class libsunvox {
 
   late final _getlinePtr = _lookup<
       ffi.NativeFunction<
-          __ssize_t Function(ffi.Pointer<ffi.Pointer<ffi.Int8>>,
-              ffi.Pointer<size_t>, ffi.Pointer<FILE>)>>('getline');
+          __ssize_t Function(ffi.Pointer<ffi.Pointer<ffi.Char>>,
+              ffi.Pointer<ffi.Size>, ffi.Pointer<FILE>)>>('getline');
   late final _getline = _getlinePtr.asFunction<
-      int Function(ffi.Pointer<ffi.Pointer<ffi.Int8>>, ffi.Pointer<size_t>,
+      int Function(ffi.Pointer<ffi.Pointer<ffi.Char>>, ffi.Pointer<ffi.Size>,
           ffi.Pointer<FILE>)>();
 
   int fputs(
-    ffi.Pointer<ffi.Int8> __s,
+    ffi.Pointer<ffi.Char> __s,
     ffi.Pointer<FILE> __stream,
   ) {
     return _fputs(
@@ -924,13 +921,12 @@ class libsunvox {
 
   late final _fputsPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Int32 Function(
-              ffi.Pointer<ffi.Int8>, ffi.Pointer<FILE>)>>('fputs');
+          ffi.Int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<FILE>)>>('fputs');
   late final _fputs = _fputsPtr
-      .asFunction<int Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<FILE>)>();
+      .asFunction<int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<FILE>)>();
 
   int puts(
-    ffi.Pointer<ffi.Int8> __s,
+    ffi.Pointer<ffi.Char> __s,
   ) {
     return _puts(
       __s,
@@ -938,9 +934,9 @@ class libsunvox {
   }
 
   late final _putsPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<ffi.Int8>)>>(
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<ffi.Char>)>>(
           'puts');
-  late final _puts = _putsPtr.asFunction<int Function(ffi.Pointer<ffi.Int8>)>();
+  late final _puts = _putsPtr.asFunction<int Function(ffi.Pointer<ffi.Char>)>();
 
   int ungetc(
     int __c,
@@ -952,9 +948,9 @@ class libsunvox {
     );
   }
 
-  late final _ungetcPtr = _lookup<
-          ffi.NativeFunction<ffi.Int32 Function(ffi.Int32, ffi.Pointer<FILE>)>>(
-      'ungetc');
+  late final _ungetcPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Pointer<FILE>)>>(
+          'ungetc');
   late final _ungetc =
       _ungetcPtr.asFunction<int Function(int, ffi.Pointer<FILE>)>();
 
@@ -974,7 +970,7 @@ class libsunvox {
 
   late final _freadPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint64 Function(ffi.Pointer<ffi.Void>, size_t, size_t,
+          ffi.UnsignedLong Function(ffi.Pointer<ffi.Void>, ffi.Size, ffi.Size,
               ffi.Pointer<FILE>)>>('fread');
   late final _fread = _freadPtr.asFunction<
       int Function(ffi.Pointer<ffi.Void>, int, int, ffi.Pointer<FILE>)>();
@@ -995,7 +991,7 @@ class libsunvox {
 
   late final _fwritePtr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint64 Function(ffi.Pointer<ffi.Void>, size_t, size_t,
+          ffi.UnsignedLong Function(ffi.Pointer<ffi.Void>, ffi.Size, ffi.Size,
               ffi.Pointer<FILE>)>>('fwrite');
   late final _fwrite = _fwritePtr.asFunction<
       int Function(ffi.Pointer<ffi.Void>, int, int, ffi.Pointer<FILE>)>();
@@ -1016,7 +1012,7 @@ class libsunvox {
 
   late final _fread_unlockedPtr = _lookup<
       ffi.NativeFunction<
-          size_t Function(ffi.Pointer<ffi.Void>, size_t, size_t,
+          ffi.Size Function(ffi.Pointer<ffi.Void>, ffi.Size, ffi.Size,
               ffi.Pointer<FILE>)>>('fread_unlocked');
   late final _fread_unlocked = _fread_unlockedPtr.asFunction<
       int Function(ffi.Pointer<ffi.Void>, int, int, ffi.Pointer<FILE>)>();
@@ -1037,7 +1033,7 @@ class libsunvox {
 
   late final _fwrite_unlockedPtr = _lookup<
       ffi.NativeFunction<
-          size_t Function(ffi.Pointer<ffi.Void>, size_t, size_t,
+          ffi.Size Function(ffi.Pointer<ffi.Void>, ffi.Size, ffi.Size,
               ffi.Pointer<FILE>)>>('fwrite_unlocked');
   late final _fwrite_unlocked = _fwrite_unlockedPtr.asFunction<
       int Function(ffi.Pointer<ffi.Void>, int, int, ffi.Pointer<FILE>)>();
@@ -1056,8 +1052,7 @@ class libsunvox {
 
   late final _fseekPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Int32 Function(
-              ffi.Pointer<FILE>, ffi.Int64, ffi.Int32)>>('fseek');
+          ffi.Int Function(ffi.Pointer<FILE>, ffi.Long, ffi.Int)>>('fseek');
   late final _fseek =
       _fseekPtr.asFunction<int Function(ffi.Pointer<FILE>, int, int)>();
 
@@ -1070,7 +1065,7 @@ class libsunvox {
   }
 
   late final _ftellPtr =
-      _lookup<ffi.NativeFunction<ffi.Int64 Function(ffi.Pointer<FILE>)>>(
+      _lookup<ffi.NativeFunction<ffi.Long Function(ffi.Pointer<FILE>)>>(
           'ftell');
   late final _ftell = _ftellPtr.asFunction<int Function(ffi.Pointer<FILE>)>();
 
@@ -1102,7 +1097,7 @@ class libsunvox {
 
   late final _fseekoPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Int32 Function(ffi.Pointer<FILE>, __off_t, ffi.Int32)>>('fseeko');
+          ffi.Int Function(ffi.Pointer<FILE>, __off_t, ffi.Int)>>('fseeko');
   late final _fseeko =
       _fseekoPtr.asFunction<int Function(ffi.Pointer<FILE>, int, int)>();
 
@@ -1131,8 +1126,7 @@ class libsunvox {
 
   late final _fgetposPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Int32 Function(
-              ffi.Pointer<FILE>, ffi.Pointer<fpos_t>)>>('fgetpos');
+          ffi.Int Function(ffi.Pointer<FILE>, ffi.Pointer<fpos_t>)>>('fgetpos');
   late final _fgetpos = _fgetposPtr
       .asFunction<int Function(ffi.Pointer<FILE>, ffi.Pointer<fpos_t>)>();
 
@@ -1148,8 +1142,7 @@ class libsunvox {
 
   late final _fsetposPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Int32 Function(
-              ffi.Pointer<FILE>, ffi.Pointer<fpos_t>)>>('fsetpos');
+          ffi.Int Function(ffi.Pointer<FILE>, ffi.Pointer<fpos_t>)>>('fsetpos');
   late final _fsetpos = _fsetposPtr
       .asFunction<int Function(ffi.Pointer<FILE>, ffi.Pointer<fpos_t>)>();
 
@@ -1176,8 +1169,7 @@ class libsunvox {
   }
 
   late final _feofPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<FILE>)>>(
-          'feof');
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<FILE>)>>('feof');
   late final _feof = _feofPtr.asFunction<int Function(ffi.Pointer<FILE>)>();
 
   int ferror(
@@ -1189,7 +1181,7 @@ class libsunvox {
   }
 
   late final _ferrorPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<FILE>)>>(
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<FILE>)>>(
           'ferror');
   late final _ferror = _ferrorPtr.asFunction<int Function(ffi.Pointer<FILE>)>();
 
@@ -1216,7 +1208,7 @@ class libsunvox {
   }
 
   late final _feof_unlockedPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<FILE>)>>(
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<FILE>)>>(
           'feof_unlocked');
   late final _feof_unlocked =
       _feof_unlockedPtr.asFunction<int Function(ffi.Pointer<FILE>)>();
@@ -1230,13 +1222,13 @@ class libsunvox {
   }
 
   late final _ferror_unlockedPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<FILE>)>>(
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<FILE>)>>(
           'ferror_unlocked');
   late final _ferror_unlocked =
       _ferror_unlockedPtr.asFunction<int Function(ffi.Pointer<FILE>)>();
 
   void perror(
-    ffi.Pointer<ffi.Int8> __s,
+    ffi.Pointer<ffi.Char> __s,
   ) {
     return _perror(
       __s,
@@ -1244,10 +1236,10 @@ class libsunvox {
   }
 
   late final _perrorPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Int8>)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Char>)>>(
           'perror');
   late final _perror =
-      _perrorPtr.asFunction<void Function(ffi.Pointer<ffi.Int8>)>();
+      _perrorPtr.asFunction<void Function(ffi.Pointer<ffi.Char>)>();
 
   int fileno(
     ffi.Pointer<FILE> __stream,
@@ -1258,7 +1250,7 @@ class libsunvox {
   }
 
   late final _filenoPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<FILE>)>>(
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<FILE>)>>(
           'fileno');
   late final _fileno = _filenoPtr.asFunction<int Function(ffi.Pointer<FILE>)>();
 
@@ -1271,7 +1263,7 @@ class libsunvox {
   }
 
   late final _fileno_unlockedPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<FILE>)>>(
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<FILE>)>>(
           'fileno_unlocked');
   late final _fileno_unlocked =
       _fileno_unlockedPtr.asFunction<int Function(ffi.Pointer<FILE>)>();
@@ -1285,13 +1277,13 @@ class libsunvox {
   }
 
   late final _pclosePtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<FILE>)>>(
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<FILE>)>>(
           'pclose');
   late final _pclose = _pclosePtr.asFunction<int Function(ffi.Pointer<FILE>)>();
 
   ffi.Pointer<FILE> popen(
-    ffi.Pointer<ffi.Int8> __command,
-    ffi.Pointer<ffi.Int8> __modes,
+    ffi.Pointer<ffi.Char> __command,
+    ffi.Pointer<ffi.Char> __modes,
   ) {
     return _popen(
       __command,
@@ -1302,13 +1294,13 @@ class libsunvox {
   late final _popenPtr = _lookup<
       ffi.NativeFunction<
           ffi.Pointer<FILE> Function(
-              ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>>('popen');
+              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>>('popen');
   late final _popen = _popenPtr.asFunction<
       ffi.Pointer<FILE> Function(
-          ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>();
+          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
 
-  ffi.Pointer<ffi.Int8> ctermid(
-    ffi.Pointer<ffi.Int8> __s,
+  ffi.Pointer<ffi.Char> ctermid(
+    ffi.Pointer<ffi.Char> __s,
   ) {
     return _ctermid(
       __s,
@@ -1317,9 +1309,9 @@ class libsunvox {
 
   late final _ctermidPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Pointer<ffi.Int8> Function(ffi.Pointer<ffi.Int8>)>>('ctermid');
+          ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>>('ctermid');
   late final _ctermid = _ctermidPtr
-      .asFunction<ffi.Pointer<ffi.Int8> Function(ffi.Pointer<ffi.Int8>)>();
+      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>();
 
   void flockfile(
     ffi.Pointer<FILE> __stream,
@@ -1344,7 +1336,7 @@ class libsunvox {
   }
 
   late final _ftrylockfilePtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<FILE>)>>(
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<FILE>)>>(
           'ftrylockfile');
   late final _ftrylockfile =
       _ftrylockfilePtr.asFunction<int Function(ffi.Pointer<FILE>)>();
@@ -1372,7 +1364,7 @@ class libsunvox {
   }
 
   late final ___uflowPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<FILE>)>>(
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<FILE>)>>(
           '__uflow');
   late final ___uflow =
       ___uflowPtr.asFunction<int Function(ffi.Pointer<FILE>)>();
@@ -1387,14 +1379,14 @@ class libsunvox {
     );
   }
 
-  late final ___overflowPtr = _lookup<
-          ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<FILE>, ffi.Int32)>>(
-      '__overflow');
+  late final ___overflowPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<FILE>, ffi.Int)>>(
+          '__overflow');
   late final ___overflow =
       ___overflowPtr.asFunction<int Function(ffi.Pointer<FILE>, int)>();
 
   int sv_init(
-    ffi.Pointer<ffi.Int8> config,
+    ffi.Pointer<ffi.Char> config,
     int freq,
     int channels,
     int flags,
@@ -1409,17 +1401,17 @@ class libsunvox {
 
   late final _sv_initPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Int32 Function(ffi.Pointer<ffi.Int8>, ffi.Int32, ffi.Int32,
-              ffi.Uint32)>>('sv_init');
+          ffi.Int Function(
+              ffi.Pointer<ffi.Char>, ffi.Int, ffi.Int, ffi.Uint32)>>('sv_init');
   late final _sv_init = _sv_initPtr
-      .asFunction<int Function(ffi.Pointer<ffi.Int8>, int, int, int)>();
+      .asFunction<int Function(ffi.Pointer<ffi.Char>, int, int, int)>();
 
   int sv_deinit() {
     return _sv_deinit();
   }
 
   late final _sv_deinitPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>('sv_deinit');
+      _lookup<ffi.NativeFunction<ffi.Int Function()>>('sv_deinit');
   late final _sv_deinit = _sv_deinitPtr.asFunction<int Function()>();
 
   int sv_get_sample_rate() {
@@ -1427,7 +1419,7 @@ class libsunvox {
   }
 
   late final _sv_get_sample_ratePtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>('sv_get_sample_rate');
+      _lookup<ffi.NativeFunction<ffi.Int Function()>>('sv_get_sample_rate');
   late final _sv_get_sample_rate =
       _sv_get_sample_ratePtr.asFunction<int Function()>();
 
@@ -1436,7 +1428,7 @@ class libsunvox {
   }
 
   late final _sv_update_inputPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>('sv_update_input');
+      _lookup<ffi.NativeFunction<ffi.Int Function()>>('sv_update_input');
   late final _sv_update_input =
       _sv_update_inputPtr.asFunction<int Function()>();
 
@@ -1456,7 +1448,7 @@ class libsunvox {
 
   late final _sv_audio_callbackPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Int32 Function(ffi.Pointer<ffi.Void>, ffi.Int32, ffi.Int32,
+          ffi.Int Function(ffi.Pointer<ffi.Void>, ffi.Int, ffi.Int,
               ffi.Uint32)>>('sv_audio_callback');
   late final _sv_audio_callback = _sv_audio_callbackPtr
       .asFunction<int Function(ffi.Pointer<ffi.Void>, int, int, int)>();
@@ -1483,14 +1475,8 @@ class libsunvox {
 
   late final _sv_audio_callback2Ptr = _lookup<
       ffi.NativeFunction<
-          ffi.Int32 Function(
-              ffi.Pointer<ffi.Void>,
-              ffi.Int32,
-              ffi.Int32,
-              ffi.Uint32,
-              ffi.Int32,
-              ffi.Int32,
-              ffi.Pointer<ffi.Void>)>>('sv_audio_callback2');
+          ffi.Int Function(ffi.Pointer<ffi.Void>, ffi.Int, ffi.Int, ffi.Uint32,
+              ffi.Int, ffi.Int, ffi.Pointer<ffi.Void>)>>('sv_audio_callback2');
   late final _sv_audio_callback2 = _sv_audio_callback2Ptr.asFunction<
       int Function(ffi.Pointer<ffi.Void>, int, int, int, int, int,
           ffi.Pointer<ffi.Void>)>();
@@ -1504,8 +1490,7 @@ class libsunvox {
   }
 
   late final _sv_open_slotPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>(
-          'sv_open_slot');
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int)>>('sv_open_slot');
   late final _sv_open_slot = _sv_open_slotPtr.asFunction<int Function(int)>();
 
   int sv_close_slot(
@@ -1517,8 +1502,7 @@ class libsunvox {
   }
 
   late final _sv_close_slotPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>(
-          'sv_close_slot');
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int)>>('sv_close_slot');
   late final _sv_close_slot = _sv_close_slotPtr.asFunction<int Function(int)>();
 
   int sv_lock_slot(
@@ -1530,8 +1514,7 @@ class libsunvox {
   }
 
   late final _sv_lock_slotPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>(
-          'sv_lock_slot');
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int)>>('sv_lock_slot');
   late final _sv_lock_slot = _sv_lock_slotPtr.asFunction<int Function(int)>();
 
   int sv_unlock_slot(
@@ -1543,14 +1526,13 @@ class libsunvox {
   }
 
   late final _sv_unlock_slotPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>(
-          'sv_unlock_slot');
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int)>>('sv_unlock_slot');
   late final _sv_unlock_slot =
       _sv_unlock_slotPtr.asFunction<int Function(int)>();
 
   int sv_load(
     int slot,
-    ffi.Pointer<ffi.Int8> name,
+    ffi.Pointer<ffi.Char> name,
   ) {
     return _sv_load(
       slot,
@@ -1559,10 +1541,10 @@ class libsunvox {
   }
 
   late final _sv_loadPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int32 Function(ffi.Int32, ffi.Pointer<ffi.Int8>)>>('sv_load');
+          ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Pointer<ffi.Char>)>>(
+      'sv_load');
   late final _sv_load =
-      _sv_loadPtr.asFunction<int Function(int, ffi.Pointer<ffi.Int8>)>();
+      _sv_loadPtr.asFunction<int Function(int, ffi.Pointer<ffi.Char>)>();
 
   int sv_load_from_memory(
     int slot,
@@ -1578,14 +1560,14 @@ class libsunvox {
 
   late final _sv_load_from_memoryPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Int32 Function(ffi.Int32, ffi.Pointer<ffi.Void>,
+          ffi.Int Function(ffi.Int, ffi.Pointer<ffi.Void>,
               ffi.Uint32)>>('sv_load_from_memory');
   late final _sv_load_from_memory = _sv_load_from_memoryPtr
       .asFunction<int Function(int, ffi.Pointer<ffi.Void>, int)>();
 
   int sv_save(
     int slot,
-    ffi.Pointer<ffi.Int8> name,
+    ffi.Pointer<ffi.Char> name,
   ) {
     return _sv_save(
       slot,
@@ -1594,10 +1576,10 @@ class libsunvox {
   }
 
   late final _sv_savePtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int32 Function(ffi.Int32, ffi.Pointer<ffi.Int8>)>>('sv_save');
+          ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Pointer<ffi.Char>)>>(
+      'sv_save');
   late final _sv_save =
-      _sv_savePtr.asFunction<int Function(int, ffi.Pointer<ffi.Int8>)>();
+      _sv_savePtr.asFunction<int Function(int, ffi.Pointer<ffi.Char>)>();
 
   int sv_play(
     int slot,
@@ -1608,7 +1590,7 @@ class libsunvox {
   }
 
   late final _sv_playPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>('sv_play');
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int)>>('sv_play');
   late final _sv_play = _sv_playPtr.asFunction<int Function(int)>();
 
   int sv_play_from_beginning(
@@ -1620,7 +1602,7 @@ class libsunvox {
   }
 
   late final _sv_play_from_beginningPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int)>>(
           'sv_play_from_beginning');
   late final _sv_play_from_beginning =
       _sv_play_from_beginningPtr.asFunction<int Function(int)>();
@@ -1634,7 +1616,7 @@ class libsunvox {
   }
 
   late final _sv_stopPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>('sv_stop');
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int)>>('sv_stop');
   late final _sv_stop = _sv_stopPtr.asFunction<int Function(int)>();
 
   int sv_pause(
@@ -1646,7 +1628,7 @@ class libsunvox {
   }
 
   late final _sv_pausePtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>('sv_pause');
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int)>>('sv_pause');
   late final _sv_pause = _sv_pausePtr.asFunction<int Function(int)>();
 
   int sv_resume(
@@ -1658,7 +1640,7 @@ class libsunvox {
   }
 
   late final _sv_resumePtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>('sv_resume');
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int)>>('sv_resume');
   late final _sv_resume = _sv_resumePtr.asFunction<int Function(int)>();
 
   int sv_sync_resume(
@@ -1670,8 +1652,7 @@ class libsunvox {
   }
 
   late final _sv_sync_resumePtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>(
-          'sv_sync_resume');
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int)>>('sv_sync_resume');
   late final _sv_sync_resume =
       _sv_sync_resumePtr.asFunction<int Function(int)>();
 
@@ -1686,7 +1667,7 @@ class libsunvox {
   }
 
   late final _sv_set_autostopPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32, ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Int)>>(
           'sv_set_autostop');
   late final _sv_set_autostop =
       _sv_set_autostopPtr.asFunction<int Function(int, int)>();
@@ -1700,8 +1681,7 @@ class libsunvox {
   }
 
   late final _sv_get_autostopPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>(
-          'sv_get_autostop');
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int)>>('sv_get_autostop');
   late final _sv_get_autostop =
       _sv_get_autostopPtr.asFunction<int Function(int)>();
 
@@ -1714,8 +1694,7 @@ class libsunvox {
   }
 
   late final _sv_end_of_songPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>(
-          'sv_end_of_song');
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int)>>('sv_end_of_song');
   late final _sv_end_of_song =
       _sv_end_of_songPtr.asFunction<int Function(int)>();
 
@@ -1730,7 +1709,7 @@ class libsunvox {
   }
 
   late final _sv_rewindPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32, ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Int)>>(
           'sv_rewind');
   late final _sv_rewind = _sv_rewindPtr.asFunction<int Function(int, int)>();
 
@@ -1745,7 +1724,7 @@ class libsunvox {
   }
 
   late final _sv_volumePtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32, ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Int)>>(
           'sv_volume');
   late final _sv_volume = _sv_volumePtr.asFunction<int Function(int, int)>();
 
@@ -1761,10 +1740,9 @@ class libsunvox {
     );
   }
 
-  late final _sv_set_event_tPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int32 Function(
-              ffi.Int32, ffi.Int32, ffi.Int32)>>('sv_set_event_t');
+  late final _sv_set_event_tPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Int, ffi.Int)>>(
+          'sv_set_event_t');
   late final _sv_set_event_t =
       _sv_set_event_tPtr.asFunction<int Function(int, int, int)>();
 
@@ -1790,8 +1768,8 @@ class libsunvox {
 
   late final _sv_send_eventPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Int32 Function(ffi.Int32, ffi.Int32, ffi.Int32, ffi.Int32,
-              ffi.Int32, ffi.Int32, ffi.Int32)>>('sv_send_event');
+          ffi.Int Function(ffi.Int, ffi.Int, ffi.Int, ffi.Int, ffi.Int, ffi.Int,
+              ffi.Int)>>('sv_send_event');
   late final _sv_send_event = _sv_send_eventPtr
       .asFunction<int Function(int, int, int, int, int, int, int)>();
 
@@ -1804,7 +1782,7 @@ class libsunvox {
   }
 
   late final _sv_get_current_linePtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int)>>(
           'sv_get_current_line');
   late final _sv_get_current_line =
       _sv_get_current_linePtr.asFunction<int Function(int)>();
@@ -1818,7 +1796,7 @@ class libsunvox {
   }
 
   late final _sv_get_current_line2Ptr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int)>>(
           'sv_get_current_line2');
   late final _sv_get_current_line2 =
       _sv_get_current_line2Ptr.asFunction<int Function(int)>();
@@ -1834,12 +1812,12 @@ class libsunvox {
   }
 
   late final _sv_get_current_signal_levelPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32, ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Int)>>(
           'sv_get_current_signal_level');
   late final _sv_get_current_signal_level =
       _sv_get_current_signal_levelPtr.asFunction<int Function(int, int)>();
 
-  ffi.Pointer<ffi.Int8> sv_get_song_name(
+  ffi.Pointer<ffi.Char> sv_get_song_name(
     int slot,
   ) {
     return _sv_get_song_name(
@@ -1848,10 +1826,26 @@ class libsunvox {
   }
 
   late final _sv_get_song_namePtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int8> Function(ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Char> Function(ffi.Int)>>(
           'sv_get_song_name');
   late final _sv_get_song_name =
-      _sv_get_song_namePtr.asFunction<ffi.Pointer<ffi.Int8> Function(int)>();
+      _sv_get_song_namePtr.asFunction<ffi.Pointer<ffi.Char> Function(int)>();
+
+  int sv_set_song_name(
+    int slot,
+    ffi.Pointer<ffi.Char> name,
+  ) {
+    return _sv_set_song_name(
+      slot,
+      name,
+    );
+  }
+
+  late final _sv_set_song_namePtr = _lookup<
+          ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Pointer<ffi.Char>)>>(
+      'sv_set_song_name');
+  late final _sv_set_song_name = _sv_set_song_namePtr
+      .asFunction<int Function(int, ffi.Pointer<ffi.Char>)>();
 
   int sv_get_song_bpm(
     int slot,
@@ -1862,8 +1856,7 @@ class libsunvox {
   }
 
   late final _sv_get_song_bpmPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>(
-          'sv_get_song_bpm');
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int)>>('sv_get_song_bpm');
   late final _sv_get_song_bpm =
       _sv_get_song_bpmPtr.asFunction<int Function(int)>();
 
@@ -1876,8 +1869,7 @@ class libsunvox {
   }
 
   late final _sv_get_song_tplPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>(
-          'sv_get_song_tpl');
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int)>>('sv_get_song_tpl');
   late final _sv_get_song_tpl =
       _sv_get_song_tplPtr.asFunction<int Function(int)>();
 
@@ -1890,7 +1882,7 @@ class libsunvox {
   }
 
   late final _sv_get_song_length_framesPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint32 Function(ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Uint32 Function(ffi.Int)>>(
           'sv_get_song_length_frames');
   late final _sv_get_song_length_frames =
       _sv_get_song_length_framesPtr.asFunction<int Function(int)>();
@@ -1904,7 +1896,7 @@ class libsunvox {
   }
 
   late final _sv_get_song_length_linesPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint32 Function(ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Uint32 Function(ffi.Int)>>(
           'sv_get_song_length_lines');
   late final _sv_get_song_length_lines =
       _sv_get_song_length_linesPtr.asFunction<int Function(int)>();
@@ -1927,15 +1919,15 @@ class libsunvox {
 
   late final _sv_get_time_mapPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Int32 Function(ffi.Int32, ffi.Int32, ffi.Int32,
-              ffi.Pointer<ffi.Uint32>, ffi.Int32)>>('sv_get_time_map');
+          ffi.Int Function(ffi.Int, ffi.Int, ffi.Int, ffi.Pointer<ffi.Uint32>,
+              ffi.Int)>>('sv_get_time_map');
   late final _sv_get_time_map = _sv_get_time_mapPtr
       .asFunction<int Function(int, int, int, ffi.Pointer<ffi.Uint32>, int)>();
 
   int sv_new_module(
     int slot,
-    ffi.Pointer<ffi.Int8> type,
-    ffi.Pointer<ffi.Int8> name,
+    ffi.Pointer<ffi.Char> type,
+    ffi.Pointer<ffi.Char> name,
     int x,
     int y,
     int z,
@@ -1952,16 +1944,16 @@ class libsunvox {
 
   late final _sv_new_modulePtr = _lookup<
       ffi.NativeFunction<
-          ffi.Int32 Function(
-              ffi.Int32,
-              ffi.Pointer<ffi.Int8>,
-              ffi.Pointer<ffi.Int8>,
-              ffi.Int32,
-              ffi.Int32,
-              ffi.Int32)>>('sv_new_module');
+          ffi.Int Function(
+              ffi.Int,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Int,
+              ffi.Int,
+              ffi.Int)>>('sv_new_module');
   late final _sv_new_module = _sv_new_modulePtr.asFunction<
       int Function(
-          int, ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>, int, int, int)>();
+          int, ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>, int, int, int)>();
 
   int sv_remove_module(
     int slot,
@@ -1974,7 +1966,7 @@ class libsunvox {
   }
 
   late final _sv_remove_modulePtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32, ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Int)>>(
           'sv_remove_module');
   late final _sv_remove_module =
       _sv_remove_modulePtr.asFunction<int Function(int, int)>();
@@ -1991,10 +1983,9 @@ class libsunvox {
     );
   }
 
-  late final _sv_connect_modulePtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int32 Function(
-              ffi.Int32, ffi.Int32, ffi.Int32)>>('sv_connect_module');
+  late final _sv_connect_modulePtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Int, ffi.Int)>>(
+          'sv_connect_module');
   late final _sv_connect_module =
       _sv_connect_modulePtr.asFunction<int Function(int, int, int)>();
 
@@ -2010,16 +2001,15 @@ class libsunvox {
     );
   }
 
-  late final _sv_disconnect_modulePtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int32 Function(
-              ffi.Int32, ffi.Int32, ffi.Int32)>>('sv_disconnect_module');
+  late final _sv_disconnect_modulePtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Int, ffi.Int)>>(
+          'sv_disconnect_module');
   late final _sv_disconnect_module =
       _sv_disconnect_modulePtr.asFunction<int Function(int, int, int)>();
 
   int sv_load_module(
     int slot,
-    ffi.Pointer<ffi.Int8> file_name,
+    ffi.Pointer<ffi.Char> file_name,
     int x,
     int y,
     int z,
@@ -2035,10 +2025,10 @@ class libsunvox {
 
   late final _sv_load_modulePtr = _lookup<
       ffi.NativeFunction<
-          ffi.Int32 Function(ffi.Int32, ffi.Pointer<ffi.Int8>, ffi.Int32,
-              ffi.Int32, ffi.Int32)>>('sv_load_module');
+          ffi.Int Function(ffi.Int, ffi.Pointer<ffi.Char>, ffi.Int, ffi.Int,
+              ffi.Int)>>('sv_load_module');
   late final _sv_load_module = _sv_load_modulePtr
-      .asFunction<int Function(int, ffi.Pointer<ffi.Int8>, int, int, int)>();
+      .asFunction<int Function(int, ffi.Pointer<ffi.Char>, int, int, int)>();
 
   int sv_load_module_from_memory(
     int slot,
@@ -2060,21 +2050,21 @@ class libsunvox {
 
   late final _sv_load_module_from_memoryPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Int32 Function(ffi.Int32, ffi.Pointer<ffi.Void>, ffi.Uint32,
-              ffi.Int32, ffi.Int32, ffi.Int32)>>('sv_load_module_from_memory');
+          ffi.Int Function(ffi.Int, ffi.Pointer<ffi.Void>, ffi.Uint32, ffi.Int,
+              ffi.Int, ffi.Int)>>('sv_load_module_from_memory');
   late final _sv_load_module_from_memory =
       _sv_load_module_from_memoryPtr.asFunction<
           int Function(int, ffi.Pointer<ffi.Void>, int, int, int, int)>();
 
   int sv_sampler_load(
     int slot,
-    int sampler_module,
-    ffi.Pointer<ffi.Int8> file_name,
+    int mod_num,
+    ffi.Pointer<ffi.Char> file_name,
     int sample_slot,
   ) {
     return _sv_sampler_load(
       slot,
-      sampler_module,
+      mod_num,
       file_name,
       sample_slot,
     );
@@ -2082,21 +2072,21 @@ class libsunvox {
 
   late final _sv_sampler_loadPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Int32 Function(ffi.Int32, ffi.Int32, ffi.Pointer<ffi.Int8>,
-              ffi.Int32)>>('sv_sampler_load');
+          ffi.Int Function(ffi.Int, ffi.Int, ffi.Pointer<ffi.Char>,
+              ffi.Int)>>('sv_sampler_load');
   late final _sv_sampler_load = _sv_sampler_loadPtr
-      .asFunction<int Function(int, int, ffi.Pointer<ffi.Int8>, int)>();
+      .asFunction<int Function(int, int, ffi.Pointer<ffi.Char>, int)>();
 
   int sv_sampler_load_from_memory(
     int slot,
-    int sampler_module,
+    int mod_num,
     ffi.Pointer<ffi.Void> data,
     int data_size,
     int sample_slot,
   ) {
     return _sv_sampler_load_from_memory(
       slot,
-      sampler_module,
+      mod_num,
       data,
       data_size,
       sample_slot,
@@ -2105,10 +2095,91 @@ class libsunvox {
 
   late final _sv_sampler_load_from_memoryPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Int32 Function(ffi.Int32, ffi.Int32, ffi.Pointer<ffi.Void>,
-              ffi.Uint32, ffi.Int32)>>('sv_sampler_load_from_memory');
+          ffi.Int Function(ffi.Int, ffi.Int, ffi.Pointer<ffi.Void>, ffi.Uint32,
+              ffi.Int)>>('sv_sampler_load_from_memory');
   late final _sv_sampler_load_from_memory = _sv_sampler_load_from_memoryPtr
       .asFunction<int Function(int, int, ffi.Pointer<ffi.Void>, int, int)>();
+
+  int sv_metamodule_load(
+    int slot,
+    int mod_num,
+    ffi.Pointer<ffi.Char> file_name,
+  ) {
+    return _sv_metamodule_load(
+      slot,
+      mod_num,
+      file_name,
+    );
+  }
+
+  late final _sv_metamodule_loadPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Int, ffi.Int, ffi.Pointer<ffi.Char>)>>('sv_metamodule_load');
+  late final _sv_metamodule_load = _sv_metamodule_loadPtr
+      .asFunction<int Function(int, int, ffi.Pointer<ffi.Char>)>();
+
+  int sv_metamodule_load_from_memory(
+    int slot,
+    int mod_num,
+    ffi.Pointer<ffi.Void> data,
+    int data_size,
+  ) {
+    return _sv_metamodule_load_from_memory(
+      slot,
+      mod_num,
+      data,
+      data_size,
+    );
+  }
+
+  late final _sv_metamodule_load_from_memoryPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Int, ffi.Int, ffi.Pointer<ffi.Void>,
+              ffi.Uint32)>>('sv_metamodule_load_from_memory');
+  late final _sv_metamodule_load_from_memory =
+      _sv_metamodule_load_from_memoryPtr
+          .asFunction<int Function(int, int, ffi.Pointer<ffi.Void>, int)>();
+
+  int sv_vplayer_load(
+    int slot,
+    int mod_num,
+    ffi.Pointer<ffi.Char> file_name,
+  ) {
+    return _sv_vplayer_load(
+      slot,
+      mod_num,
+      file_name,
+    );
+  }
+
+  late final _sv_vplayer_loadPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Int, ffi.Int, ffi.Pointer<ffi.Char>)>>('sv_vplayer_load');
+  late final _sv_vplayer_load = _sv_vplayer_loadPtr
+      .asFunction<int Function(int, int, ffi.Pointer<ffi.Char>)>();
+
+  int sv_vplayer_load_from_memory(
+    int slot,
+    int mod_num,
+    ffi.Pointer<ffi.Void> data,
+    int data_size,
+  ) {
+    return _sv_vplayer_load_from_memory(
+      slot,
+      mod_num,
+      data,
+      data_size,
+    );
+  }
+
+  late final _sv_vplayer_load_from_memoryPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Int, ffi.Int, ffi.Pointer<ffi.Void>,
+              ffi.Uint32)>>('sv_vplayer_load_from_memory');
+  late final _sv_vplayer_load_from_memory = _sv_vplayer_load_from_memoryPtr
+      .asFunction<int Function(int, int, ffi.Pointer<ffi.Void>, int)>();
 
   int sv_get_number_of_modules(
     int slot,
@@ -2119,14 +2190,14 @@ class libsunvox {
   }
 
   late final _sv_get_number_of_modulesPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int)>>(
           'sv_get_number_of_modules');
   late final _sv_get_number_of_modules =
       _sv_get_number_of_modulesPtr.asFunction<int Function(int)>();
 
   int sv_find_module(
     int slot,
-    ffi.Pointer<ffi.Int8> name,
+    ffi.Pointer<ffi.Char> name,
   ) {
     return _sv_find_module(
       slot,
@@ -2135,11 +2206,10 @@ class libsunvox {
   }
 
   late final _sv_find_modulePtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int32 Function(
-              ffi.Int32, ffi.Pointer<ffi.Int8>)>>('sv_find_module');
+          ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Pointer<ffi.Char>)>>(
+      'sv_find_module');
   late final _sv_find_module =
-      _sv_find_modulePtr.asFunction<int Function(int, ffi.Pointer<ffi.Int8>)>();
+      _sv_find_modulePtr.asFunction<int Function(int, ffi.Pointer<ffi.Char>)>();
 
   int sv_get_module_flags(
     int slot,
@@ -2152,12 +2222,12 @@ class libsunvox {
   }
 
   late final _sv_get_module_flagsPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint32 Function(ffi.Int32, ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Uint32 Function(ffi.Int, ffi.Int)>>(
           'sv_get_module_flags');
   late final _sv_get_module_flags =
       _sv_get_module_flagsPtr.asFunction<int Function(int, int)>();
 
-  ffi.Pointer<ffi.Int32> sv_get_module_inputs(
+  ffi.Pointer<ffi.Int> sv_get_module_inputs(
     int slot,
     int mod_num,
   ) {
@@ -2168,13 +2238,12 @@ class libsunvox {
   }
 
   late final _sv_get_module_inputsPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<ffi.Int32> Function(
-              ffi.Int32, ffi.Int32)>>('sv_get_module_inputs');
+          ffi.NativeFunction<ffi.Pointer<ffi.Int> Function(ffi.Int, ffi.Int)>>(
+      'sv_get_module_inputs');
   late final _sv_get_module_inputs = _sv_get_module_inputsPtr
-      .asFunction<ffi.Pointer<ffi.Int32> Function(int, int)>();
+      .asFunction<ffi.Pointer<ffi.Int> Function(int, int)>();
 
-  ffi.Pointer<ffi.Int32> sv_get_module_outputs(
+  ffi.Pointer<ffi.Int> sv_get_module_outputs(
     int slot,
     int mod_num,
   ) {
@@ -2185,13 +2254,28 @@ class libsunvox {
   }
 
   late final _sv_get_module_outputsPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<ffi.Int32> Function(
-              ffi.Int32, ffi.Int32)>>('sv_get_module_outputs');
+          ffi.NativeFunction<ffi.Pointer<ffi.Int> Function(ffi.Int, ffi.Int)>>(
+      'sv_get_module_outputs');
   late final _sv_get_module_outputs = _sv_get_module_outputsPtr
-      .asFunction<ffi.Pointer<ffi.Int32> Function(int, int)>();
+      .asFunction<ffi.Pointer<ffi.Int> Function(int, int)>();
 
-  ffi.Pointer<ffi.Int8> sv_get_module_name(
+  ffi.Pointer<ffi.Char> sv_get_module_type(
+    int slot,
+    int mod_num,
+  ) {
+    return _sv_get_module_type(
+      slot,
+      mod_num,
+    );
+  }
+
+  late final _sv_get_module_typePtr = _lookup<
+          ffi.NativeFunction<ffi.Pointer<ffi.Char> Function(ffi.Int, ffi.Int)>>(
+      'sv_get_module_type');
+  late final _sv_get_module_type = _sv_get_module_typePtr
+      .asFunction<ffi.Pointer<ffi.Char> Function(int, int)>();
+
+  ffi.Pointer<ffi.Char> sv_get_module_name(
     int slot,
     int mod_num,
   ) {
@@ -2202,11 +2286,29 @@ class libsunvox {
   }
 
   late final _sv_get_module_namePtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<ffi.Int8> Function(
-              ffi.Int32, ffi.Int32)>>('sv_get_module_name');
+          ffi.NativeFunction<ffi.Pointer<ffi.Char> Function(ffi.Int, ffi.Int)>>(
+      'sv_get_module_name');
   late final _sv_get_module_name = _sv_get_module_namePtr
-      .asFunction<ffi.Pointer<ffi.Int8> Function(int, int)>();
+      .asFunction<ffi.Pointer<ffi.Char> Function(int, int)>();
+
+  int sv_set_module_name(
+    int slot,
+    int mod_num,
+    ffi.Pointer<ffi.Char> name,
+  ) {
+    return _sv_set_module_name(
+      slot,
+      mod_num,
+      name,
+    );
+  }
+
+  late final _sv_set_module_namePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Int, ffi.Int, ffi.Pointer<ffi.Char>)>>('sv_set_module_name');
+  late final _sv_set_module_name = _sv_set_module_namePtr
+      .asFunction<int Function(int, int, ffi.Pointer<ffi.Char>)>();
 
   int sv_get_module_xy(
     int slot,
@@ -2219,10 +2321,31 @@ class libsunvox {
   }
 
   late final _sv_get_module_xyPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint32 Function(ffi.Int32, ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Uint32 Function(ffi.Int, ffi.Int)>>(
           'sv_get_module_xy');
   late final _sv_get_module_xy =
       _sv_get_module_xyPtr.asFunction<int Function(int, int)>();
+
+  int sv_set_module_xy(
+    int slot,
+    int mod_num,
+    int x,
+    int y,
+  ) {
+    return _sv_set_module_xy(
+      slot,
+      mod_num,
+      x,
+      y,
+    );
+  }
+
+  late final _sv_set_module_xyPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Int, ffi.Int, ffi.Int, ffi.Int)>>('sv_set_module_xy');
+  late final _sv_set_module_xy =
+      _sv_set_module_xyPtr.asFunction<int Function(int, int, int, int)>();
 
   int sv_get_module_color(
     int slot,
@@ -2235,10 +2358,28 @@ class libsunvox {
   }
 
   late final _sv_get_module_colorPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32, ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Int)>>(
           'sv_get_module_color');
   late final _sv_get_module_color =
       _sv_get_module_colorPtr.asFunction<int Function(int, int)>();
+
+  int sv_set_module_color(
+    int slot,
+    int mod_num,
+    int color,
+  ) {
+    return _sv_set_module_color(
+      slot,
+      mod_num,
+      color,
+    );
+  }
+
+  late final _sv_set_module_colorPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Int, ffi.Int)>>(
+          'sv_set_module_color');
+  late final _sv_set_module_color =
+      _sv_set_module_colorPtr.asFunction<int Function(int, int, int)>();
 
   int sv_get_module_finetune(
     int slot,
@@ -2251,10 +2392,46 @@ class libsunvox {
   }
 
   late final _sv_get_module_finetunePtr =
-      _lookup<ffi.NativeFunction<ffi.Uint32 Function(ffi.Int32, ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Uint32 Function(ffi.Int, ffi.Int)>>(
           'sv_get_module_finetune');
   late final _sv_get_module_finetune =
       _sv_get_module_finetunePtr.asFunction<int Function(int, int)>();
+
+  int sv_set_module_finetune(
+    int slot,
+    int mod_num,
+    int finetune,
+  ) {
+    return _sv_set_module_finetune(
+      slot,
+      mod_num,
+      finetune,
+    );
+  }
+
+  late final _sv_set_module_finetunePtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Int, ffi.Int)>>(
+          'sv_set_module_finetune');
+  late final _sv_set_module_finetune =
+      _sv_set_module_finetunePtr.asFunction<int Function(int, int, int)>();
+
+  int sv_set_module_relnote(
+    int slot,
+    int mod_num,
+    int relative_note,
+  ) {
+    return _sv_set_module_relnote(
+      slot,
+      mod_num,
+      relative_note,
+    );
+  }
+
+  late final _sv_set_module_relnotePtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Int, ffi.Int)>>(
+          'sv_set_module_relnote');
+  late final _sv_set_module_relnote =
+      _sv_set_module_relnotePtr.asFunction<int Function(int, int, int)>();
 
   int sv_get_module_scope2(
     int slot,
@@ -2274,8 +2451,8 @@ class libsunvox {
 
   late final _sv_get_module_scope2Ptr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint32 Function(ffi.Int32, ffi.Int32, ffi.Int32,
-              ffi.Pointer<ffi.Int16>, ffi.Uint32)>>('sv_get_module_scope2');
+          ffi.Uint32 Function(ffi.Int, ffi.Int, ffi.Int, ffi.Pointer<ffi.Int16>,
+              ffi.Uint32)>>('sv_get_module_scope2');
   late final _sv_get_module_scope2 = _sv_get_module_scope2Ptr
       .asFunction<int Function(int, int, int, ffi.Pointer<ffi.Int16>, int)>();
 
@@ -2299,13 +2476,8 @@ class libsunvox {
 
   late final _sv_module_curvePtr = _lookup<
       ffi.NativeFunction<
-          ffi.Int32 Function(
-              ffi.Int32,
-              ffi.Int32,
-              ffi.Int32,
-              ffi.Pointer<ffi.Float>,
-              ffi.Int32,
-              ffi.Int32)>>('sv_module_curve');
+          ffi.Int Function(ffi.Int, ffi.Int, ffi.Int, ffi.Pointer<ffi.Float>,
+              ffi.Int, ffi.Int)>>('sv_module_curve');
   late final _sv_module_curve = _sv_module_curvePtr.asFunction<
       int Function(int, int, int, ffi.Pointer<ffi.Float>, int, int)>();
 
@@ -2320,12 +2492,12 @@ class libsunvox {
   }
 
   late final _sv_get_number_of_module_ctlsPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32, ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Int)>>(
           'sv_get_number_of_module_ctls');
   late final _sv_get_number_of_module_ctls =
       _sv_get_number_of_module_ctlsPtr.asFunction<int Function(int, int)>();
 
-  ffi.Pointer<ffi.Int8> sv_get_module_ctl_name(
+  ffi.Pointer<ffi.Char> sv_get_module_ctl_name(
     int slot,
     int mod_num,
     int ctl_num,
@@ -2339,10 +2511,10 @@ class libsunvox {
 
   late final _sv_get_module_ctl_namePtr = _lookup<
       ffi.NativeFunction<
-          ffi.Pointer<ffi.Int8> Function(
-              ffi.Int32, ffi.Int32, ffi.Int32)>>('sv_get_module_ctl_name');
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Int, ffi.Int, ffi.Int)>>('sv_get_module_ctl_name');
   late final _sv_get_module_ctl_name = _sv_get_module_ctl_namePtr
-      .asFunction<ffi.Pointer<ffi.Int8> Function(int, int, int)>();
+      .asFunction<ffi.Pointer<ffi.Char> Function(int, int, int)>();
 
   int sv_get_module_ctl_value(
     int slot,
@@ -2360,10 +2532,174 @@ class libsunvox {
 
   late final _sv_get_module_ctl_valuePtr = _lookup<
       ffi.NativeFunction<
-          ffi.Int32 Function(ffi.Int32, ffi.Int32, ffi.Int32,
-              ffi.Int32)>>('sv_get_module_ctl_value');
+          ffi.Int Function(
+              ffi.Int, ffi.Int, ffi.Int, ffi.Int)>>('sv_get_module_ctl_value');
   late final _sv_get_module_ctl_value = _sv_get_module_ctl_valuePtr
       .asFunction<int Function(int, int, int, int)>();
+
+  int sv_set_module_ctl_value(
+    int slot,
+    int mod_num,
+    int ctl_num,
+    int val,
+    int scaled,
+  ) {
+    return _sv_set_module_ctl_value(
+      slot,
+      mod_num,
+      ctl_num,
+      val,
+      scaled,
+    );
+  }
+
+  late final _sv_set_module_ctl_valuePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Int, ffi.Int, ffi.Int, ffi.Int,
+              ffi.Int)>>('sv_set_module_ctl_value');
+  late final _sv_set_module_ctl_value = _sv_set_module_ctl_valuePtr
+      .asFunction<int Function(int, int, int, int, int)>();
+
+  int sv_get_module_ctl_min(
+    int slot,
+    int mod_num,
+    int ctl_num,
+    int scaled,
+  ) {
+    return _sv_get_module_ctl_min(
+      slot,
+      mod_num,
+      ctl_num,
+      scaled,
+    );
+  }
+
+  late final _sv_get_module_ctl_minPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Int, ffi.Int, ffi.Int, ffi.Int)>>('sv_get_module_ctl_min');
+  late final _sv_get_module_ctl_min =
+      _sv_get_module_ctl_minPtr.asFunction<int Function(int, int, int, int)>();
+
+  int sv_get_module_ctl_max(
+    int slot,
+    int mod_num,
+    int ctl_num,
+    int scaled,
+  ) {
+    return _sv_get_module_ctl_max(
+      slot,
+      mod_num,
+      ctl_num,
+      scaled,
+    );
+  }
+
+  late final _sv_get_module_ctl_maxPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Int, ffi.Int, ffi.Int, ffi.Int)>>('sv_get_module_ctl_max');
+  late final _sv_get_module_ctl_max =
+      _sv_get_module_ctl_maxPtr.asFunction<int Function(int, int, int, int)>();
+
+  int sv_get_module_ctl_offset(
+    int slot,
+    int mod_num,
+    int ctl_num,
+  ) {
+    return _sv_get_module_ctl_offset(
+      slot,
+      mod_num,
+      ctl_num,
+    );
+  }
+
+  late final _sv_get_module_ctl_offsetPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Int, ffi.Int)>>(
+          'sv_get_module_ctl_offset');
+  late final _sv_get_module_ctl_offset =
+      _sv_get_module_ctl_offsetPtr.asFunction<int Function(int, int, int)>();
+
+  int sv_get_module_ctl_type(
+    int slot,
+    int mod_num,
+    int ctl_num,
+  ) {
+    return _sv_get_module_ctl_type(
+      slot,
+      mod_num,
+      ctl_num,
+    );
+  }
+
+  late final _sv_get_module_ctl_typePtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Int, ffi.Int)>>(
+          'sv_get_module_ctl_type');
+  late final _sv_get_module_ctl_type =
+      _sv_get_module_ctl_typePtr.asFunction<int Function(int, int, int)>();
+
+  int sv_get_module_ctl_group(
+    int slot,
+    int mod_num,
+    int ctl_num,
+  ) {
+    return _sv_get_module_ctl_group(
+      slot,
+      mod_num,
+      ctl_num,
+    );
+  }
+
+  late final _sv_get_module_ctl_groupPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Int, ffi.Int)>>(
+          'sv_get_module_ctl_group');
+  late final _sv_get_module_ctl_group =
+      _sv_get_module_ctl_groupPtr.asFunction<int Function(int, int, int)>();
+
+  int sv_new_pattern(
+    int slot,
+    int clone,
+    int x,
+    int y,
+    int tracks,
+    int lines,
+    int icon_seed,
+    ffi.Pointer<ffi.Char> name,
+  ) {
+    return _sv_new_pattern(
+      slot,
+      clone,
+      x,
+      y,
+      tracks,
+      lines,
+      icon_seed,
+      name,
+    );
+  }
+
+  late final _sv_new_patternPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Int, ffi.Int, ffi.Int, ffi.Int, ffi.Int, ffi.Int,
+              ffi.Int, ffi.Pointer<ffi.Char>)>>('sv_new_pattern');
+  late final _sv_new_pattern = _sv_new_patternPtr.asFunction<
+      int Function(int, int, int, int, int, int, int, ffi.Pointer<ffi.Char>)>();
+
+  int sv_remove_pattern(
+    int slot,
+    int pat_num,
+  ) {
+    return _sv_remove_pattern(
+      slot,
+      pat_num,
+    );
+  }
+
+  late final _sv_remove_patternPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Int)>>(
+          'sv_remove_pattern');
+  late final _sv_remove_pattern =
+      _sv_remove_patternPtr.asFunction<int Function(int, int)>();
 
   int sv_get_number_of_patterns(
     int slot,
@@ -2374,14 +2710,14 @@ class libsunvox {
   }
 
   late final _sv_get_number_of_patternsPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int)>>(
           'sv_get_number_of_patterns');
   late final _sv_get_number_of_patterns =
       _sv_get_number_of_patternsPtr.asFunction<int Function(int)>();
 
   int sv_find_pattern(
     int slot,
-    ffi.Pointer<ffi.Int8> name,
+    ffi.Pointer<ffi.Char> name,
   ) {
     return _sv_find_pattern(
       slot,
@@ -2390,11 +2726,10 @@ class libsunvox {
   }
 
   late final _sv_find_patternPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int32 Function(
-              ffi.Int32, ffi.Pointer<ffi.Int8>)>>('sv_find_pattern');
+          ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Pointer<ffi.Char>)>>(
+      'sv_find_pattern');
   late final _sv_find_pattern = _sv_find_patternPtr
-      .asFunction<int Function(int, ffi.Pointer<ffi.Int8>)>();
+      .asFunction<int Function(int, ffi.Pointer<ffi.Char>)>();
 
   int sv_get_pattern_x(
     int slot,
@@ -2407,7 +2742,7 @@ class libsunvox {
   }
 
   late final _sv_get_pattern_xPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32, ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Int)>>(
           'sv_get_pattern_x');
   late final _sv_get_pattern_x =
       _sv_get_pattern_xPtr.asFunction<int Function(int, int)>();
@@ -2423,10 +2758,31 @@ class libsunvox {
   }
 
   late final _sv_get_pattern_yPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32, ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Int)>>(
           'sv_get_pattern_y');
   late final _sv_get_pattern_y =
       _sv_get_pattern_yPtr.asFunction<int Function(int, int)>();
+
+  int sv_set_pattern_xy(
+    int slot,
+    int pat_num,
+    int x,
+    int y,
+  ) {
+    return _sv_set_pattern_xy(
+      slot,
+      pat_num,
+      x,
+      y,
+    );
+  }
+
+  late final _sv_set_pattern_xyPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Int, ffi.Int, ffi.Int, ffi.Int)>>('sv_set_pattern_xy');
+  late final _sv_set_pattern_xy =
+      _sv_set_pattern_xyPtr.asFunction<int Function(int, int, int, int)>();
 
   int sv_get_pattern_tracks(
     int slot,
@@ -2439,7 +2795,7 @@ class libsunvox {
   }
 
   late final _sv_get_pattern_tracksPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32, ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Int)>>(
           'sv_get_pattern_tracks');
   late final _sv_get_pattern_tracks =
       _sv_get_pattern_tracksPtr.asFunction<int Function(int, int)>();
@@ -2455,12 +2811,33 @@ class libsunvox {
   }
 
   late final _sv_get_pattern_linesPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32, ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Int)>>(
           'sv_get_pattern_lines');
   late final _sv_get_pattern_lines =
       _sv_get_pattern_linesPtr.asFunction<int Function(int, int)>();
 
-  ffi.Pointer<ffi.Int8> sv_get_pattern_name(
+  int sv_set_pattern_size(
+    int slot,
+    int pat_num,
+    int tracks,
+    int lines,
+  ) {
+    return _sv_set_pattern_size(
+      slot,
+      pat_num,
+      tracks,
+      lines,
+    );
+  }
+
+  late final _sv_set_pattern_sizePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Int, ffi.Int, ffi.Int, ffi.Int)>>('sv_set_pattern_size');
+  late final _sv_set_pattern_size =
+      _sv_set_pattern_sizePtr.asFunction<int Function(int, int, int, int)>();
+
+  ffi.Pointer<ffi.Char> sv_get_pattern_name(
     int slot,
     int pat_num,
   ) {
@@ -2471,11 +2848,29 @@ class libsunvox {
   }
 
   late final _sv_get_pattern_namePtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<ffi.Int8> Function(
-              ffi.Int32, ffi.Int32)>>('sv_get_pattern_name');
+          ffi.NativeFunction<ffi.Pointer<ffi.Char> Function(ffi.Int, ffi.Int)>>(
+      'sv_get_pattern_name');
   late final _sv_get_pattern_name = _sv_get_pattern_namePtr
-      .asFunction<ffi.Pointer<ffi.Int8> Function(int, int)>();
+      .asFunction<ffi.Pointer<ffi.Char> Function(int, int)>();
+
+  int sv_set_pattern_name(
+    int slot,
+    int pat_num,
+    ffi.Pointer<ffi.Char> name,
+  ) {
+    return _sv_set_pattern_name(
+      slot,
+      pat_num,
+      name,
+    );
+  }
+
+  late final _sv_set_pattern_namePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Int, ffi.Int, ffi.Pointer<ffi.Char>)>>('sv_set_pattern_name');
+  late final _sv_set_pattern_name = _sv_set_pattern_namePtr
+      .asFunction<int Function(int, int, ffi.Pointer<ffi.Char>)>();
 
   ffi.Pointer<sunvox_note> sv_get_pattern_data(
     int slot,
@@ -2490,7 +2885,7 @@ class libsunvox {
   late final _sv_get_pattern_dataPtr = _lookup<
       ffi.NativeFunction<
           ffi.Pointer<sunvox_note> Function(
-              ffi.Int32, ffi.Int32)>>('sv_get_pattern_data');
+              ffi.Int, ffi.Int)>>('sv_get_pattern_data');
   late final _sv_get_pattern_data = _sv_get_pattern_dataPtr
       .asFunction<ffi.Pointer<sunvox_note> Function(int, int)>();
 
@@ -2520,16 +2915,8 @@ class libsunvox {
 
   late final _sv_set_pattern_eventPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Int32 Function(
-              ffi.Int32,
-              ffi.Int32,
-              ffi.Int32,
-              ffi.Int32,
-              ffi.Int32,
-              ffi.Int32,
-              ffi.Int32,
-              ffi.Int32,
-              ffi.Int32)>>('sv_set_pattern_event');
+          ffi.Int Function(ffi.Int, ffi.Int, ffi.Int, ffi.Int, ffi.Int, ffi.Int,
+              ffi.Int, ffi.Int, ffi.Int)>>('sv_set_pattern_event');
   late final _sv_set_pattern_event = _sv_set_pattern_eventPtr
       .asFunction<int Function(int, int, int, int, int, int, int, int, int)>();
 
@@ -2551,8 +2938,8 @@ class libsunvox {
 
   late final _sv_get_pattern_eventPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Int32 Function(ffi.Int32, ffi.Int32, ffi.Int32, ffi.Int32,
-              ffi.Int32)>>('sv_get_pattern_event');
+          ffi.Int Function(ffi.Int, ffi.Int, ffi.Int, ffi.Int,
+              ffi.Int)>>('sv_get_pattern_event');
   late final _sv_get_pattern_event = _sv_get_pattern_eventPtr
       .asFunction<int Function(int, int, int, int, int)>();
 
@@ -2568,10 +2955,9 @@ class libsunvox {
     );
   }
 
-  late final _sv_pattern_mutePtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int32 Function(
-              ffi.Int32, ffi.Int32, ffi.Int32)>>('sv_pattern_mute');
+  late final _sv_pattern_mutePtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Int, ffi.Int)>>(
+          'sv_pattern_mute');
   late final _sv_pattern_mute =
       _sv_pattern_mutePtr.asFunction<int Function(int, int, int)>();
 
@@ -2593,7 +2979,7 @@ class libsunvox {
   late final _sv_get_ticks_per_second =
       _sv_get_ticks_per_secondPtr.asFunction<int Function()>();
 
-  ffi.Pointer<ffi.Int8> sv_get_log(
+  ffi.Pointer<ffi.Char> sv_get_log(
     int size,
   ) {
     return _sv_get_log(
@@ -2602,30 +2988,30 @@ class libsunvox {
   }
 
   late final _sv_get_logPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int8> Function(ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Char> Function(ffi.Int)>>(
           'sv_get_log');
   late final _sv_get_log =
-      _sv_get_logPtr.asFunction<ffi.Pointer<ffi.Int8> Function(int)>();
+      _sv_get_logPtr.asFunction<ffi.Pointer<ffi.Char> Function(int)>();
 }
 
 class _fsid_t_ extends ffi.Struct {
   @ffi.Array.multi([2])
-  external ffi.Array<ffi.Int32> _val_;
+  external ffi.Array<ffi.Int> _val_;
 }
 
 class _mbstate_t_ extends ffi.Struct {
-  @ffi.Int32()
+  @ffi.Int()
   external int _count_;
 
   external UnnamedUnion1 _value_;
 }
 
 class UnnamedUnion1 extends ffi.Union {
-  @ffi.Uint32()
+  @ffi.UnsignedInt()
   external int _wch_;
 
   @ffi.Array.multi([4])
-  external ffi.Array<ffi.Int8> _wchb_;
+  external ffi.Array<ffi.Char> _wchb_;
 }
 
 class G_fpos_t_ extends ffi.Struct {
@@ -2635,7 +3021,7 @@ class G_fpos_t_ extends ffi.Struct {
   external _mbstate_t_ _state_;
 }
 
-typedef __off_t = ffi.Int64;
+typedef __off_t = ffi.Long;
 
 class G_fpos64_t_ extends ffi.Struct {
   @__off64_t()
@@ -2644,55 +3030,55 @@ class G_fpos64_t_ extends ffi.Struct {
   external _mbstate_t_ _state_;
 }
 
-typedef __off64_t = ffi.Int64;
+typedef __off64_t = ffi.Long;
 
 class IO_FILE_ extends ffi.Struct {
-  @ffi.Int32()
+  @ffi.Int()
   external int flags_;
 
-  external ffi.Pointer<ffi.Int8> IO_read_ptr_;
+  external ffi.Pointer<ffi.Char> IO_read_ptr_;
 
-  external ffi.Pointer<ffi.Int8> IO_read_end_;
+  external ffi.Pointer<ffi.Char> IO_read_end_;
 
-  external ffi.Pointer<ffi.Int8> IO_read_base_;
+  external ffi.Pointer<ffi.Char> IO_read_base_;
 
-  external ffi.Pointer<ffi.Int8> IO_write_base_;
+  external ffi.Pointer<ffi.Char> IO_write_base_;
 
-  external ffi.Pointer<ffi.Int8> IO_write_ptr_;
+  external ffi.Pointer<ffi.Char> IO_write_ptr_;
 
-  external ffi.Pointer<ffi.Int8> IO_write_end_;
+  external ffi.Pointer<ffi.Char> IO_write_end_;
 
-  external ffi.Pointer<ffi.Int8> IO_buf_base_;
+  external ffi.Pointer<ffi.Char> IO_buf_base_;
 
-  external ffi.Pointer<ffi.Int8> IO_buf_end_;
+  external ffi.Pointer<ffi.Char> IO_buf_end_;
 
-  external ffi.Pointer<ffi.Int8> IO_save_base_;
+  external ffi.Pointer<ffi.Char> IO_save_base_;
 
-  external ffi.Pointer<ffi.Int8> IO_backup_base_;
+  external ffi.Pointer<ffi.Char> IO_backup_base_;
 
-  external ffi.Pointer<ffi.Int8> IO_save_end_;
+  external ffi.Pointer<ffi.Char> IO_save_end_;
 
   external ffi.Pointer<IO_marker_> markers_;
 
   external ffi.Pointer<IO_FILE_> chain_;
 
-  @ffi.Int32()
+  @ffi.Int()
   external int fileno_;
 
-  @ffi.Int32()
+  @ffi.Int()
   external int flags2_;
 
   @__off_t()
   external int old_offset_;
 
-  @ffi.Uint16()
+  @ffi.UnsignedShort()
   external int cur_column_;
 
-  @ffi.Int8()
+  @ffi.SignedChar()
   external int vtable_offset_;
 
   @ffi.Array.multi([1])
-  external ffi.Array<ffi.Int8> shortbuf_;
+  external ffi.Array<ffi.Char> shortbuf_;
 
   external ffi.Pointer<_IO_lock_t> lock_;
 
@@ -2707,14 +3093,14 @@ class IO_FILE_ extends ffi.Struct {
 
   external ffi.Pointer<ffi.Void> freeres_buf_;
 
-  @size_t()
+  @ffi.Size()
   external int _pad5_;
 
-  @ffi.Int32()
+  @ffi.Int()
   external int mode_;
 
   @ffi.Array.multi([20])
-  external ffi.Array<ffi.Int8> unused2_;
+  external ffi.Array<ffi.Char> unused2_;
 }
 
 class IO_marker_ extends ffi.Opaque {}
@@ -2725,14 +3111,13 @@ class IO_codecvt_ extends ffi.Opaque {}
 
 class IO_wide_data_ extends ffi.Opaque {}
 
-typedef size_t = ffi.Uint64;
 typedef FILE = IO_FILE_;
 
 class _va_list_tag_ extends ffi.Struct {
-  @ffi.Uint32()
+  @ffi.UnsignedInt()
   external int gp_offset;
 
-  @ffi.Uint32()
+  @ffi.UnsignedInt()
   external int fp_offset;
 
   external ffi.Pointer<ffi.Void> overflow_arg_area;
@@ -2740,7 +3125,7 @@ class _va_list_tag_ extends ffi.Struct {
   external ffi.Pointer<ffi.Void> reg_save_area;
 }
 
-typedef __ssize_t = ffi.Int64;
+typedef __ssize_t = ffi.Long;
 typedef fpos_t = __fpos_t;
 typedef __fpos_t = G_fpos_t_;
 
@@ -2815,7 +3200,11 @@ const int _STDC_PREDEF_H = 1;
 
 const int __STDC_IEC_559__ = 1;
 
+const int __STDC_IEC_60559_BFP__ = 201404;
+
 const int __STDC_IEC_559_COMPLEX__ = 1;
+
+const int __STDC_IEC_60559_COMPLEX__ = 201404;
 
 const int __STDC_ISO_10646__ = 201706;
 
@@ -2823,7 +3212,7 @@ const int __GNU_LIBRARY__ = 6;
 
 const int __GLIBC__ = 2;
 
-const int __GLIBC_MINOR__ = 34;
+const int __GLIBC_MINOR__ = 35;
 
 const int _SYS_CDEFS_H = 1;
 
@@ -3081,6 +3470,8 @@ const int NOTECMD_PLAY = 132;
 
 const int NOTECMD_SET_PITCH = 133;
 
+const int NOTECMD_CLEAN_MODULE = 140;
+
 const int SV_INIT_FLAG_NO_DEBUG_OUTPUT = 1;
 
 const int SV_INIT_FLAG_USER_AUDIO_CALLBACK = 2;
@@ -3099,13 +3490,15 @@ const int SV_TIME_MAP_FRAMECNT = 1;
 
 const int SV_MODULE_FLAG_EXISTS = 1;
 
-const int SV_MODULE_FLAG_EFFECT = 2;
+const int SV_MODULE_FLAG_GENERATOR = 2;
 
-const int SV_MODULE_FLAG_MUTE = 4;
+const int SV_MODULE_FLAG_EFFECT = 4;
 
-const int SV_MODULE_FLAG_SOLO = 8;
+const int SV_MODULE_FLAG_MUTE = 8;
 
-const int SV_MODULE_FLAG_BYPASS = 16;
+const int SV_MODULE_FLAG_SOLO = 16;
+
+const int SV_MODULE_FLAG_BYPASS = 32;
 
 const int SV_MODULE_INPUTS_OFF = 16;
 
