@@ -164,9 +164,29 @@ class SVPattern {
 
   int get patternLineCount => _sunvox.sv_get_pattern_lines(slot, id);
 
+  set patternTrackCount(int tracks) {
+    _sunvox.sv_lock_slot(slot);
+    _sunvox.sv_set_pattern_size(slot, id, tracks, -1);
+    _sunvox.sv_unlock_slot(slot);
+  }
+
+  set patternLineCount(int lines) {
+    _sunvox.sv_lock_slot(slot);
+    _sunvox.sv_set_pattern_size(slot, id, -1, lines);
+    _sunvox.sv_unlock_slot(slot);
+  }
+
   String? get name {
     final ptr = _sunvox.sv_get_pattern_name(slot, id);
     return ptr.address != 0 ? ptr.cast<Utf8>().toDartString() : null;
+  }
+
+  set name(String? s) {
+    if (s == null) {
+      return;
+    }
+    final _name = s.toNativeUtf8();
+    _sunvox.sv_set_pattern_name(slot, id, _name.cast());
   }
 
   List<SVPatternLine> get data {
