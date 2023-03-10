@@ -6,6 +6,7 @@ import 'package:dart_sunvox/src/libsunvox_generated_bindings.dart';
 import 'package:ffi/ffi.dart';
 
 import 'controller_data.dart';
+import 'module_data.dart';
 import 'pattern_data.dart';
 
 export 'module_data.dart';
@@ -310,7 +311,7 @@ class SVModule {
     return _controllers!;
   }
 
-  bool get isInstrument => !((flags & sunvoxModuleFlagEffect) == 2);
+  bool get isInstrument => instrumentTypesList.contains(type);
 
   // connect this module to the module for the given moduleId
   void connectToModule(int toModuleId) {

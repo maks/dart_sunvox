@@ -41,3 +41,17 @@ const Set<String> allModuleTypes = {
   "Filter Pro",
   "MultiSynth",
 };
+
+const instrumentTypesList = [
+  "Analog Generator",
+  "DrumSynth",
+  "FM",
+  "FMX",
+  "Generator",
+  "Kicker",
+  "MetaModule",
+  "MultiSynth",
+  "Sampler",
+  "SpectraVoice",
+  "Vorbis player",
+];
