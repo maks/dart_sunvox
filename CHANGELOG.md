@@ -1,3 +1,8 @@
+## 0.2.0
+  - use module type to filter "instrument" modules
+  - add getter for module type as a String
+  - current line getter
+
 ## 0.1.1
  - setters for pattern name, track & line count
  - getter for current line
