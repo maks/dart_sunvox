@@ -274,6 +274,11 @@ class SVModule {
     return SVColor(r, g, b);
   }
 
+  String? get type {
+    final ptr = _sunvox.sv_get_module_type(slot, id);
+    return ptr.address != 0 ? ptr.cast<Utf8>().toDartString() : null;
+  }
+
   SVModule(this._sunvox, this.id, this.slot);
 
   List<int> get inputs {
